@@ -11,9 +11,9 @@ namespace SkillBoxHW11
 {
     public abstract class Employee
     {
-        protected abstract string Type { get; }
+        public abstract string Type { get; }
         public abstract List<Client> GetClients();
-        public abstract Client ChangeClient(Client client);
+        public abstract Client ChangeClient(long client);
         public abstract List<Client> RefreshClientsView(List<Client> clientsShort);
         public void DeleteClient(Client client) { }
         protected bool SaveEditedClient(Client client, Employee employee)
@@ -80,6 +80,11 @@ namespace SkillBoxHW11
                 }
             }
             return cl;
+        }
+        protected virtual Client getClientById(long _id)
+        {
+            var client = getClientsAllData().Find(c => c.ID == _id);
+            return client;
         }
 
         

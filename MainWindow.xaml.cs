@@ -28,37 +28,42 @@ namespace SkillBoxHW11
         Consultant consultant = new Consultant();
         Manager manager = new Manager();
         Client client;
+        long selectedClientId;
         bool dataFirstLoad = true;
 
         public MainWindow()
         {
             InitializeComponent();
             employee = manager;
-            if (dataFirstLoad)
-            {
+            //if (dataFirstLoad)
+            //{
                 foreach (var item in employee.GetClients())
                 {
                     Clients.Add(item);
                 }
-                dataFirstLoad = false;
-            }
-            else
-            {
-                List<Client> clientsShort = new List<Client>();
-                clientsShort.AddRange(Clients);
-                dataFirstLoad = false;
-                Clients.Clear();
-                foreach (var item in employee.RefreshClientsView(clientsShort))
-                {
-                    Clients.Add(item);
-                }
-            }
+            //    dataFirstLoad = false;
+            //}
+            //else
+            //{
+            //    List<Client> clientsShort = new List<Client>();
+            //    clientsShort.AddRange(Clients);
+            //    dataFirstLoad = false;
+            //    Clients.Clear();
+            //    foreach (var item in employee.RefreshClientsView(clientsShort))
+            //    {
+            //        Clients.Add(item);
+            //    }
+            //}
             ClientsDG.ItemsSource = Clients;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             client = (Client)ClientsDG.SelectedItem;
+            if (client != null)
+            {
+                selectedClientId = client.ID;
+            }
             userValue.Content = ClientsDG.SelectedItem;
         }
 
@@ -76,18 +81,25 @@ namespace SkillBoxHW11
                     employee = manager;
                     break;
             }
-            for (int i = 0; i < ClientsDG.Items.Count; i++)
+            Clients.Clear();
+            foreach (var item in employee.GetClients())
             {
-                ClientsDG.Columns[5].
+                Clients.Add(item);
             }
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Client tmpCl = employee.ChangeClient(client);
-            Clients.Remove(client);
-            Clients.Add(tmpCl);
+            Client tmpCl = employee.ChangeClient(selectedClientId);
+            //Clients.Remove(client);
+            //Clients.Add(tmpCl);
+
+            Clients.Clear();
+
+            foreach (var item in employee.GetClients())
+            {
+                Clients.Add(item);
+            }
 
             ClientsDG.Items.SortDescriptions.Clear();
             ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));

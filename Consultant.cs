@@ -8,16 +8,16 @@ namespace SkillBoxHW11
 {
     internal class Consultant : Employee
     {
-        protected override string Type => "consultant";
+        public override string Type => "consultant";
         
-        public override Client ChangeClient(Client _client)
+        public override Client ChangeClient(long _client)
         {
-            Client client = _client;
+            Client client = getClientById(_client);
             EditClient editClient = new EditClient(client, this);
-            if(editClient.ShowDialog() == true) _client = editClient.editedClient;
+            if(editClient.ShowDialog() == true) client = editClient.editedClient;
             editClient.Close();
             base.SaveEditedClient(client, this);
-            return _client;
+            return client;
         }
 
         public override List<Client> GetClients()
