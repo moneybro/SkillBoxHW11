@@ -24,6 +24,11 @@ namespace SkillBoxHW11
         public string? EmployeeType { get; set; }
         public string? Status { get; set; } // активен = active, удален = deleted и т.п.
 
+        public Client(long ID)
+        {
+            this.ID = ID;
+        }
+
         public override bool Equals(object? obj)
         {
             return Equals(obj as Client);
@@ -39,45 +44,5 @@ namespace SkillBoxHW11
         {
             return $"LastName: {LastName} | Name: {Name} | Patronimyc: {Patronymic} | mobphone: {MobPhone}";
         }
-
-        /// <summary>
-        /// сначала сделал этот метод, который проверяет какой оператор смотрит данные и возвращает подготовленные данные
-        /// метод перенесен в класс работника в учебных целях
-        /// </summary>
-        /// <param name="employee">тип работника (консультант или менеджер)</param>
-        /// <returns>подготовленный список клиентов</returns>
-        //public static List<Client> getClients(Employee employee)
-        //{
-        //    var ser = new Newtonsoft.Json.JsonSerializer();
-        //    var streamreader = new StreamReader("clients.json", new UTF8Encoding());
-        //    List<Client> clients = new List<Client>();
-
-        //    using (var reader = new JsonTextReader(streamreader))
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            reader.CloseInput = false;
-        //            reader.SupportMultipleContent = true;
-        //            clients.Add(ser.Deserialize<Client>(reader));
-        //        }
-        //    }
-
-
-        //    switch (employee.GetType().Name)
-        //    {
-        //        case "Consultant":
-        //        default:
-        //            for (int i = 0; i < clients.Count; i++)
-        //            {
-        //                clients[i].PaspSeria = 0;
-        //                clients[i].PaspNum = 0;
-        //            }
-        //            break;
-        //        case "Manager":
-        //            break;
-        //    }
-
-        //    return clients;
-        //}
     }
 }

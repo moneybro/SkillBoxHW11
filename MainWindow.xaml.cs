@@ -29,32 +29,24 @@ namespace SkillBoxHW11
         Manager manager = new Manager();
         Client client;
         long selectedClientId;
-        bool dataFirstLoad = true;
 
         public MainWindow()
         {
             InitializeComponent();
-            employee = manager;
-            //if (dataFirstLoad)
-            //{
-                foreach (var item in employee.GetClients())
-                {
-                    Clients.Add(item);
-                }
-            //    dataFirstLoad = false;
-            //}
-            //else
-            //{
-            //    List<Client> clientsShort = new List<Client>();
-            //    clientsShort.AddRange(Clients);
-            //    dataFirstLoad = false;
-            //    Clients.Clear();
-            //    foreach (var item in employee.RefreshClientsView(clientsShort))
-            //    {
-            //        Clients.Add(item);
-            //    }
-            //}
+            employee = consultant;
+            operatorCB.SelectedIndex = 0;
+            addNewClientBtn.IsEnabled = false;
+            removeClientBtn.IsEnabled = false;
+            LoadClientsToGUI();
             ClientsDG.ItemsSource = Clients;
+        }
+        void LoadClientsToGUI()
+        {
+            Clients.Clear();
+            foreach (var item in employee.GetClients())
+            {
+                Clients.Add(item);
+            }
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -76,9 +68,13 @@ namespace SkillBoxHW11
             {
                 case "консультант":
                     employee = consultant;
+                    addNewClientBtn.IsEnabled = false;
+                    removeClientBtn.IsEnabled = false;
                     break;
                 case "менеджер":
                     employee = manager;
+                    addNewClientBtn.IsEnabled = true;
+                    removeClientBtn.IsEnabled = true;
                     break;
             }
             Clients.Clear();
@@ -90,34 +86,51 @@ namespace SkillBoxHW11
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Client tmpCl = employee.ChangeClient(selectedClientId);
-            //Clients.Remove(client);
-            //Clients.Add(tmpCl);
-
-            Clients.Clear();
-
-            foreach (var item in employee.GetClients())
+            if (!employee.ChangeClient(selectedClientId))
             {
-                Clients.Add(item);
+                MessageBox.Show("Не удалось отредактировать пользователя");
+                return;
             }
+
+            LoadClientsToGUI();
 
             ClientsDG.Items.SortDescriptions.Clear();
             ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
             ClientsDG.Items.Refresh();
-
-            //(ClientsDG.ItemsSource as DataView).Sort = "ID";
-            //System.Data.DataView dv = (System.Data.DataView)ClientsDG.ItemsSource;
-            //dv.Sort = "ID";
-            //if (client != null)
-            //{
-            //    EditClient editClient = new EditClient(client, employee);
-            //    editClient.Show();
-            //}
         }
 
         private void ClientsDG_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
             MessageBox.Show("ClientsDG_RowEditEnding");
+        }
+
+        private void addNewClientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (!employee.AddNewClient())
+            {
+                MessageBox.Show("Не удалось отредактировать пользователя");
+                return;
+            }
+            LoadClientsToGUI();
+            ClientsDG.Items.SortDescriptions.Clear();
+            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
+            ClientsDG.Items.Refresh();
+        }
+
+        private void removeClientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<Client> list = new List<Client>();
+            list.AddRange(Clients);
+            var updatedClientList = employee.DeleteClient(list, selectedClientId);
+            
+            Clients.Clear();
+            foreach (var item in updatedClientList)
+            {
+                Clients.Add(item);
+            }
+            ClientsDG.Items.SortDescriptions.Clear();
+            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
+            ClientsDG.Items.Refresh();
         }
     }
 }

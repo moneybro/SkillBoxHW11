@@ -21,27 +21,12 @@ namespace SkillBoxHW11
     {
         public Client editedClient;
         Employee bankOperator;
-        public EditClient()
+        public EditClient(long clId)
         {
             InitializeComponent();
+            bankOperator = new Manager();
+            editedClient = new Client(clId);
         }
-
-        //public EditClient(Client client)
-        //{
-        //    InitializeComponent();
-        //    editedClient = client;
-        //    EditLastName.Text = editedClient.LastName;
-        //    EditName.Text = editedClient.Name;
-        //    EditPatronymic.Text = editedClient.Patronymic;
-        //    EditMobPhone.Text = editedClient.MobPhone;
-        //    EditPaspSeria.Text = editedClient.PaspSeria == 0 ? "****" : editedClient.PaspSeria.ToString();
-        //    EditPaspNum.Text = editedClient.PaspNum == 0 ? "****" : editedClient.PaspNum.ToString();
-        //    EditLastName.IsEnabled = false;
-        //    EditName.IsEnabled = false;
-        //    EditPatronymic.IsEnabled = false;
-        //    EditPaspSeria.IsEnabled = false;
-        //    EditPaspNum.IsEnabled = false;
-        //}
 
         public EditClient(Client client, Employee employee)
         {
@@ -71,12 +56,6 @@ namespace SkillBoxHW11
                     break;
             }
         }
-
-        //private Client Button_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    return editedClient;
-        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
