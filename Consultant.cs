@@ -9,21 +9,30 @@ namespace SkillBoxHW11
     internal class Consultant : Employee
     {
         public override string Type => "consultant";
-        
-        public override Client ChangeClient(long _client)
+
+        public override bool AddNewClient()
+        {
+            return false;
+        }
+
+        public override bool ChangeClient(long _client)
         {
             Client client = getClientById(_client);
             EditClient editClient = new EditClient(client, this);
             if(editClient.ShowDialog() == true) client = editClient.editedClient;
             editClient.Close();
-            base.SaveEditedClient(client, this);
-            return client;
+            return SaveEditedClient(client, this);
+        }
+
+        public override List<Client> DeleteClient(List<Client> clients, long client)
+        {
+            return null;
         }
 
         public override List<Client> GetClients()
         {
             List<Client> clients = new List<Client>();
-            clients.AddRange(base.getClientsAllData());
+            clients.AddRange(CommonMethods.GetClientsAllData());
             for (int i = 0; i < clients.Count; i++)
             {
                 clients[i].PaspSeria = 0;

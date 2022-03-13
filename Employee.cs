@@ -13,9 +13,9 @@ namespace SkillBoxHW11
     {
         public abstract string Type { get; }
         public abstract List<Client> GetClients();
-        public abstract Client ChangeClient(long client);
+        public abstract bool AddNewClient();
+        public abstract bool ChangeClient(long client);
         public abstract List<Client> RefreshClientsView(List<Client> clientsShort);
-        public void DeleteClient(Client client) { }
         protected bool SaveEditedClient(Client client, Employee employee)
         {
             client.ChangeType = "edited";
@@ -25,7 +25,7 @@ namespace SkillBoxHW11
             {
                 client.Status = "active";
             }
-            // какие данные изменены будут определяться сравнением
+            // todo: какие данные изменены будут определяться сравнением (в будущем)
             string clientsPath = Path.Combine("clients.json");
             var options = new JsonSerializerOptions { WriteIndented = true };
             if (File.Exists(clientsPath))
@@ -46,45 +46,10 @@ namespace SkillBoxHW11
             }
             return false;
         }
-        protected virtual List<Client> getClientsAllData()
-        {
-            var ser = new Newtonsoft.Json.JsonSerializer();
-            var streamreader = new StreamReader("clients.json", new UTF8Encoding());
-            List<Client> clients = new List<Client>();
-
-            using (var reader = new JsonTextReader(streamreader))
-            {
-                while (reader.Read())
-                {
-                    reader.CloseInput = false;
-                    reader.SupportMultipleContent = true;
-                    clients.Add(ser.Deserialize<Client>(reader));
-                }
-            }
-            //return clients;
-            List<Client> cl = new List<Client>();
-            foreach (var client in clients)
-            {
-                if (!cl.Contains(client))
-                {
-                    cl.Add(client);
-                }
-                else
-                {
-                    var oldCl = cl.Find(c => c.ID == client.ID);
-                    if (oldCl.LastChangeDate == null || client.LastChangeDate > oldCl.LastChangeDate)
-                    {
-                        cl.Remove(oldCl);
-                        cl.Add(client);
-                    }
-                }
-            }
-            return cl;
-        }
+        public abstract List<Client> DeleteClient(List<Client> list, long client);
         protected virtual Client getClientById(long _id)
         {
-            var client = getClientsAllData().Find(c => c.ID == _id);
-            return client;
+            return CommonMethods.GetClientsAllData().Find(c => c.ID == _id);
         }
 
         
