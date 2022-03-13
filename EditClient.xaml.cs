@@ -20,6 +20,7 @@ namespace SkillBoxHW11
     public partial class EditClient : Window
     {
         public Client editedClient;
+        Employee bankOperator;
         public EditClient()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace SkillBoxHW11
         {
             InitializeComponent();
             editedClient = client;
+            bankOperator = employee;
             EditLastName.Text = editedClient.LastName;
             EditName.Text = editedClient.Name;
             EditPatronymic.Text = editedClient.Patronymic;
@@ -78,16 +80,26 @@ namespace SkillBoxHW11
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            editedClient.LastName = EditLastName.Text;
-            editedClient.Name = EditName.Text;
-            editedClient.Patronymic = EditPatronymic.Text;
-            editedClient.MobPhone = EditMobPhone.Text;
             int paspSeria;
-            if (int.TryParse(EditPaspSeria.Text, out paspSeria)) editedClient.PaspSeria = paspSeria;
-            else editedClient.PaspSeria = 0;
             long paspNum;
-            if (long.TryParse(EditPaspNum.Text, out paspNum)) editedClient.PaspNum = paspNum;
-            else editedClient.PaspSeria = 0;
+            switch (bankOperator.Type)
+            {
+                case "manager":
+                    editedClient.LastName = EditLastName.Text;
+                    editedClient.Name = EditName.Text;
+                    editedClient.Patronymic = EditPatronymic.Text;
+                    editedClient.MobPhone = EditMobPhone.Text;
+                    if (int.TryParse(EditPaspSeria.Text, out paspSeria)) editedClient.PaspSeria = paspSeria;
+                    else editedClient.PaspSeria = 0;
+                    if (long.TryParse(EditPaspNum.Text, out paspNum)) editedClient.PaspNum = paspNum;
+                    else editedClient.PaspNum = 0;
+                    break;
+                case "consultant":
+                    editedClient.MobPhone = EditMobPhone.Text;
+                    break;
+                default:
+                    break;
+            }
             this.DialogResult = true;
         }
     }
