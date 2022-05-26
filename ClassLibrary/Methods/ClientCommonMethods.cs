@@ -5,11 +5,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary.Classes;
 
-namespace SkillBoxHW11
+namespace ClassLibrary.Methods
 {
-    static internal class CommonMethods
+    public static class ClientCommonMethods
     {
+        public static Client GetClientById(long clientId)
+        {
+            return GetClientsAllData().Find(c => c.ID == clientId);
+        }
         public static List<Client> GetClientsAllData()
         {
             var c = getClientsRawData();
@@ -18,9 +23,11 @@ namespace SkillBoxHW11
 
         static List<Client> getClientsRawData()
         {
-            if (!File.Exists("clients.json")) File.CreateText("clients.json").Close();
+            var clientsDbPath = DbPaths.getClientsPath();
+
+            if (!File.Exists(clientsDbPath)) File.CreateText(clientsDbPath).Close();
             var ser = new Newtonsoft.Json.JsonSerializer();
-            var streamreader = new StreamReader("clients.json", new UTF8Encoding());
+            var streamreader = new StreamReader(clientsDbPath, new UTF8Encoding());
             List<Client> clients = new List<Client>();
 
             using (var reader = new JsonTextReader(streamreader))
@@ -34,7 +41,6 @@ namespace SkillBoxHW11
             }
             return clients;
         }
-
         static List<Client> filteredClients(List<Client> clients)
         {
             // блок предназначен для выбора клиента по ID, и того, который был отредактирован последним (с этим ID)

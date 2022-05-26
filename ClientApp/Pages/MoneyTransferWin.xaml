@@ -1,0 +1,43 @@
+﻿<Window x:Name="moneyTransferWin" x:Class="ClientApp.Pages.MoneyTransferWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp.Pages"
+        mc:Ignorable="d"
+        Title="Перевод средств" Height="203" Width="406" MinWidth="408" MinHeight="220" Closed="onClose" >
+    
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="Переводим">
+                <StackPanel>
+                    <GroupBox Header="Со счета:">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="acc1NumTB" Text="{Binding Acc1Num, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                            <TextBlock Text="Доступно" Margin="20,0"/>
+                            <TextBlock x:Name="acc1AmountTB" Text="{Binding Acc1Amount, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="На счет:">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="acc2NumTB" Text="{Binding Acc2Num, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                            <TextBlock Text="Доступно:" Margin="20,0"/>
+                            <TextBlock x:Name="acc2AmountTB" Text="{Binding Acc2Amount, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Сумма:">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="transferSummTBox" Width="auto" Grid.Column="0" />
+                            <TextBlock Text="р." Margin="20,0" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="moneyTransferBtn" Click="tnsMon" Content="Перевести" Margin="5"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

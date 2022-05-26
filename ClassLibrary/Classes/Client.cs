@@ -6,9 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Unicode;
-using Newtonsoft.Json;
 
-namespace SkillBoxHW11
+namespace ClassLibrary.Classes
 {
     public class Client : IEquatable<Client?>
     {
@@ -42,7 +41,7 @@ namespace SkillBoxHW11
 
         public override string ToString()
         {
-            return $"LastName: {LastName} | Name: {Name} | Patronimyc: {Patronymic} | mobphone: {MobPhone}";
+            return $"ФИО: {LastName} {Name} {Patronymic}, мобильный телефон: {MobPhone}";
         }
     }
 }
