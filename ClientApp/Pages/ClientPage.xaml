@@ -1,0 +1,66 @@
+﻿<Page x:Class="ClientApp.Pages.ClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientApp.Pages" xmlns:viewmodels="clr-namespace:ClientApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:WorkClient}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClientPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30pt"/>
+            <RowDefinition MinHeight="110" Height="110*"/>
+            <RowDefinition Height="129*"/>
+            <RowDefinition Height="171*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="CloseClientPageBtn" Content="X" Width="27" HorizontalAlignment="Right" Margin="0,5,5,5" Background="Red" Foreground="White" Click="ClosePage"/>
+        
+        <StackPanel Grid.Row="1" Margin="0,0,5,0" Grid.RowSpan="2">
+            <GroupBox Header="Клиент:" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" Grid.RowSpan="2">
+                <TextBlock x:Name="ClientFIO"/>
+            </GroupBox>
+            <GroupBox Header="Основной счет:" Margin="5,0,5,0">
+                <StackPanel>
+                    <TextBlock x:Name="MainBankAcc" Text="{Binding MainAccNumber}"/>
+                    <TextBlock x:Name="MainBankAccAmount" Text="{Binding MainAccAmount}"/>
+                    <Grid>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                            <Button x:Name="PutMoneyToMainAccBtn" Content="Пополнить" Padding="3px" Margin="5px 0" Click="AddMoneyBtn_Click" IsEnabled="{Binding MainAccIsNotNull}"/>
+                            <Button x:Name="TransferMoneyFromMainAccBtn" Content="Перевести" Padding="3px" Margin="0" Click="TransferMoneyBtn_Click" HorizontalAlignment="Stretch" IsEnabled="{Binding MainAccIsNotNull}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="CreateBankAccBtn" Content="Открыть счет" Padding="3px" Margin="5px 0" Click="OpenMainAcc"/>
+                            <Button x:Name="CloseBankAccBtn" Content="Закрыть счет" Padding="3px" Margin="0" Click="CloseMianAcc" HorizontalAlignment="Stretch" IsEnabled="{Binding MainAccIsNotNull}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Депозитный счет:" Margin="5,0,5,0">
+                <StackPanel>
+                    <TextBlock x:Name="DepoBankAcc" Text="{Binding DepoAccNumber}"/>
+                    <TextBlock x:Name="DepoBankAccAmount" Text="{Binding DepoAccAmount}"/>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                            <Button x:Name="PutMoneyToDepoAccBtn" Content="Пополнить" Padding="3px" Margin="5px 0" Click="AddMoneyBtn_Click" IsEnabled="{Binding DepoAccIsNotNull}"/>
+                            <Button x:Name="TransferMoneyFromDepoAccBtn" Content="Перевести" Padding="3px" Margin="0" Click="TransferMoneyBtn_Click" HorizontalAlignment="Stretch" IsEnabled="{Binding DepoAccIsNotNull}"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button x:Name="CreateDepoBankAccBtn" Content="Открыть счет" Padding="3px" Margin="5px 0" Click="OpenDepoAcc"/>
+                                <Button x:Name="CloseDepoBankAccBtn" Content="Закрыть счет" Padding="3px" Margin="0" Click="CloseDepoAcc" IsEnabled="{Binding DepoAccIsNotNull}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3"/>
+    </Grid>
+</Page>

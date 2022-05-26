@@ -15,13 +15,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassLibrary.Classes;
 
-namespace SkillBoxHW11
+namespace SkillBoxHW13
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmployeePage : Page
     {
         static public ObservableCollection<Client> Clients { get; set; } = new ObservableCollection<Client>();
         Employee employee;
@@ -30,8 +31,11 @@ namespace SkillBoxHW11
         Client client;
         long selectedClientId;
 
-        public MainWindow()
+        EmployeePage ep;
+
+        public EmployeePage()
         {
+            ep = this;
             InitializeComponent();
             employee = consultant;
             operatorCB.SelectedIndex = 0;
@@ -55,8 +59,8 @@ namespace SkillBoxHW11
             if (client != null)
             {
                 selectedClientId = client.ID;
+                userValue.Text = ClientsDG.SelectedItem.ToString();
             }
-            userValue.Content = ClientsDG.SelectedItem;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -99,16 +103,11 @@ namespace SkillBoxHW11
             ClientsDG.Items.Refresh();
         }
 
-        private void ClientsDG_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-            MessageBox.Show("ClientsDG_RowEditEnding");
-        }
-
         private void addNewClientBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!employee.AddNewClient())
             {
-                MessageBox.Show("Не удалось отредактировать пользователя");
+                MessageBox.Show("Не удалось создать нового пользователя");
                 return;
             }
             LoadClientsToGUI();
@@ -131,6 +130,13 @@ namespace SkillBoxHW11
             ClientsDG.Items.SortDescriptions.Clear();
             ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
             ClientsDG.Items.Refresh();
+        }
+
+        private void Close_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ep.Visibility = Visibility.Collapsed;
+            ep = null;
+            NavigationService.GoBack();
         }
     }
 }

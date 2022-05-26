@@ -4,17 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ClassLibrary.Classes;
+using ClassLibrary.Methods;
 
-namespace SkillBoxHW11
+namespace SkillBoxHW13
 {
-    internal class Manager : Employee
+    public class Manager : Employee
     {
+        public Manager()
+        {
+            this.FirstName = default;
+            this.LastName = default;
+            this.Age = default;
+            this.Salary = default;
+        }
+        public Manager(string fn, string ln, int age, int salary)
+        {
+            this.FirstName = fn;
+            this.LastName = ln;
+            this.Age = age;
+            this.Salary = salary;
+        }
         public override string Type => "manager";
-
         public override bool AddNewClient()
         {
             Client newClient;
-            long newClID = CommonMethods.getNewClientId();
+            long newClID = ClientCommonMethods.getNewClientId();
             EditClient createNewClientWin = new EditClient(newClID);
             if (createNewClientWin.ShowDialog() == true)
             {
@@ -70,7 +85,7 @@ namespace SkillBoxHW11
 
         public override List<Client> GetClients()
         {
-            return CommonMethods.GetClientsAllData();
+            return ClientCommonMethods.GetClientsAllData();
         }
 
         public override List<Client> RefreshClientsView(List<Client> clients)
