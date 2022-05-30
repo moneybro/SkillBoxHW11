@@ -35,8 +35,8 @@
                             <Button x:Name="TransferMoneyFromMainAccBtn" Content="Перевести" Padding="3px" Margin="0" Click="TransferMoneyBtn_Click" HorizontalAlignment="Stretch" IsEnabled="{Binding MainAccIsNotNull}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button x:Name="CreateBankAccBtn" Content="Открыть счет" Padding="3px" Margin="5px 0" Click="OpenMainAcc"/>
-                            <Button x:Name="CloseBankAccBtn" Content="Закрыть счет" Padding="3px" Margin="0" Click="CloseMianAcc" HorizontalAlignment="Stretch" IsEnabled="{Binding MainAccIsNotNull}"/>
+                            <Button x:Name="CreateBankAccBtn" Content="Открыть счет" Padding="3px" Margin="5px 0" Click="OpenMainAcc" IsEnabled="{Binding MainAccIsNull}"/>
+                            <Button x:Name="CloseBankAccBtn" Content="Закрыть счет" Padding="3px" Margin="0" Click="CloseMainAcc" HorizontalAlignment="Stretch" IsEnabled="{Binding MainAccIsNotNull}"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -53,7 +53,7 @@
                         </StackPanel>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button x:Name="CreateDepoBankAccBtn" Content="Открыть счет" Padding="3px" Margin="5px 0" Click="OpenDepoAcc"/>
+                                <Button x:Name="CreateDepoBankAccBtn" Content="Открыть счет" Padding="3px" Margin="5px 0" Click="OpenDepoAcc" IsEnabled="{Binding DepoAccIsNull}"/>
                                 <Button x:Name="CloseDepoBankAccBtn" Content="Закрыть счет" Padding="3px" Margin="0" Click="CloseDepoAcc" IsEnabled="{Binding DepoAccIsNotNull}"/>
                             </StackPanel>
                         </StackPanel>

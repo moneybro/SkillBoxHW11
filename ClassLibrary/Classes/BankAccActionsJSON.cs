@@ -85,7 +85,7 @@ namespace ClassLibrary.Classes
         /// <typeparam name="T"></typeparam>
         /// <param name="acc"></param>
         /// <returns>истина если сохранение прошло успешно, ложь - сохранение не удалось</returns>
-        public bool SaveAcc<T>(T acc)
+        public bool SaveAcc<T>(T acc) where T : BankAcc
         {
             if (acc.GetType() == typeof(BankAccMain))
             {
@@ -107,7 +107,7 @@ namespace ClassLibrary.Classes
         /// <param name="acc"></param>
         /// <param name="bankAccRepo"></param>
         /// <returns></returns>
-        public bool SaveAcc<T>(T acc, string bankAccRepo)
+        public bool SaveAcc<T>(T acc, string bankAccRepo) where T : BankAcc
         {
             var options = new JsonSerializerOptions
             {

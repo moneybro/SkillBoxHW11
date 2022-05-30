@@ -29,11 +29,11 @@ namespace ClassLibrary.Classes
         {
             return actions.GetNewAccNumber();
         }
-        public bool SaveAcc<T>(T bankAcc)
+        public bool SaveAcc<T>(T bankAcc) where T : BankAcc
         {
             return actions.SaveAcc(bankAcc);
         }
-        public bool SaveAcc<T>(T bankAcc, string repoPath)
+        public bool SaveAcc<T>(T bankAcc, string repoPath) where T : BankAcc
         {
             return actions.SaveAcc(bankAcc, repoPath);
         }
@@ -49,7 +49,6 @@ namespace ClassLibrary.Classes
         {
             return actions.GetClientAccs(clId);
         }
-
         public bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAcc
         {
             if (acc1 != null && acc2 != null && summ != 0)
