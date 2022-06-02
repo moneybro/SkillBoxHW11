@@ -13,7 +13,6 @@ namespace ClassLibrary.Classes
         IBankAccCreateNewMain,
         IBankNewAccGetNumber,
         ISaveAcc,
-        IBankAccClose,
         ITransferMoney
     {
         BankAccActionsJSON actions = new BankAccActionsJSON();
