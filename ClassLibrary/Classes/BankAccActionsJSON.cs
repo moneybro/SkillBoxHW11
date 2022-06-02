@@ -13,13 +13,8 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    public class BankAccActionsJSON :
-        IGetAllBankAccs,
-        IGetClientAccs,
-        IBankAccCreateNewMain,
-        IBankNewAccGetNumber, 
-        ISaveAcc, 
-        IBankAccClose
+    public class BankAccActionsJSON : IBankAccActions
+        
     {
 
         #region создание главного и депозитного счета
