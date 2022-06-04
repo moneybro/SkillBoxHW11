@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    public class BankAcc
+    public class BankAccBase
     {
         #region поля
-        long _clientId;
         long _accNumber;
         decimal _amount;
         bool _active;
@@ -21,7 +20,6 @@ namespace ClassLibrary.Classes
         #endregion
 
         #region свойства
-        public long ClientId { get { return _clientId; } set { _clientId = value; } }
         public long AccNumber
         {
             get { return _accNumber; }

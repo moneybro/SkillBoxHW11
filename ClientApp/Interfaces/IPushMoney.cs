@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClientApp.Interfaces
 {
-    internal interface IPushMoney<T> where T : BankAcc
+    internal interface IPushMoney<T> where T : BankAccForClient
     {
         T PushMoneyToAcc(decimal summ);
     }

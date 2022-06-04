@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-    internal interface ITransferMoney
+    public interface IPushMoney<out T> where T : BankAccBase
     {
-        bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAccForClient;
+        T PushMoneyToAcc(decimal summ);
     }
 }

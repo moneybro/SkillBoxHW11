@@ -9,6 +9,6 @@ namespace ClassLibrary.Interfaces
 {
     public interface IBankAccCreateNew
     {
-        BankAcc GetNewBankAcc();
+        BankAccForClient GetNewBankAcc();
     }
 }

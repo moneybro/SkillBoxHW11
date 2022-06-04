@@ -24,9 +24,9 @@ namespace ClientApp.ViewModels
 
         internal ClientPage _clientPage;
 
-        internal List<BankAcc> accList;
-        internal BankAcc? mainAcc;
-        internal BankAcc? depoAcc;
+        internal List<BankAccForClient> accList;
+        internal BankAccMain? mainAcc;
+        internal BankAccDepo? depoAcc;
         internal string fullName;
 
         /// <summary>
@@ -152,8 +152,8 @@ namespace ClientApp.ViewModels
             this.LastChangeDate = DateTime.Now;
             fullName = $"{LastName} {Name} {Patronymic}";
             accList = accActions.GetClientAccs(cl.ID);
-            mainAcc = accList.Find(a => a.GetType() == typeof(BankAccMain));
-            depoAcc = accList.Find(a => a.GetType() == typeof(BankAccDepo));
+            mainAcc = (BankAccMain?)accList.Find(a => a.GetType() == typeof(BankAccMain));
+            depoAcc = (BankAccDepo?)accList.Find(a => a.GetType() == typeof(BankAccDepo));
             LogAction += myLogAction;
             _clientPage.OpenMainAccBtnClicked += createNewMainAcc;
             _clientPage.OpenDepoAccBtnClicked += createNewDepoAcc;
@@ -196,7 +196,7 @@ namespace ClientApp.ViewModels
                 MessageBox.Show($"Главный счет уже открыт, можно иметь только 1 главный счет"); 
             }
         }
-        internal void closeAcc(BankAcc acc)
+        internal void closeAcc(BankAccForClient acc)
         {
             var accNumToClose = MainAccNumber;
             if (acc != null && accActions.CloseAcc(acc.AccNumber))
@@ -257,8 +257,8 @@ namespace ClientApp.ViewModels
             {
                 var s = (Button)sender;
                 var senderName = s.Name;
-                BankAcc accSource = new BankAcc();
-                BankAcc accTarget = new BankAcc();
+                BankAccForClient accSource = new BankAccForClient();
+                BankAccForClient accTarget = new BankAccForClient();
                 if (senderName == "TransferMoneyFromMainAccBtn")
                 {
                     accSource = this.mainAcc;
@@ -298,18 +298,23 @@ namespace ClientApp.ViewModels
         }
         internal void pushMoneyToAcc(object sender)
         {
+            IPushMoney<BankAccBase> accChargeAction = mainAcc;
+
             var s = (Button)sender;
             var senderName = s.Name;
-            BankAcc? accToCharge = new BankAcc();
+            BankAccForClient? accToCharge = new BankAccForClient();
+            //BankAccBase accToCharge = new BankAccBase();
             if (senderName == "PutMoneyToMainAccBtn")
             {
                 if (this.mainAcc == null) { MessageBox.Show("Нет главного счета."); }
                 accToCharge = this.mainAcc;
+                accChargeAction = this.mainAcc;
             }
             if (senderName == "PutMoneyToDepoAccBtn")
             {
                 if (this.depoAcc == null) { MessageBox.Show("Нет депозитного счета."); }
                 accToCharge = this.depoAcc;
+                accChargeAction = this.depoAcc;
             }
             PutMoneyWin putMoneyWin = 
                 new PutMoneyWin(modernAccView(accToCharge.AccNumber), accToCharge.Amount.ToString(), this);
@@ -320,7 +325,9 @@ namespace ClientApp.ViewModels
                 decimal.TryParse(putMoneyWin.summTB.Text, out summ);
                 if (summ > 0)
                 {
-                    accToCharge.Amount += summ;
+                    //accToCharge.Amount += summ;
+                    //accChargeAction = accToCharge;
+                    accChargeAction.PushMoneyToAcc(summ);
                     if (accActions.SaveAcc(accToCharge))
                     {
                         refreshAccFields();

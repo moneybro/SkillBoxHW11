@@ -9,6 +9,6 @@ namespace ClassLibrary.Interfaces
 {
     interface IBankAccGetNumberById
     {
-        BankAcc GetAccNumberById(long accNumber);
+        BankAccForClient GetAccNumberById(long accNumber);
     }
 }

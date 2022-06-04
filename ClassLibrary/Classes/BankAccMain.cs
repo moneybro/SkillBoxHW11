@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    public class BankAccMain : BankAcc
+    public class BankAccMain : BankAccForClient, IPushMoney<BankAccForClient>
     {
         /// <summary>
         /// конструктор для создания нового счета
@@ -47,6 +47,12 @@ namespace ClassLibrary.Classes
             this.UpdateDate = updateDate;
         }
 
+        public BankAccForClient PushMoneyToAcc(decimal summ)
+        {
+            this.Amount += summ;
+            return this;
+        }
+
         public override string ToString()
         {
             return $"ClientId: {ClientId}\n" +
@@ -56,5 +62,7 @@ namespace ClassLibrary.Classes
                 $"Active: {Active}\n" +
                 $"Create date: {CreateDate}\n";
         }
+
+        
     }
 }

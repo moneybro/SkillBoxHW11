@@ -85,7 +85,7 @@ namespace ClassLibrary.Classes
         /// <typeparam name="T"></typeparam>
         /// <param name="acc"></param>
         /// <returns>истина если сохранение прошло успешно, ложь - сохранение не удалось</returns>
-        public bool SaveAcc<T>(T acc) where T : BankAcc
+        public bool SaveAcc<T>(T acc) where T : BankAccForClient
         {
             if (acc.GetType() == typeof(BankAccMain))
             {
@@ -107,7 +107,7 @@ namespace ClassLibrary.Classes
         /// <param name="acc"></param>
         /// <param name="bankAccRepo"></param>
         /// <returns></returns>
-        public bool SaveAcc<T>(T acc, string bankAccRepo) where T : BankAcc
+        public bool SaveAcc<T>(T acc, string bankAccRepo) where T : BankAccForClient
         {
             var options = new JsonSerializerOptions
             {
@@ -183,9 +183,9 @@ namespace ClassLibrary.Classes
         /// получение всех счетов, независимо от типа
         /// </summary>
         /// <returns>список счетов</returns>
-        public List<BankAcc> GetAllBankAccs()
+        public List<BankAccForClient> GetAllBankAccs()
         {
-            List<BankAcc> accs = new List<BankAcc>();
+            List<BankAccForClient> accs = new List<BankAccForClient>();
             accs.AddRange(getAllMainAccs());
             accs.AddRange(getAllDepoAccs());
             return accs;
@@ -247,9 +247,9 @@ namespace ClassLibrary.Classes
         /// </summary>
         /// <param name="clId"></param>
         /// <returns></returns>
-        public List<BankAcc> GetClientAccs(long clId)
+        public List<BankAccForClient> GetClientAccs(long clId)
         {
-            List<BankAcc> bankAccList = new List<BankAcc>();
+            List<BankAccForClient> bankAccList = new List<BankAccForClient>();
 
             var clientAccs = GetAllBankAccs()
                 .Where(a => a.ClientId == clId)

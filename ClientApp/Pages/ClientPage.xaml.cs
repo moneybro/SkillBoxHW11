@@ -27,7 +27,7 @@ namespace ClientApp.Pages
         WorkClient workClient;
         public event Action OpenMainAccBtnClicked;
         public event Action OpenDepoAccBtnClicked;
-        public event Action<BankAcc> CloseAccBtnClicked;
+        public event Action<BankAccForClient> CloseAccBtnClicked;
         public event Action<object> AddMoneyBtnClicked;
         public event Action<object> TfrMoneyBtnClicked;
 

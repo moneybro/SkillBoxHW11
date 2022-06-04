@@ -9,6 +9,6 @@ namespace ClassLibrary.Interfaces
 {
     internal interface IGetAllBankAccs
     {
-        List<BankAcc> GetAllBankAccs();
+        List<BankAccForClient> GetAllBankAccs();
     }
 }
