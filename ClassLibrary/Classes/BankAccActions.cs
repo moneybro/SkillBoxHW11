@@ -12,11 +12,19 @@ namespace ClassLibrary.Classes
         IGetClientAccs,
         IBankAccCreateNewMain,
         IBankNewAccGetNumber,
+        IBankAccGetByAccNum,
         ISaveAcc,
-        IBankAccClose,
-        ITransferMoney
+        IBankAccClose
     {
         BankAccActionsJSON actions = new BankAccActionsJSON();
+        public List<BankAccForClient> GetAllBankAccs()
+                {
+                    return actions.GetAllBankAccs();
+                }
+        public List<BankAccForClient> GetClientAccs(long clId)
+        {
+            return actions.GetClientAccs(clId);
+        }
         public BankAccMain GetNewMainAcc(long clId)
         {
             return actions.GetNewMainAcc(clId);
@@ -29,6 +37,14 @@ namespace ClassLibrary.Classes
         {
             return actions.GetNewAccNumber();
         }
+        public BankAccForClient GetAccByNum(long accNumber)
+        {
+            return actions.GetAccByNum(accNumber);
+        }
+
+
+
+
         public bool SaveAcc<T>(T bankAcc) where T : BankAccForClient
         {
             return actions.SaveAcc(bankAcc);
@@ -37,18 +53,19 @@ namespace ClassLibrary.Classes
         {
             return actions.SaveAcc(bankAcc, repoPath);
         }
+
+
+
+
+
+
+        
         public bool CloseAcc(long accNum)
         {
             return actions.CloseAcc(accNum);
         }
-        public List<BankAccForClient> GetAllBankAccs()
-        {
-            return actions.GetAllBankAccs();
-        }
-        public List<BankAccForClient> GetClientAccs(long clId)
-        {
-            return actions.GetClientAccs(clId);
-        }
+        
+
         public bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAccForClient
         {
             if (acc1 != null && acc2 != null && summ != 0)
@@ -60,5 +77,7 @@ namespace ClassLibrary.Classes
             }
             else return false;
         }
+
+        
     }
 }

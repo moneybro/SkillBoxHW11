@@ -82,7 +82,24 @@ foreach (BankAcc acc in bankAccs)
 
 #endregion
 
+Console.WriteLine(new String('-', 50));
+Console.WriteLine("--- kontrvar part ----");
 
+Console.WriteLine($"acc1 amount = {acc1.acc.Amount}");
+Console.WriteLine($"acc5 amount = {acc5.acc.Amount}");
+
+IStorageTransferMoney<BankAcc> transferStorage = new BankAccTransferStorage<Bank>();
+
+transferStorage.addAcc = acc5.acc;
+transferStorage.addAcc = acc1.acc;
+
+transferStorage.addAcc = acc5.acc;
+transferStorage.TransferMoney(100);
+
+Console.WriteLine("transfer 100");
+
+Console.WriteLine($"acc1 amount = {acc1.acc.Amount}");
+Console.WriteLine($"acc5 amount = {acc5.acc.Amount}");
 
 List<BankAcc> getAllAccs()
 {

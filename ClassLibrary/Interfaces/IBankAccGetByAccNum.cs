@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-    interface IBankAccGetNumberById
+    interface IBankAccGetByAccNum
     {
-        BankAccForClient GetAccNumberById(long accNumber);
+        BankAccForClient GetAccByNum(long accNumber);
     }
 }

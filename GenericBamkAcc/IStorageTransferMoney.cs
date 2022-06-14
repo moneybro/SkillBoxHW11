@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GenericBankAcc
 {
-    public class Bank
+    internal interface IStorageTransferMoney<in T> where T : Bank
     {
-        public decimal Amount { get; set; }
+        T addAcc { set; }
+        void TransferMoney(decimal summ);
     }
 }

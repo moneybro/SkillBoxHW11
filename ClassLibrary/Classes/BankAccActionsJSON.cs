@@ -19,7 +19,8 @@ namespace ClassLibrary.Classes
         IBankAccCreateNewMain,
         IBankNewAccGetNumber, 
         ISaveAcc, 
-        IBankAccClose
+        IBankAccClose,
+        IBankAccGetByAccNum
     {
 
         #region создание главного и депозитного счета
@@ -54,10 +55,15 @@ namespace ClassLibrary.Classes
             }
             return newDepoAcc.acc;
         }
+
+        internal BankAccForClient GetAccNumberById(long v, object accNum)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region получение нового номера счета для создания нового банковского счета
-        
+
         /// <summary>
         /// получение нового номера счета для создания нового банковского счета
         /// </summary>
@@ -118,6 +124,7 @@ namespace ClassLibrary.Classes
             {
                 using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
                 {
+                    acc.UpdateDate = DateTime.Now;
                     System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
                 }
                 return true;
@@ -268,6 +275,22 @@ namespace ClassLibrary.Classes
                 }
             }
             return bankAccList;
+        }
+        #endregion
+
+        #region получение активного счета по его номеру
+        public BankAccForClient GetAccByNum(long accNumber)
+        {
+            var accs = GetAllBankAccs().Where(a => a.AccNumber == accNumber);
+            foreach (var acc in accs.Reverse())
+            {
+                if (acc.Active == true)
+                {
+                    return acc;
+                }
+                else continue;
+            }
+            return null;
         }
         #endregion
     }
