@@ -196,26 +196,6 @@ namespace ClientApp.ViewModels
                 MessageBox.Show($"Главный счет уже открыт, можно иметь только 1 главный счет"); 
             }
         }
-        internal void closeAcc(BankAccForClient acc)
-        {
-            var accNumToClose = MainAccNumber;
-            if (acc != null && accActions.CloseAcc(acc.AccNumber))
-            {
-                accList.Remove(acc);
-                if (acc is BankAccMain)
-                {
-                    mainAcc = null;
-                }
-                else
-                {
-                    depoAcc = null;
-                }
-                refreshAccFields();
-                LogAction($"closeAcc {acc}");
-                MessageBox.Show($"Счет {accNumToClose} закрыт.");
-            }
-            else MessageBox.Show("Счет отсутствует.");
-        }
         internal void createNewDepoAcc()
         {
             if (depoAcc == null)
@@ -240,7 +220,26 @@ namespace ClientApp.ViewModels
                 MessageBox.Show($"Депозитный счет уже открыт, можно иметь только 1 депозитный счет");
             }            
         }
-        /// <summary>
+        internal void closeAcc(BankAccForClient acc)
+        {
+            var accNumToClose = acc;
+            if (acc != null && accActions.CloseAcc(acc.AccNumber))
+            {
+                accList.Remove(acc);
+                if (acc is BankAccMain)
+                {
+                    mainAcc = null;
+                }
+                else
+                {
+                    depoAcc = null;
+                }
+                refreshAccFields();
+                LogAction($"closeAcc {acc}");
+                MessageBox.Show($"Счет {modernAccView(accNumToClose.AccNumber)} закрыт.");
+            }
+            else MessageBox.Show("Счет отсутствует.");
+        }/// <summary>
         /// преобразует вид банковского счета из цифрового в текстовый, дополняя нулями до 20 знаков
         /// </summary>
         /// <param name="accNum">номер счета long</param>
@@ -257,32 +256,48 @@ namespace ClientApp.ViewModels
             {
                 var s = (Button)sender;
                 var senderName = s.Name;
-                BankAccForClient accSource = new BankAccForClient();
-                BankAccForClient accTarget = new BankAccForClient();
+                //BankAccForClient accSource = new BankAccForClient();
+                //BankAccForClient accTarget = new BankAccForClient();
+                string accSourceNumber = "0";
+                string accSourceAmount = "0";
+                string accTargetNumber = "0";
+                string accTargetAmount = "0";
+
+                IStorageTransferMoney<BankAccForClient> transferStorage = new BankAccTransferStorage<BankAccBase>();
+
                 if (senderName == "TransferMoneyFromMainAccBtn")
                 {
-                    accSource = this.mainAcc;
-                    accTarget = this.depoAcc;
+                    transferStorage.addAcc = this.mainAcc;
+                    transferStorage.addAcc = this.depoAcc;
+                    accSourceNumber = modernAccView(this.mainAcc.AccNumber);
+                    accTargetNumber = modernAccView(this.depoAcc.AccNumber);
+                    accSourceAmount = this.mainAcc.Amount.ToString();
+                    accTargetAmount = this.depoAcc.Amount.ToString();
                 }
                 if (senderName == "TransferMoneyFromDepoAccBtn")
                 {
-                    accSource = this.depoAcc;
-                    accTarget = this.mainAcc;
+                    transferStorage.addAcc = this.depoAcc;
+                    transferStorage.addAcc = this.mainAcc;
+                    accSourceNumber = modernAccView(this.depoAcc.AccNumber);
+                    accTargetNumber = modernAccView(this.mainAcc.AccNumber);
+                    accSourceAmount = this.mainAcc.Amount.ToString();
+                    accTargetAmount = this.depoAcc.Amount.ToString();
                 }
                 MoneyTransferWin moneyTransferWin = new MoneyTransferWin(
-                    modernAccView(accSource.AccNumber),
-                    accSource.Amount.ToString(),
-                    modernAccView(accTarget.AccNumber),
-                    accTarget.Amount.ToString(),
+                    accSourceNumber,
+                    accSourceAmount,
+                    accTargetNumber,
+                    accTargetAmount,
                     this);
+
                 if (moneyTransferWin.ShowDialog() == true)
                 {
-                    var success = accActions.transferMoney(accSource, accTarget, this.summ);
-
-                    if (success)
+                    //var success = accActions.transferMoney(accSource, accTarget, this.summ);
+                    var transfeSuccess = transferStorage.TransferMoney(summ);
+                    if (transfeSuccess)
                     {
                         refreshAccFields();
-                        LogAction($"transfer money from {accSource.AccNumber} to {accTarget.AccNumber} summ = {this.summ}.");
+                        LogAction($"transfer money from {accSourceNumber} to {accTargetNumber} summ = {this.summ}.");
                         MessageBox.Show("Перевод выполнен успешно.");
                     }
                     else
@@ -292,7 +307,7 @@ namespace ClientApp.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Нельзя выполнить перевод, так как отсутствует один из счетов.");
+                    MessageBox.Show("Что-то пошло не так.");
                 }
             }
         }
@@ -342,7 +357,6 @@ namespace ClientApp.ViewModels
                 }
             }
         }
-
         void myLogAction(string msg)
         {
             Log.Information(msg);

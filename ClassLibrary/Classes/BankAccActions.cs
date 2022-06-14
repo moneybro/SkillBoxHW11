@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 namespace ClassLibrary.Classes
 {
     public class BankAccActions :
-        IGetAllBankAccs,
-        IGetClientAccs,
-        IBankAccCreateNewMain,
-        IBankNewAccGetNumber,
-        ISaveAcc,
-        IBankAccClose,
-        ITransferMoney
+        IBankAccActions
+        //,IBankAccGetByAccNum
     {
         BankAccActionsJSON actions = new BankAccActionsJSON();
+        public List<BankAccForClient> GetClientAccs(long clId)
+        {
+            return actions.GetClientAccs(clId);
+        }
         public BankAccMain GetNewMainAcc(long clId)
         {
             return actions.GetNewMainAcc(clId);
@@ -25,9 +24,9 @@ namespace ClassLibrary.Classes
         {
             return actions.GetNewDepoAcc(clId);
         }
-        public long GetNewAccNumber()
+        public BankAccForClient GetAccByNum(long accNumber)
         {
-            return actions.GetNewAccNumber();
+            return actions.GetAccByNum(accNumber);
         }
         public bool SaveAcc<T>(T bankAcc) where T : BankAccForClient
         {
@@ -41,24 +40,16 @@ namespace ClassLibrary.Classes
         {
             return actions.CloseAcc(accNum);
         }
-        public List<BankAccForClient> GetAllBankAccs()
-        {
-            return actions.GetAllBankAccs();
-        }
-        public List<BankAccForClient> GetClientAccs(long clId)
-        {
-            return actions.GetClientAccs(clId);
-        }
-        public bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAccForClient
-        {
-            if (acc1 != null && acc2 != null && summ != 0)
-            {
-                acc1.Amount = acc1.Amount - summ;
-                acc2.Amount = acc2.Amount + summ;
-                if(SaveAcc(acc1) && SaveAcc(acc2)) return true;
-                else return false;
-            }
-            else return false;
-        }
+        //public bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAccForClient
+        //{
+        //    if (acc1 != null && acc2 != null && summ != 0)
+        //    {
+        //        acc1.Amount = acc1.Amount - summ;
+        //        acc2.Amount = acc2.Amount + summ;
+        //        if(SaveAcc(acc1) && SaveAcc(acc2)) return true;
+        //        else return false;
+        //    }
+        //    else return false;
+        //}
     }
 }

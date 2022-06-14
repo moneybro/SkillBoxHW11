@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
     <ProjectReference Include="..\ClientApp\ClientApp.csproj" />
-    <ProjectReference Include="..\SkillBoxHW13\EmployeeApp.csproj" />
   </ItemGroup>
 
 </Project>

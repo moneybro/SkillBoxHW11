@@ -11,7 +11,6 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Кто Вы? Я:" FontSize="16pt" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button x:Name="ClientBtn" Content="Клиент" Height="50" Width="200" Margin="0,5,0,0" Click="ClientBtn_Click"/>
-            <Button x:Name="EmployeeBtn" Content="Сотрудник" Click="EmployeeBtn_Click" Height="50" HorizontalAlignment="Center" Width="200" VerticalAlignment="Center" Margin="0,5,0,0"/>
 
         </StackPanel>
 

@@ -15,4 +15,11 @@
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

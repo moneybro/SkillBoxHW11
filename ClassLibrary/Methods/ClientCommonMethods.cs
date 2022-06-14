@@ -38,13 +38,16 @@ namespace ClassLibrary.Methods
                     reader.SupportMultipleContent = true;
                     clients.Add(ser.Deserialize<Client>(reader));
                 }
+                reader.Close();
             }
             return clients;
         }
+
+        // метод filteredClients предназначен для выбора клиента по ID, и того, который был отредактирован последним (с этим ID), также исключаем удаленных
+        // <param name="clients"></param>
+        // <returns></returns>
         static List<Client> filteredClients(List<Client> clients)
-        {
-            // блок предназначен для выбора клиента по ID, и того, который был отредактирован последним (с этим ID)
-            // также исключаем удаленных
+        {   
             List<Client> cl = new List<Client>();
             foreach (var client in clients)
             {
@@ -65,7 +68,6 @@ namespace ClassLibrary.Methods
             }
             return cl;
         }
-
         public static long getNewClientId()
         {
             var cls = getClientsRawData();

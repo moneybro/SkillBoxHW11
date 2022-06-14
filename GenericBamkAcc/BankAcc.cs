@@ -8,9 +8,14 @@ namespace GenericBankAcc
 {
     internal class BankAcc : Bank
     {
+        //public BankAcc()
+        //{
+        //    base.Amount = this.Amount;
+        //}
+
         long _clientId;
         long _accNumber;
-        decimal _amount;
+        //decimal _amount;
         bool _active;
         DateTime _createDate;
         DateTime _updateDate;
@@ -23,11 +28,11 @@ namespace GenericBankAcc
             get { return _accNumber; }
             set { _accNumber = value; }
         }
-        public decimal Amount
-        {
-            get { return _amount; }
-            set { _amount = value; }
-        }
+        //public decimal Amount
+        //{
+        //    get { return _amount; }
+        //    set { _amount = value; }
+        //}
         public bool Active { get { return _active; } set { _active = value; } }
         public DateTime CreateDate { get { return _createDate; } set { _createDate = value; } }
         public DateTime UpdateDate { get { return _updateDate; } set { _updateDate = value; } }

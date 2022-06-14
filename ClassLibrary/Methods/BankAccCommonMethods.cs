@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace ClassLibrary.Methods
 {
-    internal interface IClientsRepo
+    public static class BankAccCommonMethods
     {
-        string Path{ get; }
+
     }
 }

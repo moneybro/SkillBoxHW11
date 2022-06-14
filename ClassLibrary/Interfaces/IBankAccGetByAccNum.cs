@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace ClassLibrary.Interfaces
 {
-    public interface IBankNewAccGetNumber
+    interface IBankAccGetByAccNum
     {
-        public long GetNewAccNumber();
+        BankAccForClient GetAccByNum(long accNumber);
     }
 }

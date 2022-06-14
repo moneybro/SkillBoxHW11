@@ -14,12 +14,8 @@ using System.Threading.Tasks;
 namespace ClassLibrary.Classes
 {
     public class BankAccActionsJSON :
-        IGetAllBankAccs,
-        IGetClientAccs,
-        IBankAccCreateNewMain,
-        IBankNewAccGetNumber, 
-        ISaveAcc, 
-        IBankAccClose
+        IBankAccActions,
+        IBankAccGetByAccNum
     {
 
         #region создание главного и депозитного счета
@@ -39,7 +35,7 @@ namespace ClassLibrary.Classes
             return newMainAcc.acc;
         }
 
-        internal BankAccDepo GetNewDepoAcc(long clId)
+        public BankAccDepo GetNewDepoAcc(long clId)
         {
             BankAccFabric<BankAccDepo> newDepoAcc = new BankAccFabric<BankAccDepo>(new BankAccDepo(clId));
             newDepoAcc.acc.AccNumber = GetNewAccNumber();
@@ -54,15 +50,20 @@ namespace ClassLibrary.Classes
             }
             return newDepoAcc.acc;
         }
+
+        internal BankAccForClient GetAccNumberById(long v, object accNum)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region получение нового номера счета для создания нового банковского счета
-        
+
         /// <summary>
         /// получение нового номера счета для создания нового банковского счета
         /// </summary>
         /// <returns>номер счета</returns>        
-        public long GetNewAccNumber()
+        long GetNewAccNumber()
         {
             var accs = GetAllBankAccs();
             long newAccNumber = 0;
@@ -118,6 +119,7 @@ namespace ClassLibrary.Classes
             {
                 using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
                 {
+                    acc.UpdateDate = DateTime.Now;
                     System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
                 }
                 return true;
@@ -183,7 +185,7 @@ namespace ClassLibrary.Classes
         /// получение всех счетов, независимо от типа
         /// </summary>
         /// <returns>список счетов</returns>
-        public List<BankAccForClient> GetAllBankAccs()
+        List<BankAccForClient> GetAllBankAccs()
         {
             List<BankAccForClient> accs = new List<BankAccForClient>();
             accs.AddRange(getAllMainAccs());
@@ -268,6 +270,22 @@ namespace ClassLibrary.Classes
                 }
             }
             return bankAccList;
+        }
+        #endregion
+
+        #region получение активного счета по его номеру
+        public BankAccForClient GetAccByNum(long accNumber)
+        {
+            var accs = GetAllBankAccs().Where(a => a.AccNumber == accNumber);
+            foreach (var acc in accs.Reverse())
+            {
+                if (acc.Active == true)
+                {
+                    return acc;
+                }
+                else continue;
+            }
+            return null;
         }
         #endregion
     }

@@ -1,6 +1,5 @@
 ﻿using ClientApp;
 using ClientApp.Pages;
-using SkillBoxHW13;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,12 +41,6 @@ namespace HW13_MainWindow
                 wp = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(wp)));
             }
-        }
-        
-        private void EmployeeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            WorkPage = new EmployeePage();
-            NavigationService.Navigate(WorkPage);
         }
 
         private void ClientBtn_Click(object sender, RoutedEventArgs e)
