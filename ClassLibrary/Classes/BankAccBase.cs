@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    public class BankAccBase
+    public abstract class BankAccBase
     {
         #region поля
         long _accNumber;
@@ -32,6 +32,9 @@ namespace ClassLibrary.Classes
         public bool Active { get { return _active; } set { _active = value; } }
         public DateTime CreateDate { get { return _createDate; } set { _createDate = value; } }
         public DateTime UpdateDate { get { return _updateDate; } set { _updateDate = value; } }
+        #endregion
+
+        #region методы
         #endregion
     }
 }

@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 namespace ClassLibrary.Classes
 {
     public class BankAccDepo : BankAccForClient, IPushMoney<BankAccForClient>
     {
+        public string AccType => "Depo";
         bool _canAddMoney;
 
         /// <summary>
@@ -60,7 +59,6 @@ namespace ClassLibrary.Classes
             this.Amount += summ;
             return this;
         }
-
         public override string ToString()
         {
             return $"ClientId: {ClientId}\n" +

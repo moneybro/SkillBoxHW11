@@ -1,5 +1,4 @@
 ﻿using ClassLibrary.Interfaces;
-using ClientApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ClientApp.Pages
+namespace EmployeeApp.Views
 {
     /// <summary>
     /// Логика взаимодействия для PutMoneyWin2.xaml
@@ -24,18 +23,19 @@ namespace ClientApp.Pages
         decimal putSumm = 0;
         public string AccNum { get; set; }
         public string Balance { get; set; }
-        SummToPutStorage _summToPutStorage;
+        SummToPutStorage summStor;
         internal PutMoneyWin(
             string accNum,
             string balance,
-            SummToPutStorage summToPutStorage
+            SummToPutStorage externalSummStor
             )
         {
             InitializeComponent();
             this.DataContext = this;
             AccNum = accNum;
             Balance = balance;
-            _summToPutStorage = summToPutStorage;
+            summStor = new SummToPutStorage();
+            summStor = externalSummStor;
         }
 
         private void putMon(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace ClientApp.Pages
             decimal.TryParse(summTB.Text, out putSumm);
             if (putSumm > 0)
             {
-                _summToPutStorage.summ = putSumm;
+                summStor.summ = putSumm;
                 this.DialogResult = true;
             }
         }

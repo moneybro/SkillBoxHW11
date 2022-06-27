@@ -31,7 +31,7 @@
                     <Grid>
                         
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,10,0" >
-                            <Button x:Name="PutMoneyToMainAccBtn" Content="Пополнить" Padding="3px" Margin="5px 0" Click="AddMoneyBtn_Click" IsEnabled="{Binding MainAccIsNotNull}"/>
+                            <Button x:Name="PutMoneyToMainAccBtn" Content="Пополнить" Padding="3px" Margin="5px 0" Click="PutMoneyToMainAccBtn_Click" IsEnabled="{Binding MainAccIsNotNull}"/>
                             <Button x:Name="TransferMoneyFromMainAccBtn" Content="Перевести" Padding="3px" Margin="0" Click="TransferMoneyBtn_Click" HorizontalAlignment="Stretch" IsEnabled="{Binding MainAccIsNotNull}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -48,7 +48,7 @@
                     <TextBlock x:Name="DepoBankAccAmount" Text="{Binding DepoAccAmount}"/>
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,10,0" >
-                            <Button x:Name="PutMoneyToDepoAccBtn" Content="Пополнить" Padding="3px" Margin="5px 0" Click="AddMoneyBtn_Click" IsEnabled="{Binding DepoAccIsNotNull}"/>
+                            <Button x:Name="PutMoneyToDepoAccBtn" Content="Пополнить" Padding="3px" Margin="5px 0" Click="PutMoneyToMainAccBtn_Click" IsEnabled="{Binding DepoAccIsNotNull}"/>
                             <Button x:Name="TransferMoneyFromDepoAccBtn" Content="Перевести" Padding="3px" Margin="0" Click="TransferMoneyBtn_Click" HorizontalAlignment="Stretch" IsEnabled="{Binding DepoAccIsNotNull}"/>
                         </StackPanel>
                         <StackPanel>

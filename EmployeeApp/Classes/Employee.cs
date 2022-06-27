@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Classes;
+using ClassLibrary.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace EmployeeApp
         public abstract List<Client> GetClients();
         public abstract Client AddNewClient();
         public abstract bool ChangeClient(Client client);
+        public IBankAccActions BankAccActions { get; set; }
 
         /// <summary>
         /// сохранить измененного клиента
@@ -67,10 +69,6 @@ namespace EmployeeApp
             return false;
         }
         public abstract bool DeleteClient(Client client);
-        protected virtual Client getClientById(long _id)
-        {
-            return ClientCommonMethods.GetClientsAllData().Find(c => c.ID == _id);
-        }
         public enum SortedCriterion
         {
             Age,
@@ -82,6 +80,7 @@ namespace EmployeeApp
             if (criterion == SortedCriterion.LastName) return new SortedByLastName();
             return new SortedByLastName();
         }
+
         /// <summary>
         /// сортировка по фамилии
         /// </summary>

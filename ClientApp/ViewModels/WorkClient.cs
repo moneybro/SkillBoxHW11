@@ -318,7 +318,6 @@ namespace ClientApp.ViewModels
             var s = (Button)sender;
             var senderName = s.Name;
             BankAccForClient? accToCharge = new BankAccForClient();
-            //BankAccBase accToCharge = new BankAccBase();
             if (senderName == "PutMoneyToMainAccBtn")
             {
                 if (this.mainAcc == null) { MessageBox.Show("Нет главного счета."); }

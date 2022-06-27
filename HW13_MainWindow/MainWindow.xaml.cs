@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApp.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,11 +29,12 @@ namespace HW13_MainWindow
         public MainWin()
         {
             InitializeComponent();
-            this.WindowState = WindowState.Maximized;
-            AuthWin authWin = new AuthWin();
-            MainWindow.Content = authWin;
-            authWin.Width = this.Width;
-            authWin.Height = this.Height;
+            //this.WindowState = WindowState.Maximized;
+            //AuthWin authWin = new AuthWin();
+            AuthClientPage authClientPage = new AuthClientPage();
+            MainWindow.Content = authClientPage;
+            authClientPage.Width = this.Width;
+            authClientPage.Height = this.Height;
         }
     }
 }

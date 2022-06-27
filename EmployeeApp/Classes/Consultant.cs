@@ -24,6 +24,7 @@ namespace EmployeeApp
             this.LastName = ln;
             this.Age = age;
             this.Salary = salary;
+            this.BankAccActions = new BankAccActions();
         }
         public override string Type => "consultant";
         public override Client AddNewClient()
@@ -52,5 +53,25 @@ namespace EmployeeApp
             }
             return clients;
         }
+
+
+
+
+        //internal BankAccMain GetNewMainAcc(long clId)
+        //{
+        //    return null;
+        //}
+        //public BankAccDepo GetNewDepoAcc(long clId)
+        //{
+        //    return null;
+        //}
+        //public List<BankAccForClient> GetClientAccs(long clId)
+        //{
+        //    return BankAccActions.GetClientAccs(clId);
+        //}
+        //bool CloseAcc(long accNum)
+        //{
+        //    return false;
+        //}
     }
 }

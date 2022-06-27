@@ -288,5 +288,15 @@ namespace ClassLibrary.Classes
             return null;
         }
         #endregion
+
+        #region получение перечня движений по счету
+        public List<BankAccForClient> GetAccTransactions(long accNum)
+        {
+            var allAccs = GetAllBankAccs();
+            var result = allAccs.Where(a => a.AccNumber == accNum).ToList();
+            return result;
+        }
+
+        #endregion
     }
 }

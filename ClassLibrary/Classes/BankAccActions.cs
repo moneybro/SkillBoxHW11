@@ -40,6 +40,13 @@ namespace ClassLibrary.Classes
         {
             return actions.CloseAcc(accNum);
         }
+        public List<BankAccForClient> GetAccTransactions(long accNum)
+        {
+            return actions.GetAccTransactions(accNum);
+        }
+
+
+
         //public bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAccForClient
         //{
         //    if (acc1 != null && acc2 != null && summ != 0)

@@ -25,6 +25,7 @@ namespace EmployeeApp
             this.LastName = ln;
             this.Age = age;
             this.Salary = salary;
+            this.BankAccActions = new BankAccActions();
         }
         public override string Type => "manager";
         public override Client AddNewClient()
@@ -32,6 +33,7 @@ namespace EmployeeApp
             Client newClient;
             long newClID = ClientCommonMethods.getNewClientId();
             EditClient createNewClientWin = new EditClient(newClID);
+            var newMainAccForNewClient = GetNewMainAcc(newClID);
             if (createNewClientWin.ShowDialog() == true)
             {
                 newClient = createNewClientWin.editedClient;
@@ -39,6 +41,7 @@ namespace EmployeeApp
                 {
                     createNewClientWin.Close();
                     base.SaveEditedClient(newClient, this);
+                    this.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath);
                     return newClient;
                 }
                 else
@@ -79,34 +82,47 @@ namespace EmployeeApp
                 return false;
             }
         }
-        //public override List<Client> DeleteClient(List<Client> clients, long client)
-        //{
-        //    Client clientToDel = clients.Find(c => c.ID == client);
-        //    if (clientToDel != null)
-        //    {
-        //        clientToDel.Status = "deleted";
-        //        if (base.SaveEditedClient(clientToDel, this))
-        //        {
-        //            clients.RemoveAll(c => c.ID == client);
-        //            return clients;
-        //        }
-        //        else
-        //        {
-        //            return clients;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return clients;
-        //    }
-        //}
         public override List<Client> GetClients()
         {
             return ClientCommonMethods.GetClientsAllData();
         }
-        //public override List<Client> RefreshClientsView(List<Client> clients)
+
+
+
+
+
+        internal BankAccMain GetNewMainAcc(long clId)
+        {
+            return BankAccActions.GetNewMainAcc(clId);
+        }
+        public BankAccDepo GetNewDepoAcc(long clId)
+        {
+            return BankAccActions.GetNewDepoAcc(clId);
+        }
+        public List<BankAccForClient> GetClientAccs(long clId)
+        {
+            return BankAccActions.GetClientAccs(clId);
+        }
+        bool CloseAcc(long accNum)
+        {
+            return BankAccActions.CloseAcc(accNum);
+        }
+
+
+
+
+
+        //public override bool SaveAcc<T>(T acc, string repoPath)
         //{
-        //    return clients;
+        //    throw new NotImplementedException();
         //}
+
+        // реализовать абстрактные методы работы со счетами из базового метода
+
+
+
+
+
+
     }
 }

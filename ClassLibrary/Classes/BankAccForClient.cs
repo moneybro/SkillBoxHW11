@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    public class BankAccForClient : BankAccBase
+    public class BankAccForClient : BankAccBase, IPushMoney<BankAccBase>
     {
         #region поля
         long _clientId;
@@ -17,6 +17,12 @@ namespace ClassLibrary.Classes
 
         #region свойства
         public long ClientId { get { return _clientId; } set { _clientId = value; } }
+
+        public BankAccBase PushMoneyToAcc(decimal summ)
+        {
+            this.Amount += summ;
+            return this;
+        }
 
         #endregion
     }

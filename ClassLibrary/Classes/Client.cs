@@ -32,13 +32,11 @@ namespace ClassLibrary.Classes
         {
             return Equals(obj as Client);
         }
-
         public bool Equals(Client? other)
         {
             return other != null &&
                    ID == other.ID;
         }
-
         public override string ToString()
         {
             return $"ФИО: {LastName} {Name} {Patronymic}, мобильный телефон: {MobPhone}";
