@@ -39,7 +39,9 @@ namespace ClassLibrary.Methods
                     clients.Add(ser.Deserialize<Client>(reader));
                 }
                 reader.Close();
+                streamreader.Close();
             }
+            
             return clients;
         }
 

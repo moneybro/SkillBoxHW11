@@ -32,7 +32,7 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public bool TransferMoney(decimal summ)
+        public bool TransferMoney(decimal summ, DateTime dateTime)
         {
             if (db.Count == 2)
             {
@@ -45,8 +45,8 @@ namespace ClassLibrary.Classes
                 accTarget.Amount += summ;
 
                 // если информация об счетах не сохранилась, то возвращаем баланс 
-                var successSource = accActions.SaveAcc(accSource);
-                var successTarget = accActions.SaveAcc(accTarget);
+                var successSource = accActions.SaveAcc(accSource, dateTime);
+                var successTarget = accActions.SaveAcc(accTarget, dateTime);
 
                 if (!successSource || !successTarget)
                 {
@@ -54,8 +54,8 @@ namespace ClassLibrary.Classes
                     db[1].Amount -= summ;
                     accSource.Amount += summ;
                     accTarget.Amount -= summ;
-                    accActions.SaveAcc(accSource);
-                    accActions.SaveAcc(accTarget);
+                    accActions.SaveAcc(accSource, dateTime);
+                    accActions.SaveAcc(accTarget, dateTime);
                     return false;
                 }
                 else return true;

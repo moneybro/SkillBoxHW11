@@ -14,7 +14,7 @@ namespace ClassLibrary.Classes
         long _accNumber;
         decimal _amount;
         bool _active;
-        DateTime _createDate = DateTime.Now;
+        DateTime _createDate;
         DateTime _updateDate;
 
         #endregion

@@ -15,7 +15,8 @@ namespace ClassLibrary.Classes
 {
     public class BankAccActionsJSON :
         IBankAccActions,
-        IBankAccGetByAccNum
+        IBankAccGetByAccNum,
+        ITransactionsActions
     {
 
         #region создание главного и депозитного счета
@@ -24,7 +25,7 @@ namespace ClassLibrary.Classes
             BankAccFabric<BankAccMain> newMainAcc = new BankAccFabric<BankAccMain>(new BankAccMain(clId));
             newMainAcc.acc.AccNumber = GetNewAccNumber();
             if (newMainAcc.acc.AccNumber == 0) return null;
-            if (SaveAcc(newMainAcc.acc, GlobalVarsAndActions.MainAccsRepoPath))
+            if (SaveAcc(newMainAcc.acc, GlobalVarsAndActions.MainAccsRepoPath, DateTime.Now))
             {
                 return newMainAcc.acc;
             }
@@ -40,7 +41,7 @@ namespace ClassLibrary.Classes
             BankAccFabric<BankAccDepo> newDepoAcc = new BankAccFabric<BankAccDepo>(new BankAccDepo(clId));
             newDepoAcc.acc.AccNumber = GetNewAccNumber();
             if (newDepoAcc.acc.AccNumber == 0) return null;
-            if (SaveAcc(newDepoAcc.acc, GlobalVarsAndActions.DepoAccsRepoPath))
+            if (SaveAcc(newDepoAcc.acc, GlobalVarsAndActions.DepoAccsRepoPath, DateTime.Now))
             {
                 return newDepoAcc.acc;
             }
@@ -86,16 +87,16 @@ namespace ClassLibrary.Classes
         /// <typeparam name="T"></typeparam>
         /// <param name="acc"></param>
         /// <returns>истина если сохранение прошло успешно, ложь - сохранение не удалось</returns>
-        public bool SaveAcc<T>(T acc) where T : BankAccForClient
+        public bool SaveAcc<T>(T acc, DateTime dateTime) where T : BankAccForClient
         {
             if (acc.GetType() == typeof(BankAccMain))
             {
-                SaveAcc(acc, GlobalVarsAndActions.MainAccsRepoPath);
+                SaveAcc(acc, GlobalVarsAndActions.MainAccsRepoPath, dateTime);
                 return true;
             }
             if (acc.GetType() == typeof(BankAccDepo))
             {
-                SaveAcc(acc, GlobalVarsAndActions.DepoAccsRepoPath);
+                SaveAcc(acc, GlobalVarsAndActions.DepoAccsRepoPath, dateTime);
                 return true;
             }
             return false;
@@ -108,7 +109,7 @@ namespace ClassLibrary.Classes
         /// <param name="acc"></param>
         /// <param name="bankAccRepo"></param>
         /// <returns></returns>
-        public bool SaveAcc<T>(T acc, string bankAccRepo) where T : BankAccForClient
+        public bool SaveAcc<T>(T acc, string bankAccRepo, DateTime dateTime) where T : BankAccForClient
         {
             var options = new JsonSerializerOptions
             {
@@ -119,7 +120,7 @@ namespace ClassLibrary.Classes
             {
                 using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
                 {
-                    acc.UpdateDate = DateTime.Now;
+                    acc.UpdateDate = dateTime;
                     System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
                 }
                 return true;
@@ -172,7 +173,7 @@ namespace ClassLibrary.Classes
             else
             {
                 accToClose.Active = false;
-                if (SaveAcc(accToClose)) return true;
+                if (SaveAcc(accToClose, DateTime.Now)) return true;
                 else return false;
                 return true;
             }
@@ -298,5 +299,74 @@ namespace ClassLibrary.Classes
         }
 
         #endregion
+
+
+
+
+
+        #region сохранение транзакции (скорее всего будет отдельный интерфейс чуть позже)
+
+        public bool SaveTransaction(BankAccTransaction tr)
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true, //фрматированный json
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+            };
+            try
+            {
+                string transactionsRepo = DbPaths.getTransactionsPath();
+                using (FileStream fs = new FileStream(transactionsRepo, FileMode.Append))
+                {
+                    System.Text.Json.JsonSerializer.SerializeAsync(fs, tr, options);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region получение всех транзакций
+        List<BankAccTransaction> getAllTransactions()
+        {
+            List<BankAccTransaction> trs = new List<BankAccTransaction>();
+            string trsRepo = DbPaths.getTransactionsPath();
+            using (var sr = new StreamReader(trsRepo, new UTF8Encoding()))
+            {
+                var ser = new Newtonsoft.Json.JsonSerializer();
+                var reader = new JsonTextReader(sr);
+                while (reader.Read())
+                {
+                    reader.CloseInput = false;
+                    reader.SupportMultipleContent = true;
+
+                    var trsObj = ser.Deserialize<BankAccTransaction>(reader);
+                    trs.Add(trsObj);
+                }
+            }
+            return trs;
+        }
+        #endregion
+
+        public List<BankAccTransactionFull> GetBankAccTransactionsFull(long accNum)
+        {
+            List<BankAccTransactionFull> trsf = new List<BankAccTransactionFull>();
+            var accs = GetAccTransactions(accNum);
+            var trs = getAllTransactions();
+            foreach (var acc in accs)
+            {
+                foreach (var tr in trs)
+                {
+                    if ((tr.AccNumberSource == accNum || tr.AccNumberTarget == accNum) && acc.UpdateDate == tr.Date)
+                    {
+                        trsf.Add(new BankAccTransactionFull() { Acc = acc, Tr = tr });
+                    }
+                }
+            }
+            return trsf;
+        }
     }
 }

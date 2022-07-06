@@ -23,10 +23,10 @@ namespace EmployeeApp.Views
     public partial class AuthPage : Page
     {
         List<Employee> employees = new List<Employee>();
-        Employee man1 = new Manager("Иванов", "Иван", 20, 10000);
-        Employee man2 = new Manager("Сидоров", "Сидор", 25, 10000);
-        Employee cons1 = new Consultant("Блондинка", "Элла", 18, 7000);
-        Employee cons2 = new Consultant("Блондинка2", "Элла2", 18, 7000);
+        Employee man1 = new Manager(1, "Иванов", "Иван", 20, 10000);
+        Employee man2 = new Manager(2, "Сидоров", "Сидор", 25, 10000);
+        Employee cons1 = new Consultant(3, "Блондинка", "Элла", 18, 7000);
+        Employee cons2 = new Consultant(4, "Блондинка2", "Элла2", 18, 7000);
         Employee selectedEmployee;
         public AuthPage()
         {

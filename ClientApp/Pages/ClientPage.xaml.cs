@@ -62,7 +62,7 @@ namespace ClientApp.Pages
             CloseAccBtnClicked(workClient.depoAcc);
         }
 
-        private void AddMoneyBtn_Click(object sender, RoutedEventArgs e)
+        private void PutMoneyToMainAccBtn_Click(object sender, RoutedEventArgs e)
         {
             AddMoneyBtnClicked(sender);
         }            

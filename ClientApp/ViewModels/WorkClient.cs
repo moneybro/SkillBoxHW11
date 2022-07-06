@@ -22,6 +22,7 @@ namespace ClientApp.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         event Action<string> LogAction;
 
+        internal Client _workClient;
         internal ClientPage _clientPage;
 
         internal List<BankAccForClient> accList;
@@ -127,8 +128,7 @@ namespace ClientApp.ViewModels
             }
         }
 
-        BankAccActions accActions;
-
+        SummToPutStorage summToPutStorage;
         #endregion
 
         static WorkClient()
@@ -141,25 +141,26 @@ namespace ClientApp.ViewModels
         }
         internal WorkClient(Client cl, ClientPage clientPage) : base(ID: cl.ID)
         {
+            _workClient = cl;
             _clientPage = clientPage;
-            accActions = new BankAccActions();
-            this.LastName = cl.LastName;
-            this.Name = cl.Name;
-            this.Patronymic = cl.Patronymic;
-            this.MobPhone = cl.MobPhone;
-            this.PaspSeria = cl.PaspSeria;
-            this.PaspNum = cl.PaspNum;
-            this.LastChangeDate = DateTime.Now;
-            fullName = $"{LastName} {Name} {Patronymic}";
-            accList = accActions.GetClientAccs(cl.ID);
+            _workClient.LastName = cl.LastName;
+            _workClient.FirstName = cl.FirstName;
+            _workClient.Patronymic = cl.Patronymic;
+            _workClient.MobPhone = cl.MobPhone;
+            _workClient.PaspSeria = cl.PaspSeria;
+            _workClient.PaspNum = cl.PaspNum;
+            _workClient.LastChangeDate = DateTime.Now;
+            fullName = $"{LastName} {FirstName} {Patronymic}";
+            accList = _workClient.BankAccActions.GetClientAccs(cl.ID);
             mainAcc = (BankAccMain?)accList.Find(a => a.GetType() == typeof(BankAccMain));
             depoAcc = (BankAccDepo?)accList.Find(a => a.GetType() == typeof(BankAccDepo));
             LogAction += myLogAction;
             _clientPage.OpenMainAccBtnClicked += createNewMainAcc;
             _clientPage.OpenDepoAccBtnClicked += createNewDepoAcc;
             _clientPage.CloseAccBtnClicked += closeAcc;
-            _clientPage.AddMoneyBtnClicked += pushMoneyToAcc;
+            _clientPage.AddMoneyBtnClicked += putMoney;
             _clientPage.TfrMoneyBtnClicked += tfrMoney;
+            summToPutStorage = new SummToPutStorage();
         }
         void refreshAccFields()
         {
@@ -177,7 +178,7 @@ namespace ClientApp.ViewModels
         {
             if (mainAcc == null)
             {
-                BankAccMain bankAcc = accActions.GetNewMainAcc(this.ID);
+                BankAccMain bankAcc = _workClient.BankAccActions.GetNewMainAcc(this.ID);
                 if (bankAcc != null)
                 {
                     accList.Add(bankAcc);
@@ -200,7 +201,7 @@ namespace ClientApp.ViewModels
         {
             if (depoAcc == null)
             {
-                var bankAcc = accActions.GetNewDepoAcc(this.ID);
+                var bankAcc = _workClient.BankAccActions.GetNewDepoAcc(this.ID);
 
                 if (bankAcc != null)
                 {
@@ -223,7 +224,7 @@ namespace ClientApp.ViewModels
         internal void closeAcc(BankAccForClient acc)
         {
             var accNumToClose = acc;
-            if (acc != null && accActions.CloseAcc(acc.AccNumber))
+            if (acc != null && _workClient.BankAccActions.CloseAcc(acc.AccNumber))
             {
                 accList.Remove(acc);
                 if (acc is BankAccMain)
@@ -249,6 +250,68 @@ namespace ClientApp.ViewModels
             string accString = accNum.ToString();
             string before = new string('0', 20 - accString.Length);
             return before + accString;
+        }
+        internal void putMoney(object sender)
+        {
+            IPushMoney<BankAccBase> accChargeAction = mainAcc;
+
+            var s = (Button)sender;
+            var senderName = s.Name;
+            BankAccForClient? accToCharge = new BankAccForClient();
+            if (senderName == "PutMoneyToMainAccBtn")
+            {
+                if (this.mainAcc == null) { MessageBox.Show("Нет главного счета."); }
+                accToCharge = this.mainAcc;
+                accChargeAction = this.mainAcc;
+            }
+            if (senderName == "PutMoneyToDepoAccBtn")
+            {
+                if (this.depoAcc == null) { MessageBox.Show("Нет депозитного счета."); }
+                accToCharge = this.depoAcc;
+                accChargeAction = this.depoAcc;
+            }
+            PutMoneyWin putMoneyWin = 
+                new PutMoneyWin(modernAccView(accToCharge.AccNumber), accToCharge.Amount.ToString(), summToPutStorage);
+
+            if (putMoneyWin.ShowDialog() == true)
+            {
+                decimal summ = -1;
+                decimal.TryParse(putMoneyWin.summTB.Text, out summ);
+                var dateTime = DateTime.Now;
+                BankAccTransaction bankAccTansaction = new BankAccTransaction();
+                if (summ > 0)
+                {
+                    //accToCharge.Amount += summ;
+                    //accChargeAction = accToCharge;
+                    accChargeAction.PushMoneyToAcc(summ);
+                    if (_workClient.BankAccActions.SaveAcc(accToCharge, dateTime))
+                    {
+                        refreshAccFields();
+
+
+                        bankAccTansaction.Date = dateTime;
+                        //bankAccTansaction.TransType = BankAccTansaction.TransactionType.Income;
+                        bankAccTansaction.AccNumberSource = 0;
+                        bankAccTansaction.AccNumberTarget = accToCharge.AccNumber;
+                        bankAccTansaction.Summ = summ;
+                        bankAccTansaction.EmployeeId = 0;
+                        bankAccTansaction.ClientId = _workClient.ID;
+                        bankAccTansaction.OperatorName = $"{_workClient.LastName} {_workClient.FirstName}";
+                        bankAccTansaction.Description = "";
+                        _workClient.TransactionsActions.SaveTransaction(bankAccTansaction);
+
+
+
+                        LogAction($"push money to acc {accToCharge.AccNumber}, summ = {summ}");
+                        MessageBox.Show($"Пополнение счета выполнено успешно.");
+                    }
+                    else
+                    {
+                        accToCharge.Amount -= summ;
+                        MessageBox.Show($"Не удалось сохранить данные счета.");
+                    }
+                }
+            }
         }
         internal void tfrMoney(object sender)
         {
@@ -283,6 +346,7 @@ namespace ClientApp.ViewModels
                     accSourceAmount = this.mainAcc.Amount.ToString();
                     accTargetAmount = this.depoAcc.Amount.ToString();
                 }
+                
                 MoneyTransferWin moneyTransferWin = new MoneyTransferWin(
                     accSourceNumber,
                     accSourceAmount,
@@ -293,10 +357,25 @@ namespace ClientApp.ViewModels
                 if (moneyTransferWin.ShowDialog() == true)
                 {
                     //var success = accActions.transferMoney(accSource, accTarget, this.summ);
-                    var transfeSuccess = transferStorage.TransferMoney(summ);
+                    var dateTime = DateTime.Now;
+                    var transfeSuccess = transferStorage.TransferMoney(summ, dateTime);
+                    BankAccTransaction bankAccTansaction = new BankAccTransaction();
                     if (transfeSuccess)
                     {
                         refreshAccFields();
+
+
+                        bankAccTansaction.Date = dateTime;
+                        bankAccTansaction.AccNumberSource = long.Parse(accSourceNumber);
+                        bankAccTansaction.AccNumberTarget = long.Parse(accTargetNumber);
+                        bankAccTansaction.Summ = summ;
+                        bankAccTansaction.EmployeeId = 0;
+                        bankAccTansaction.ClientId = _workClient.ID;
+                        bankAccTansaction.OperatorName = $"{_workClient.LastName} {_workClient.FirstName}";
+                        bankAccTansaction.Description = "перевод между счетами";
+                        _workClient.TransactionsActions.SaveTransaction(bankAccTansaction);
+
+
                         LogAction($"transfer money from {accSourceNumber} to {accTargetNumber} summ = {this.summ}.");
                         MessageBox.Show("Перевод выполнен успешно.");
                     }
@@ -308,51 +387,6 @@ namespace ClientApp.ViewModels
                 else
                 {
                     MessageBox.Show("Что-то пошло не так.");
-                }
-            }
-        }
-        internal void pushMoneyToAcc(object sender)
-        {
-            IPushMoney<BankAccBase> accChargeAction = mainAcc;
-
-            var s = (Button)sender;
-            var senderName = s.Name;
-            BankAccForClient? accToCharge = new BankAccForClient();
-            if (senderName == "PutMoneyToMainAccBtn")
-            {
-                if (this.mainAcc == null) { MessageBox.Show("Нет главного счета."); }
-                accToCharge = this.mainAcc;
-                accChargeAction = this.mainAcc;
-            }
-            if (senderName == "PutMoneyToDepoAccBtn")
-            {
-                if (this.depoAcc == null) { MessageBox.Show("Нет депозитного счета."); }
-                accToCharge = this.depoAcc;
-                accChargeAction = this.depoAcc;
-            }
-            PutMoneyWin putMoneyWin = 
-                new PutMoneyWin(modernAccView(accToCharge.AccNumber), accToCharge.Amount.ToString(), this);
-
-            if (putMoneyWin.ShowDialog() == true)
-            {
-                decimal summ = -1;
-                decimal.TryParse(putMoneyWin.summTB.Text, out summ);
-                if (summ > 0)
-                {
-                    //accToCharge.Amount += summ;
-                    //accChargeAction = accToCharge;
-                    accChargeAction.PushMoneyToAcc(summ);
-                    if (accActions.SaveAcc(accToCharge))
-                    {
-                        refreshAccFields();
-                        LogAction($"push money to acc {accToCharge.AccNumber}, summ = {summ}");
-                        MessageBox.Show($"Пополнение счета выполнено успешно.");
-                    }
-                    else
-                    {
-                        accToCharge.Amount -= summ;
-                        MessageBox.Show($"Не удалось сохранить данные счета.");
-                    }
                 }
             }
         }

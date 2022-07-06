@@ -24,8 +24,9 @@ namespace EmployeeApp
         public abstract string Type { get; }
         public abstract List<Client> GetClients();
         public abstract Client AddNewClient();
-        public abstract bool ChangeClient(Client client);
+        public abstract void ChangeClient(Client client);
         public IBankAccActions BankAccActions { get; set; }
+        public ITransactionsActions TransactionsActions { get; set; }
 
         /// <summary>
         /// сохранить измененного клиента
@@ -33,7 +34,7 @@ namespace EmployeeApp
         /// <param name="client"></param>
         /// <param name="employee"></param>
         /// <returns></returns>
-        protected bool SaveEditedClient(Client client, Employee employee)
+        public bool SaveEditedClient(Client client, Employee employee)
         {
             var clientsDb = DbPaths.getClientsPath();
             client.ChangeType = "edited";

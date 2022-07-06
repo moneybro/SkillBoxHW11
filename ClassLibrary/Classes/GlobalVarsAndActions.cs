@@ -11,7 +11,8 @@ namespace ClassLibrary.Classes
         static string _clientsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\clients.json";
         static string _mainAccsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\mainAccs.json";
         static string _depoAccsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\depoAccs.json";
-        
+        static string _transactionsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\transactions.json";
+
         public static string ClientsRepoPath
         {
             get { return _clientsRepoPath;}
@@ -45,5 +46,22 @@ namespace ClassLibrary.Classes
                 }
             }
         }
+        public static string TransactionsRepoPath
+        {
+            get
+            {
+                if (File.Exists(_transactionsRepoPath))
+                {
+                    return _transactionsRepoPath;
+                }
+                else
+                {
+                    File.Create(_transactionsRepoPath).Close();
+                    return _transactionsRepoPath;
+                }
+            }
+        }
+
+
     }
 }

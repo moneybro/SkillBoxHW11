@@ -18,25 +18,25 @@ namespace EmployeeApp
             this.Age = default;
             this.Salary = default;
         }
-        public Consultant(string fn, string ln, int age, int salary)
+        public Consultant(int id, string fn, string ln, int age, int salary)
         {
+            this.Id = id;
             this.FirstName = fn;
             this.LastName = ln;
             this.Age = age;
             this.Salary = salary;
             this.BankAccActions = new BankAccActions();
+            this.TransactionsActions = new BankAccActions();
         }
         public override string Type => "consultant";
         public override Client AddNewClient()
         {
             return null;
         }
-        public override bool ChangeClient(Client _client)
+        public override void ChangeClient(Client _client)
         {
             EditClient editClient = new EditClient(_client, this);
-            if (editClient.ShowDialog() == true) _client = editClient.editedClient;
-            editClient.Close();
-            return SaveEditedClient(_client, this);
+            if (editClient.ShowDialog() == true) editClient.Close();
         }
         public override bool DeleteClient(Client client)
         {
@@ -53,25 +53,5 @@ namespace EmployeeApp
             }
             return clients;
         }
-
-
-
-
-        //internal BankAccMain GetNewMainAcc(long clId)
-        //{
-        //    return null;
-        //}
-        //public BankAccDepo GetNewDepoAcc(long clId)
-        //{
-        //    return null;
-        //}
-        //public List<BankAccForClient> GetClientAccs(long clId)
-        //{
-        //    return BankAccActions.GetClientAccs(clId);
-        //}
-        //bool CloseAcc(long accNum)
-        //{
-        //    return false;
-        //}
     }
 }

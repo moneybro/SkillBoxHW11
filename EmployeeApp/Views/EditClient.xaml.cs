@@ -40,7 +40,7 @@ namespace EmployeeApp.Views
             editedClient = client;
             bankOperator = employee;
             EditLastName.Text = editedClient.LastName;
-            EditName.Text = editedClient.Name;
+            EditName.Text = editedClient.FirstName;
             EditPatronymic.Text = editedClient.Patronymic;
             EditMobPhone.Text = editedClient.MobPhone;
 
@@ -65,25 +65,25 @@ namespace EmployeeApp.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Client client = editedClient.Clone();
             int paspSeria;
             long paspNum;
-            switch (bankOperator.Type)
+
+            if (bankOperator.GetType() == typeof(Manager))
             {
-                case "manager":
-                    editedClient.LastName = EditLastName.Text;
-                    editedClient.Name = EditName.Text;
-                    editedClient.Patronymic = EditPatronymic.Text;
-                    editedClient.MobPhone = EditMobPhone.Text;
-                    if (int.TryParse(EditPaspSeria.Text, out paspSeria)) editedClient.PaspSeria = paspSeria;
-                    else editedClient.PaspSeria = 0;
-                    if (long.TryParse(EditPaspNum.Text, out paspNum)) editedClient.PaspNum = paspNum;
-                    else editedClient.PaspNum = 0;
-                    break;
-                case "consultant":
-                    editedClient.MobPhone = EditMobPhone.Text;
-                    break;
-                default:
-                    break;
+                editedClient.LastName = EditLastName.Text;
+                editedClient.FirstName = EditName.Text;
+                editedClient.Patronymic = EditPatronymic.Text;
+                editedClient.MobPhone = EditMobPhone.Text;
+                if (int.TryParse(EditPaspSeria.Text, out paspSeria)) editedClient.PaspSeria = paspSeria;
+                else editedClient.PaspSeria = 0;
+                if (long.TryParse(EditPaspNum.Text, out paspNum)) editedClient.PaspNum = paspNum;
+                else editedClient.PaspNum = 0;
+            }
+
+            if (bankOperator.GetType() == typeof(Consultant))
+            {
+                editedClient.MobPhone = EditMobPhone.Text;
             }
             this.DialogResult = true;
         }

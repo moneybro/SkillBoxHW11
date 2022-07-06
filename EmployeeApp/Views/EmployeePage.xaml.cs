@@ -32,6 +32,9 @@ namespace EmployeeApp.Views
         public event Func<bool> RemoveClientEventSuccess;
         public event Action<BankAccForClient> BankAccSelectEvent;
         public event Action PutMoneyBtnEvent;
+        public event Action TfrMoneyBtnEvent;
+        public event Action OpenDepoAccBtnEvent;
+        public event Action CloseDepoAccBtnEvent;
 
         long selectedClientId;
 
@@ -44,15 +47,15 @@ namespace EmployeeApp.Views
             ClientsDG.ItemsSource = workEmployee.Clients;
             bankAccsListBox.ItemsSource = workEmployee.ClientAccs;
             bankAccTransactions.ItemsSource = workEmployee.AccTransactions;
+            employeeValue.Text = $"{employee.FirstName} {employee.LastName}";
         }
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var client = (Client)ClientsDG.SelectedItem;
+            var client = ClientsDG.SelectedItem as Client;
             if (client != null)
             {
                 ClientSelectChangedEvent(client);
                 selectedClientId = workEmployee.SelectedClient.ID;
-                userValue.Text = ClientsDG.SelectedItem.ToString();
             }
         }
 
@@ -64,7 +67,7 @@ namespace EmployeeApp.Views
                 return;
             }
             ClientsDG.Items.SortDescriptions.Clear();
-            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
+            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
             ClientsDG.Items.Refresh();
         }
 
@@ -111,6 +114,21 @@ namespace EmployeeApp.Views
         private void PutMoneyToMainAccBtn_Click(object sender, RoutedEventArgs e)
         {
             PutMoneyBtnEvent();
+        }
+
+        private void TransferMoneyFromMainAccBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TfrMoneyBtnEvent();
+        }
+
+        private void OpenDepoAccBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDepoAccBtnEvent();
+        }
+
+        private void CloseAccBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CloseDepoAccBtnEvent();
         }
     }
 }

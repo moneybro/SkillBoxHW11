@@ -11,6 +11,6 @@ namespace ClassLibrary.Interfaces
     public interface IStorageTransferMoney<in T> where T : BankAccBase
     {
         T addAcc { set; }
-        bool TransferMoney(decimal summ);
+        bool TransferMoney(decimal summ, DateTime dateTime);
     }
 }

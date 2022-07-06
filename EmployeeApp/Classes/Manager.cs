@@ -19,13 +19,15 @@ namespace EmployeeApp
             this.Age = default;
             this.Salary = default;
         }
-        public Manager(string fn, string ln, int age, int salary)
+        public Manager(int id, string fn, string ln, int age, int salary)
         {
+            this.Id = id;
             this.FirstName = fn;
             this.LastName = ln;
             this.Age = age;
             this.Salary = salary;
             this.BankAccActions = new BankAccActions();
+            this.TransactionsActions = new BankAccActions();
         }
         public override string Type => "manager";
         public override Client AddNewClient()
@@ -41,7 +43,7 @@ namespace EmployeeApp
                 {
                     createNewClientWin.Close();
                     base.SaveEditedClient(newClient, this);
-                    this.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath);
+                    this.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath, DateTime.Now);
                     return newClient;
                 }
                 else
@@ -54,13 +56,11 @@ namespace EmployeeApp
                 return null;
             }
         }
-        public override bool ChangeClient(Client _client)
+
+        public override void ChangeClient(Client _client)
         {
-            //Client client = getClientById(_client);
             EditClient editClient = new EditClient(_client, this);
-            if (editClient.ShowDialog() == true) _client = editClient.editedClient;
-            editClient.Close();
-            return base.SaveEditedClient(_client, this);
+            if (editClient.ShowDialog() == true) editClient.Close();
         }
         public override bool DeleteClient(Client client)
         {
