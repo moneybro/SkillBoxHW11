@@ -25,14 +25,14 @@ namespace ClassLibrary.Classes
             BankAccFabric<BankAccMain> newMainAcc = new BankAccFabric<BankAccMain>(new BankAccMain(clId));
             newMainAcc.acc.AccNumber = GetNewAccNumber();
             if (newMainAcc.acc.AccNumber == 0) return null;
-            if (SaveAcc(newMainAcc.acc, GlobalVarsAndActions.MainAccsRepoPath, DateTime.Now))
-            {
-                return newMainAcc.acc;
-            }
-            else
-            {
-                return null;
-            }
+            //if (SaveAcc(newMainAcc.acc, GlobalVarsAndActions.MainAccsRepoPath, DateTime.Now))
+            //{
+            //    return newMainAcc.acc;
+            //}
+            //else
+            //{
+            //    return null;
+            //}
             return newMainAcc.acc;
         }
 
@@ -41,7 +41,8 @@ namespace ClassLibrary.Classes
             BankAccFabric<BankAccDepo> newDepoAcc = new BankAccFabric<BankAccDepo>(new BankAccDepo(clId));
             newDepoAcc.acc.AccNumber = GetNewAccNumber();
             if (newDepoAcc.acc.AccNumber == 0) return null;
-            if (SaveAcc(newDepoAcc.acc, GlobalVarsAndActions.DepoAccsRepoPath, DateTime.Now))
+            DateTime now = DateTime.Now;
+            if (SaveAcc(newDepoAcc.acc, GlobalVarsAndActions.DepoAccsRepoPath, now, now))
             {
                 return newDepoAcc.acc;
             }
@@ -80,7 +81,7 @@ namespace ClassLibrary.Classes
         }
         #endregion
 
-        #region процедура сохранения в бд (в json)
+        #region сохранение в бд (в json)
         /// <summary>
         /// метод предназначен для определения типа счета, который закрывается и вызова метода сохранения счета
         /// </summary>
@@ -91,12 +92,12 @@ namespace ClassLibrary.Classes
         {
             if (acc.GetType() == typeof(BankAccMain))
             {
-                SaveAcc(acc, GlobalVarsAndActions.MainAccsRepoPath, dateTime);
+                SaveAcc(acc, GlobalVarsAndActions.MainAccsRepoPath, default, dateTime);
                 return true;
             }
             if (acc.GetType() == typeof(BankAccDepo))
             {
-                SaveAcc(acc, GlobalVarsAndActions.DepoAccsRepoPath, dateTime);
+                SaveAcc(acc, GlobalVarsAndActions.DepoAccsRepoPath, default, dateTime);
                 return true;
             }
             return false;
@@ -109,7 +110,7 @@ namespace ClassLibrary.Classes
         /// <param name="acc"></param>
         /// <param name="bankAccRepo"></param>
         /// <returns></returns>
-        public bool SaveAcc<T>(T acc, string bankAccRepo, DateTime dateTime) where T : BankAccForClient
+        public bool SaveAcc<T>(T acc, string bankAccRepo, DateTime createDateTime, DateTime updateDateTime) where T : BankAccForClient
         {
             var options = new JsonSerializerOptions
             {
@@ -120,7 +121,11 @@ namespace ClassLibrary.Classes
             {
                 using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
                 {
-                    acc.UpdateDate = dateTime;
+                    if (createDateTime == updateDateTime) // если дата создания и изменения равны, то это создание счета, если нет, то изменение
+                    {
+                        acc.CreateDate = createDateTime;
+                    } 
+                    acc.UpdateDate = updateDateTime;
                     System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
                 }
                 return true;
@@ -131,31 +136,27 @@ namespace ClassLibrary.Classes
             }
         }
         //старая
-        //public bool SaveAcc(BankAcc bankAcc)
+        //public bool SaveAcc<T>(T acc, string bankAccRepo, DateTime dateTime) where T : BankAccForClient
+        //        {
+        //            var options = new JsonSerializerOptions
+        //            {
+        //                WriteIndented = true, //фрматированный json
+        //                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+        //            };
+        //            try
+        //            {
+        //                using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
+        //                {
+        //                    acc.UpdateDate = dateTime;
+        //                    System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
+        //                }
+        //                return true;
+        //            }
+        //            catch
         //{
-        //    string bancAccRepo = DbPaths.getBankAccRepoPath();
-        //    var options = new JsonSerializerOptions
-        //    {
-        //        WriteIndented = true, //фрматированный json
-        //        Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
-        //    };
-        //    if (File.Exists(bancAccRepo))
-        //    {
-        //        using (FileStream fs = new FileStream(bancAccRepo, FileMode.Append))
-        //        {
-        //            System.Text.Json.JsonSerializer.SerializeAsync<BankAcc>(fs, bankAcc, options);
-        //        }
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        using (FileStream fs = new FileStream(bancAccRepo, FileMode.Create))
-        //        {
-        //            System.Text.Json.JsonSerializer.SerializeAsync<BankAcc>(fs, bankAcc, options);
-        //        }
-        //        return true;
-        //    }
         //    return false;
+        //}
+        //        }
         //}
         #endregion
 

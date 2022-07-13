@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassLibrary.Classes.Exceptions;
 
 namespace EmployeeApp.Views
 {
@@ -25,8 +26,10 @@ namespace EmployeeApp.Views
         List<Employee> employees = new List<Employee>();
         Employee man1 = new Manager(1, "Иванов", "Иван", 20, 10000);
         Employee man2 = new Manager(2, "Сидоров", "Сидор", 25, 10000);
+        Employee errUser = new Manager(5, "злоумышленный", "манагер", 999, 9999999);
         Employee cons1 = new Consultant(3, "Блондинка", "Элла", 18, 7000);
         Employee cons2 = new Consultant(4, "Блондинка2", "Элла2", 18, 7000);
+        
         Employee selectedEmployee;
         public AuthPage()
         {
@@ -35,18 +38,29 @@ namespace EmployeeApp.Views
             employees.Add(man2);
             employees.Add(cons1);
             employees.Add(cons2);
+            employees.Add(errUser);
             selectedEmployee = null;
             employeeCbox.ItemsSource = employees;
         }
 
         private void ClientBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(selectedEmployee != null)
+            try
             {
-                EmployeePage employeePage = new EmployeePage(selectedEmployee);
-                NavigationService.Navigate(employeePage);
+                if(selectedEmployee != null)
+                {
+                    if (selectedEmployee.Id == 5)
+                    {
+                        throw new EmployeeAppExeption(1);
+                    }
+                    EmployeePage employeePage = new EmployeePage(selectedEmployee);
+                    NavigationService.Navigate(employeePage);
+                }
             }
-            
+            catch(EmployeeAppExeption ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void employeeSelectionChanged(object sender, SelectionChangedEventArgs e)

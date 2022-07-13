@@ -35,15 +35,16 @@ namespace EmployeeApp
             Client newClient;
             long newClID = ClientCommonMethods.getNewClientId();
             EditClient createNewClientWin = new EditClient(newClID);
-            var newMainAccForNewClient = GetNewMainAcc(newClID);
             if (createNewClientWin.ShowDialog() == true)
             {
+                var newMainAccForNewClient = GetNewMainAcc(newClID);
                 newClient = createNewClientWin.editedClient;
                 if (newClient != null)
                 {
                     createNewClientWin.Close();
                     base.SaveEditedClient(newClient, this);
-                    this.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath, DateTime.Now);
+                    DateTime now = DateTime.Now;
+                    this.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath, now, now);
                     return newClient;
                 }
                 else
@@ -86,11 +87,6 @@ namespace EmployeeApp
         {
             return ClientCommonMethods.GetClientsAllData();
         }
-
-
-
-
-
         internal BankAccMain GetNewMainAcc(long clId)
         {
             return BankAccActions.GetNewMainAcc(clId);
@@ -107,22 +103,5 @@ namespace EmployeeApp
         {
             return BankAccActions.CloseAcc(accNum);
         }
-
-
-
-
-
-        //public override bool SaveAcc<T>(T acc, string repoPath)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        // реализовать абстрактные методы работы со счетами из базового метода
-
-
-
-
-
-
     }
 }

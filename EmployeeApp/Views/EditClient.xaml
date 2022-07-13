@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EmployeeApp.Views"
       mc:Ignorable="d" 
-      Title="Клиент" Height="261" Width="268">
+      Title="Клиент" Height="261" Width="268" Closed="Window_Closed">
 
     <Grid>
         <Grid.ColumnDefinitions>

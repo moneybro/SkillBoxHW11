@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using ClassLibrary.Classes;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,12 +26,12 @@ namespace EmployeeApp
             App app = new App();
             MainWindow window = new MainWindow();
 
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
-                .WriteTo.File("logs\\employeeAppLog.txt", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Information()
+            //    .WriteTo.File("logs\\employeeAppLog.txt", rollingInterval: RollingInterval.Day)
+            //    .CreateLogger();
 
-
+            GlobalVarsAndActions.SetLogger();
 
             app.Run(window);
         }

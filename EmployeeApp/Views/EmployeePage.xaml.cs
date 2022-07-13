@@ -67,7 +67,7 @@ namespace EmployeeApp.Views
                 return;
             }
             ClientsDG.Items.SortDescriptions.Clear();
-            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
+            //ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
             ClientsDG.Items.Refresh();
         }
 
@@ -75,7 +75,7 @@ namespace EmployeeApp.Views
         {
             AddNewClientEventSuccess();
             ClientsDG.Items.SortDescriptions.Clear();
-            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
+            //ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
             ClientsDG.Items.Refresh();
         }
 
@@ -86,7 +86,7 @@ namespace EmployeeApp.Views
                 MessageBox.Show("Не удалось удалить клиента.");
             }
             ClientsDG.Items.SortDescriptions.Clear();
-            ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
+            //ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
             ClientsDG.Items.Refresh();
         }
 
@@ -129,6 +129,11 @@ namespace EmployeeApp.Views
         private void CloseAccBtn_Click(object sender, RoutedEventArgs e)
         {
             CloseDepoAccBtnEvent();
+        }
+
+        private void clientAccsGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            bankAccsListBox.Height = clientAccsGrid.ActualHeight - 25;
         }
     }
 }

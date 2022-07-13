@@ -49,7 +49,7 @@ namespace ClientApp.Pages
 
         private void ClosePage(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            
         }
     }
 }

@@ -35,9 +35,9 @@ namespace ClassLibrary.Classes
         {
             return actions.SaveAcc(bankAcc, dateTime);
         }
-        public bool SaveAcc<T>(T bankAcc, string repoPath, DateTime dateTime) where T : BankAccForClient
+        public bool SaveAcc<T>(T bankAcc, string repoPath, DateTime createDateTime, DateTime updateDateTime) where T : BankAccForClient
         {
-            return actions.SaveAcc(bankAcc, repoPath, dateTime);
+            return actions.SaveAcc(bankAcc, repoPath, createDateTime, updateDateTime);
         }
         public bool CloseAcc(long accNum)
         {
