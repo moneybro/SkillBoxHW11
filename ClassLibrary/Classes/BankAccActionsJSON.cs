@@ -17,6 +17,9 @@ namespace ClassLibrary.Classes
         IBankAccActions,
         IBankAccGetByAccNum,
         ITransactionsActions
+        IBankNewAccGetNumber, 
+        ISaveAcc, 
+        IBankAccClose
     {
 
         #region создание главного и депозитного счета

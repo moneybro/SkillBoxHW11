@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Classes
+namespace ClassLibrary.Classes 
 {
+<<<<<<<< HEAD:ClassLibrary/Classes/BankAccBase.cs
     public abstract class BankAccBase
     {
         #region поля
+        long _clientId;
         long _accNumber;
         decimal _amount;
         bool _active;
@@ -20,6 +22,7 @@ namespace ClassLibrary.Classes
         #endregion
 
         #region свойства
+        public long ClientId { get { return _clientId; } set { _clientId = value; } }
         public long AccNumber
         {
             get { return _accNumber; }
@@ -36,5 +39,10 @@ namespace ClassLibrary.Classes
 
         #region методы
         #endregion
+========
+    public class BankAcc : BankAccBase
+    {
+        
+>>>>>>>> master:ClassLibrary/Classes/BankAcc.cs
     }
 }
