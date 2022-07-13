@@ -46,23 +46,28 @@
             <Button x:Name="addNewClientBtn" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" Margin="5,3,5,0" VerticalAlignment="Top" Click="addNewClientBtn_Click" Grid.Row="1" Width="113" Height="28" IsEnabled="{Binding AddNewClientBtnEnabled}"/>
             <Button x:Name="removeClientBtn" Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" Height="27" Margin="5,3,5,0" VerticalAlignment="Top" Width="113" Click="removeClientBtn_Click" Grid.Row="1" IsEnabled="{Binding RemoveClientBtnEnabled}"/>
         </StackPanel>
-        <Grid x:Name="clientAccsGrid" Grid.Column="0" Grid.Row="2">
+        <Grid x:Name="clientAccsGrid" Grid.Column="0" Grid.Row="2" SizeChanged="clientAccsGrid_SizeChanged" MinHeight="50">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30*"/>
                 <ColumnDefinition Width="70*"/>
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="bankAccsListBox" Grid.Column="0"  SelectionChanged="OnClientBankAccSelected" Margin="5,0,0,0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <GroupBox Header="{Binding Path=AccType}" VerticalAlignment="Center" Margin="5,0,10,5" Height="40" Background="AliceBlue">
-                            <TextBlock Text="{Binding Path=AccNumber}"/>
-                        </GroupBox>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="secondGridRow"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical">
+                <ListBox x:Name="bankAccsListBox" Grid.Column="0"  SelectionChanged="OnClientBankAccSelected" Margin="5,0,0,0" Height="180">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <GroupBox Header="{Binding Path=AccType}" VerticalAlignment="Center" Margin="5,0,10,5" Height="40" Background="AliceBlue">
+                                <TextBlock Text="{Binding Path=AccNumber}"/>
+                            </GroupBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBox Text="{Binding AccsSumm}" VerticalAlignment="Bottom" Margin="5,5,0,0"/>
+            </StackPanel>
             <ListBox x:Name="bankAccTransactions" Grid.Column="1" Margin="5,0,0,0">
             </ListBox>
-
 
             <!--<ListBox x:Name="bankAccTransactions" Grid.Column="1" Margin="5,0,0,0">
                 <ListBox.ItemTemplate>

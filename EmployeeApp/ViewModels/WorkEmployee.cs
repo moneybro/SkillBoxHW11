@@ -1,13 +1,16 @@
 ﻿using ClassLibrary.Classes;
 using ClassLibrary.Interfaces;
+using ClassLibrary.Methods.ExtensionMethods;
 using EmployeeApp.Views;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -18,7 +21,9 @@ namespace EmployeeApp.ViewModels
         Employee _employee;
         EmployeePage _employeePage;
         Client _selectedClient;
+        ObservableCollection<Client> _clients;
         public event PropertyChangedEventHandler PropertyChanged;
+        NotifyCollectionChangedEventArgs e;
         bool _addNewClientBtnEnabled = false;
         bool _removeClientBtnEnabled = false;
         bool _editClientBtnEnabled = false;
@@ -26,6 +31,7 @@ namespace EmployeeApp.ViewModels
         bool _tfrMoneyBtnEnabled = false;
         bool _openDepoAccBtnEnabled = false;
         bool _closeAccBtnEnabled = false;
+        decimal _accsSumm = 0;
         public bool AddNewClientBtnEnabled {
             get
             {
@@ -108,7 +114,19 @@ namespace EmployeeApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CloseAccBtnEnabled)));
             }
         }
-        public Client SelectedClient
+        public string AccsSumm
+        {
+            get
+            {
+                return $"Доступно: {_accsSumm.ToString()}";
+            }
+            set
+            {
+                decimal.TryParse(value, out _accsSumm);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.AccsSumm)));
+            }
+        }
+        public Client? SelectedClient
         {
             get
             {
@@ -116,7 +134,7 @@ namespace EmployeeApp.ViewModels
             }
             set
             {
-                _selectedClient = value;
+                selectClient(value);
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.SelectedClient)));
             }
         }
@@ -127,6 +145,7 @@ namespace EmployeeApp.ViewModels
         }
         internal EmployeePage EmployeePage { get; set; }
         public ObservableCollection<Client> Clients { get; set; } = new ObservableCollection<Client>();
+
         public ObservableCollection<BankAccForClient> ClientAccs { get; set; } = new ObservableCollection<BankAccForClient>();
         public ObservableCollection<BankAccTransactionFull> AccTransactions { get; set; } = new ObservableCollection<BankAccTransactionFull>();
 
@@ -135,7 +154,7 @@ namespace EmployeeApp.ViewModels
         internal decimal summStorage;
 
         public event Action<string> WorkEmployeeEvent;
-
+        private event Action AccsAmountSummChanged;
         internal WorkEmployee(Employee employee, EmployeePage employeePage)
         {
             _employee = employee;
@@ -149,6 +168,9 @@ namespace EmployeeApp.ViewModels
                 AddNewClientBtnEnabled = false;
                 RemoveClientBtnEnabled = false;
             }
+
+            
+            Clients = new ObservableCollection<Client>();
             GetClients();
             EditClientBtnEnabled = false;
             _employeePage.ClientSelectChangedEvent += selectClient;
@@ -160,53 +182,66 @@ namespace EmployeeApp.ViewModels
             _employeePage.AddNewClientEventSuccess += addNewClient;
             _employeePage.RemoveClientEventSuccess += removeClient;
 
-
             _employeePage.PutMoneyBtnEvent += putMoney;
             _employeePage.TfrMoneyBtnEvent += tfrMoney;
             _employeePage.OpenDepoAccBtnEvent += openDepoAcc;
             _employeePage.CloseDepoAccBtnEvent += closeDepoAcc;
 
             WorkEmployeeEvent += logInfo;
-
+            AccsAmountSummChanged += SetAccsAmountSumm;
 
             summToPutStorage = new SummToPutStorage();
         }
 
-        
         #region работа с клиентом
         private void GetClients()
         {
             Clients.Clear();
-            foreach (var item in _employee.GetClients())
+            var cls = _employee.GetClients();
+            cls.sortByLastName();
+            foreach (var item in cls)
             {
                 Clients.Add(item);
             }
         }
-        private void selectClient(Client client)
+        private void selectClient(Client? client)
         {
-            EditClientBtnEnabled = true;
-            OpenDepoAccBtnEnabled = false;
-            if (_employee.GetType() == typeof(Manager)) RemoveClientBtnEnabled = true;
-            SelectedClient = client;
+            
+            if (client == null)
+            {
+                EditClientBtnEnabled = false;
+                RemoveClientBtnEnabled = false;
+                OpenDepoAccBtnEnabled = false;
+            }
+            else
+            {
+                EditClientBtnEnabled = true;
+                if (_employee.GetType() == typeof(Manager)) RemoveClientBtnEnabled = true;
+                _selectedClient = client;
+
+                var accs = _employee.BankAccActions.GetClientAccs(client.ID);
+                ClientAccs.Clear();
+                foreach (var acc in accs)
+                {
+                    try
+                    {
+                        ClientAccs.Add((BankAccMain)acc);
+                    }
+                    catch
+                    {
+                        ClientAccs.Add((BankAccDepo)acc);
+                    }
+                }
+
+                OpenDepoAccBtnEnabled = accs.Count == 1 ? true : false;
+            }
+
+            AccsAmountSummChanged();
+
+            AccTransactions.Clear();
             PutMoneyBtnEnabled = false;
             TfrMoneyBtnEnabled = false;
             CloseAccBtnEnabled = false;
-
-            ClientAccs.Clear();
-            AccTransactions.Clear();
-            var accs = _employee.BankAccActions.GetClientAccs(client.ID);
-            foreach (var acc in accs)
-            {
-                try
-                {
-                    ClientAccs.Add((BankAccMain)acc);
-                }
-                catch
-                {
-                    ClientAccs.Add((BankAccDepo)acc);
-                }
-            }
-            if (accs.Count == 1) OpenDepoAccBtnEnabled = true;
         }
         private bool changeClient()
         {
@@ -234,6 +269,7 @@ namespace EmployeeApp.ViewModels
                 {
                     Clients.Remove(_selectedClient);
                     Clients.Add(editClient);
+                    GetClients();
                     WorkEmployeeEvent($"обновление данных клиента:  {changes}, обновил данные {_employee.Type} {_employee.LastName} {_employee.FirstName}");
                     return true;
                 }
@@ -255,9 +291,12 @@ namespace EmployeeApp.ViewModels
             var result = _employee.AddNewClient();
             if (result != null)
             {
-                WorkEmployeeEvent($"сотрудник {_employee.LastName} {_employee.FirstName} создал пользователя ID:{result.ID} {result.LastName} {result.FirstName}");
+                WorkEmployeeEvent($"{_employee.Type}  {_employee.LastName} {_employee.FirstName} создал пользователя ID:{result.ID} {result.LastName} {result.FirstName}");
                 WorkEmployeeEvent($"создан счет {_employee.BankAccActions.GetClientAccs(result.ID)[0].AccNumber}");
                 Clients.Add(result);
+                SelectedClient = result;
+                AccsAmountSummChanged();
+                GetClients();
             }
             else
             {
@@ -273,7 +312,7 @@ namespace EmployeeApp.ViewModels
                     WorkEmployeeEvent($"удаление клиента ID:{_selectedClient.ID} {_selectedClient.LastName} {_selectedClient.FirstName} , удалил {_employee.LastName} {_employee.FirstName}");
 
                     Clients.Remove(_selectedClient); // удаляем клиента из наблюдаемой коллекции
-
+                    //Clients.sortByLastName();
                     // закрываем все счета клиента
                     foreach (var acc in ClientAccs)
                     {
@@ -282,12 +321,26 @@ namespace EmployeeApp.ViewModels
                         _employee.BankAccActions.CloseAcc(acc.AccNumber);
                     }
                     ClientAccs.Clear();
+                    GetClients();
                     AccTransactions.Clear();
+                    SelectedClient = null;
                     return true;
                 }
                 else { return false; }
             }
             else { return false; }
+        }
+        private void SetAccsAmountSumm()
+        {
+            try
+            {
+                decimal summ = 0;
+                if (ClientAccs.Count == 2) summ = ClientAccs[0] + ClientAccs[1];
+                if (ClientAccs.Count == 1) summ = ClientAccs[0] + null;
+                if (ClientAccs.Count == 0) AccsSumm = "0";
+                AccsSumm = summ.ToString();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         #endregion
         #region работа с банковскими счетами
@@ -366,6 +419,7 @@ namespace EmployeeApp.ViewModels
                         selectedAcc.Amount -= summ;
                         MessageBox.Show($"Не удалось сохранить данные счета.");
                     }
+                    AccsAmountSummChanged();
                 }
             }
         }
@@ -435,7 +489,8 @@ namespace EmployeeApp.ViewModels
             if (result != null)
             {
                 ClientAccs.Add(result);
-                WorkEmployeeEvent($"сотрудник {_employee.LastName} {_employee.FirstName} создал для клиента ID:{_selectedClient.LastName} {_selectedClient.FirstName} депозитный счет №{result.AccNumber}");
+                WorkEmployeeEvent($"{_employee.Type}  {_employee.LastName} {_employee.FirstName} создал для клиента ID:{_selectedClient.ID} {_selectedClient.LastName} {_selectedClient.FirstName} депозитный счет №{result.AccNumber}");
+                OpenDepoAccBtnEnabled = false;
             }
         }
         private void closeDepoAcc()
@@ -444,11 +499,12 @@ namespace EmployeeApp.ViewModels
             {
                 if (_employee.BankAccActions.CloseAcc(selectedAcc.AccNumber))
                 {   
-                    WorkEmployeeEvent($"сотрудник {_employee.LastName} {_employee.FirstName} закрыл депозитный счет №{selectedAcc.AccNumber} клиента ID: {_selectedClient.LastName} {_selectedClient.FirstName}");
+                    WorkEmployeeEvent($"{_employee.Type} {_employee.LastName} {_employee.FirstName} закрыл депозитный счет №{selectedAcc.AccNumber} клиента ID:{_selectedClient.ID} {_selectedClient.LastName} {_selectedClient.FirstName}");
 
                     ClientAccs.Remove(selectedAcc);
                     selectedAcc = ClientAccs.FirstOrDefault();
                     selectedAccChanged(selectedAcc);
+                    OpenDepoAccBtnEnabled = true;
                     getAccTransactionsFull(selectedAcc);
                 }
             }
@@ -460,7 +516,7 @@ namespace EmployeeApp.ViewModels
         }
         private void logInfo(string msg)
         {
-            Log.Information(msg);
+            GlobalVarsAndActions.LogInfo(msg);
         }
         #endregion
     }

@@ -13,7 +13,7 @@ namespace ClassLibrary.Interfaces
         BankAccMain GetNewMainAcc(long clId);
         BankAccDepo GetNewDepoAcc(long clId);
         bool SaveAcc<T>(T acc, DateTime dateTime) where T : BankAccForClient;
-        bool SaveAcc<T>(T acc, string repoPath, DateTime dateTime) where T : BankAccForClient;
+        bool SaveAcc<T>(T acc, string repoPath, DateTime createDateTime, DateTime updateDateTime) where T : BankAccForClient;
         bool CloseAcc(long accNum);
         public List<BankAccForClient> GetAccTransactions(long accNum);
 

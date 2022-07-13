@@ -10,7 +10,7 @@ using ClassLibrary.Interfaces;
 
 namespace ClassLibrary.Classes
 {
-    public class Client : IEquatable<Client?>
+    public class Client : IEquatable<Client?>, IComparable<Client>
     {
         public long ID { get; set; }
         public string LastName { get; set; }
@@ -38,7 +38,6 @@ namespace ClassLibrary.Classes
             this.BankAccActions = new BankAccActions();
             this.TransactionsActions = new BankAccActions();
         }
-
         public override bool Equals(object? obj)
         {
             return Equals(obj as Client);
@@ -52,10 +51,18 @@ namespace ClassLibrary.Classes
         {
             return $"ФИО: {LastName} {FirstName} {Patronymic}, мобильный телефон: {MobPhone}";
         }
-
         public Client Clone()
         {
             return (Client)MemberwiseClone();
+        }
+        public int CompareTo(Client? other)
+        {
+            // A null value means that this object is greater.
+            if (other == null)
+                return 1;
+
+            else
+                return this.ID.CompareTo(other.ID);
         }
     }
 }

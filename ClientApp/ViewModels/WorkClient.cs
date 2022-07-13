@@ -181,11 +181,13 @@ namespace ClientApp.ViewModels
                 BankAccMain bankAcc = _workClient.BankAccActions.GetNewMainAcc(this.ID);
                 if (bankAcc != null)
                 {
+                    this.BankAccActions.SaveAcc(bankAcc, DateTime.Now);
                     accList.Add(bankAcc);
                     mainAcc = bankAcc;
                     refreshAccFields();
                     LogAction($"createNewMainAcc {mainAcc}");
                     MessageBox.Show($"Счет {this.MainAccNumber} открыт");
+                    GlobalVarsAndActions.LogInfo($"Счет {this.MainAccNumber} открыт");
                 }
                 else
                 {

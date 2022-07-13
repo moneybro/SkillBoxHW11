@@ -24,6 +24,12 @@ namespace ClassLibrary.Classes
             return this;
         }
 
+        public static decimal operator +(BankAccForClient? acc1, BankAccForClient? acc2)
+        {
+            decimal a1 = acc1 != null ? acc1.Amount : 0;
+            decimal a2 = acc2 != null ? acc2.Amount : 0;
+            return a1 + a2;
+        }
         #endregion
     }
 }

@@ -87,5 +87,10 @@ namespace EmployeeApp.Views
             }
             this.DialogResult = true;
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            //this.DialogResult = false;
+        }
     }
 }
