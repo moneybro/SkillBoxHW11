@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary.Classes;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,20 @@ namespace ClientApp
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            InitializeComponent();
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            App app = new App();
+            MainWindow window = new MainWindow();
+
+            GlobalVarsAndActions.SetLogger();
+
+            app.Run(window);
+        }
     }
 }

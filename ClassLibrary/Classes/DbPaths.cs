@@ -9,5 +9,6 @@ namespace ClassLibrary.Classes
     public class DbPaths
     {
         public static string getClientsPath() => GlobalVarsAndActions.ClientsRepoPath;
+        public static string getTransactionsPath() => GlobalVarsAndActions.TransactionsRepoPath;
     }
 }

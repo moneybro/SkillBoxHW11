@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    internal class BankAccFabric<T> where T : BankAcc
+    internal class BankAccFabric<T> where T : BankAccForClient
     {   
         public T acc;
         public BankAccFabric(T arg)

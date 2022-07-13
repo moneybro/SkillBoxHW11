@@ -1,12 +1,18 @@
 ﻿using GenericBankAcc;
 using Newtonsoft.Json;
-
+using Serilog;
 
 using System.Collections;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
+
+Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
 
 List<BankAcc> bankAccs = new List<BankAcc>();
 
@@ -17,6 +23,10 @@ AccFabric<BankAccDepo> acc4 = new AccFabric<BankAccDepo>(new BankAccDepo(111, 11
 AccFabric<BankAccMain> acc5 = new AccFabric<BankAccMain>(new BankAccMain(222, 222, 2220, true, DateTime.Now, DateTime.Now, "qqq") { });
 AccFabric<BankAccMain> acc6 = new AccFabric<BankAccMain>(new BankAccMain(222, 222, 2220, true, DateTime.Now, DateTime.Now, "qqq") { });
 AccFabric<BankAccMain> acc7 = new AccFabric<BankAccMain>(new BankAccMain(222, 222, 2220, true, DateTime.Now, DateTime.Now, "qqq") { });
+
+Log.Information($"log event /r/n{acc7.acc}");
+Log.Information($"log event /r{acc7.acc}");
+Log.Information($"log event /r{acc7.acc}");
 
 acc1.acc.PushMoneyToAcc(1000);
 acc5.acc.PushMoneyToAcc(1000);
@@ -72,7 +82,24 @@ foreach (BankAcc acc in bankAccs)
 
 #endregion
 
+Console.WriteLine(new String('-', 50));
+Console.WriteLine("--- kontrvar part ----");
 
+Console.WriteLine($"acc1 amount = {acc1.acc.Amount}");
+Console.WriteLine($"acc5 amount = {acc5.acc.Amount}");
+
+IStorageTransferMoney<BankAcc> transferStorage = new BankAccTransferStorage<Bank>();
+
+transferStorage.addAcc = acc5.acc;
+transferStorage.addAcc = acc1.acc;
+
+transferStorage.addAcc = acc5.acc;
+transferStorage.TransferMoney(100);
+
+Console.WriteLine("transfer 100");
+
+Console.WriteLine($"acc1 amount = {acc1.acc.Amount}");
+Console.WriteLine($"acc5 amount = {acc5.acc.Amount}");
 
 List<BankAcc> getAllAccs()
 {

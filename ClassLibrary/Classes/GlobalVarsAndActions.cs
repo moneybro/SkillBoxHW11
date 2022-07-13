@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace ClassLibrary.Classes
 {
     public static class GlobalVarsAndActions
     {
-        static string _clientsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\clients.json";
-        static string _mainAccsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\mainAccs.json";
-        static string _depoAccsRepoPath = @"d:\repos\SkillBoxHW13\Repositories\depoAccs.json";
-        
+        static string mp = @"d:\repos\_BankAppSkillBoxHW\Repositories\";
+        static string _clientsRepoPath = $"{mp}clients.json";
+        static string _mainAccsRepoPath = $"{mp}mainAccs.json";
+        static string _depoAccsRepoPath = $"{mp}depoAccs.json";
+        static string _transactionsRepoPath = $"{mp}transactions.json";
+        static string _logsPath = @"d:\repos\_BankAppSkillBoxHW\log\";
+
         public static string ClientsRepoPath
         {
             get { return _clientsRepoPath;}
@@ -44,6 +49,37 @@ namespace ClassLibrary.Classes
                     return _depoAccsRepoPath;
                 }
             }
+        }
+        public static string TransactionsRepoPath
+        {
+            get
+            {
+                if (File.Exists(_transactionsRepoPath))
+                {
+                    return _transactionsRepoPath;
+                }
+                else
+                {
+                    File.Create(_transactionsRepoPath).Close();
+                    return _transactionsRepoPath;
+                }
+            }
+        }
+        
+        public static void SetLogger()
+        {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File($"{_logsPath}\\AppLog.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+        }
+        public static void LogInfo(string msg)
+        {
+            Log.Information(msg);
+        }
+        public static void LogAlarm(string msg)
+        {
+            Log.Error(msg);
         }
     }
 }

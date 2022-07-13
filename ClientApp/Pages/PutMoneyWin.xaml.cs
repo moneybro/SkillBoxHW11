@@ -1,4 +1,5 @@
-﻿using ClientApp.ViewModels;
+﻿using ClassLibrary.Interfaces;
+using ClientApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,18 @@ namespace ClientApp.Pages
         decimal putSumm = 0;
         public string AccNum { get; set; }
         public string Balance { get; set; }
-        WorkClient _workClient;
+        SummToPutStorage _summToPutStorage;
         internal PutMoneyWin(
             string accNum,
             string balance,
-            WorkClient workClient
+            SummToPutStorage summToPutStorage
             )
         {
             InitializeComponent();
             this.DataContext = this;
             AccNum = accNum;
             Balance = balance;
-            _workClient = workClient;
+            _summToPutStorage = summToPutStorage;
         }
 
         private void putMon(object sender, RoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace ClientApp.Pages
             decimal.TryParse(summTB.Text, out putSumm);
             if (putSumm > 0)
             {
-                _workClient.summ = putSumm;
+                _summToPutStorage.summ = putSumm;
                 this.DialogResult = true;
             }
         }

@@ -25,12 +25,17 @@ namespace ClientApp.Pages
     {
         ClientPage? cp;
         WorkClient workClient;
+        public event Action OpenMainAccBtnClicked;
+        public event Action OpenDepoAccBtnClicked;
+        public event Action<BankAccForClient> CloseAccBtnClicked;
+        public event Action<object> AddMoneyBtnClicked;
+        public event Action<object> TfrMoneyBtnClicked;
 
         public ClientPage(Client client)
         {
             cp = this;
             InitializeComponent();
-            workClient = new WorkClient(client);
+            workClient = new WorkClient(client, this);
             this.DataContext = workClient;
             ClientFIO.Text = workClient.fullName;
         }
@@ -42,132 +47,28 @@ namespace ClientApp.Pages
         }
         private void OpenMainAcc(object sender, RoutedEventArgs e)
         {
-            if (workClient.mainAcc == null)
-            {
-                workClient.createNewMainAcc();
-                MessageBox.Show($"Счет {workClient.MainAccNumber} открыт");
-            }
-            else
-            {
-                MessageBox.Show("Главный счет уже открыт, можно иметь только 1 главный счет");
-            }
+            OpenMainAccBtnClicked();
         }
-        private void CloseMianAcc(object sender, RoutedEventArgs e)
+        private void CloseMainAcc(object sender, RoutedEventArgs e)
         {
-            var accNumToClose = workClient.MainAccNumber;
-            if (workClient.mainAcc != null && workClient.closeAcc(workClient.mainAcc))
-            {
-                MessageBox.Show($"Счет {accNumToClose} закрыт.");
-            }
-            else
-            {
-                MessageBox.Show("Счет отсутствует.");
-            }
+            CloseAccBtnClicked(workClient.mainAcc);
         }
         private void OpenDepoAcc(object sender, RoutedEventArgs e)
         {
-            if (workClient.depoAcc == null)
-            {
-                workClient.createNewDepoAcc();
-                MessageBox.Show($"Счет {workClient.DepoAccNumber} открыт");
-            }
-            else
-            {
-                if (workClient.accList.Where(a => a.GetType() == typeof(BankAccMain)).Count() > 0)
-                {
-                    MessageBox.Show("Депозитный счет уже открыт, можно иметь только 1 депозитный счет");
-                }
-            }
+            OpenDepoAccBtnClicked();
         }
         private void CloseDepoAcc(object sender, RoutedEventArgs e)
         {
-            string accNumToCloseString = workClient.DepoAccNumber;
-            if (workClient.depoAcc != null && workClient.closeAcc(workClient.depoAcc))
-            {
-                MessageBox.Show($"Счет {accNumToCloseString} закрыт.");
-            }
-            else
-            {
-                MessageBox.Show("Счет отсутствует.");
-            }
+            CloseAccBtnClicked(workClient.depoAcc);
         }
-        private void AddMoneyBtn_Click(object sender, RoutedEventArgs e)
+
+        private void PutMoneyToMainAccBtn_Click(object sender, RoutedEventArgs e)
         {
-            var s = (Button)sender;
-            var senderName = s.Name;
-            string accNum = "",
-                accAmount = "";
-            BankAcc? accToCharge = new BankAcc();
-            if (senderName == "PutMoneyToMainAccBtn")
-            {
-                if (workClient.mainAcc == null) { return; }
-                accToCharge = workClient.mainAcc;
-                accNum = workClient.MainAccNumber;
-                accAmount = workClient.MainAccAmount;
-            }
-            if (senderName == "PutMoneyToDepoAccBtn")
-            {
-                if (workClient.depoAcc == null) { return; }
-                accToCharge = workClient.depoAcc;
-                accNum = workClient.DepoAccNumber;
-                accAmount = workClient.DepoAccAmount;
-            }
-            PutMoneyWin putMoneyWin = new PutMoneyWin(accNum, accAmount, workClient);
-                if(putMoneyWin.ShowDialog() == true)
-            {
-                if (workClient.pushMoneyToAcc(accToCharge))
-                {
-                    MessageBox.Show("Пополнение выполнено успешно.");
-                }
-            }
+            AddMoneyBtnClicked(sender);
         }            
         private void TransferMoneyBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (workClient.mainAcc != null && workClient.depoAcc != null)
-            {
-                var s = (Button)sender;
-                var senderName = s.Name;
-                string acc1Num = "",
-                    acc2Num = "",
-                    acc1Amount = "",
-                    acc2Amount = "";
-                BankAcc accSource = new BankAcc();
-                BankAcc accTarget = new BankAcc();
-                if (senderName == "TransferMoneyFromMainAccBtn")
-                {
-                    acc1Num = workClient.MainAccNumber;
-                    acc1Amount = workClient.MainAccAmount;
-                    acc2Num = workClient.DepoAccNumber;
-                    acc2Amount = workClient.DepoAccAmount;
-                    accSource = workClient.mainAcc;
-                    accTarget = workClient.depoAcc;
-                }
-                if (senderName == "TransferMoneyFromDepoAccBtn")
-                {
-                    acc1Num = workClient.DepoAccNumber;
-                    acc1Amount = workClient.DepoAccAmount;
-                    acc2Num = workClient.MainAccNumber;
-                    acc2Amount = workClient.MainAccAmount;
-                    accSource = workClient.depoAcc;
-                    accTarget = workClient.mainAcc;
-                }
-
-                MoneyTransferWin moneyTransferWin = new MoneyTransferWin(
-                    acc1Num,
-                    acc1Amount,
-                    acc2Num,
-                    acc2Amount,
-                    workClient
-                    );
-                if (moneyTransferWin.ShowDialog() == true)
-                {
-                    if (workClient.tfrMoney(accSource, accTarget))
-                    {
-                        MessageBox.Show("Перевод выполнен успешно.");
-                    }
-                }
-            }
-            
+            TfrMoneyBtnClicked(sender);
         }        
     }
 }

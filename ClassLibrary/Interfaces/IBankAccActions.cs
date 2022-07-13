@@ -7,44 +7,15 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Interfaces
 {
-    internal interface IBankAccActions
+    public interface IBankAccActions
     {
-        internal interface IBankAccClose
-        {
-            public bool CloseAcc(long accNum);
-        }
+        List<BankAccForClient> GetClientAccs(long clId);
+        BankAccMain GetNewMainAcc(long clId);
+        BankAccDepo GetNewDepoAcc(long clId);
+        bool SaveAcc<T>(T acc, DateTime dateTime) where T : BankAccForClient;
+        bool SaveAcc<T>(T acc, string repoPath, DateTime createDateTime, DateTime updateDateTime) where T : BankAccForClient;
+        bool CloseAcc(long accNum);
+        public List<BankAccForClient> GetAccTransactions(long accNum);
 
-        internal interface IGetAllBankAccs
-        {
-            List<BankAcc> GetAllBankAccs();
-        }
-        public interface IBankAccCreateNew
-        {
-            BankAcc GetNewBankAcc();
-        }
-        public interface IBankAccCreateNewMain
-        {
-            BankAccMain GetNewMainAcc(long clId);
-        }
-        interface IBankAccGetNumberById
-        {
-            BankAcc GetAccNumberById(long accNumber);
-        }
-        public interface IBankNewAccGetNumber
-        {
-            public long GetNewAccNumber();
-        }
-        internal interface IGetClientAccs
-        {
-            List<BankAcc> GetClientAccs(long clId);
-        }
-        internal interface ISaveAcc
-        {
-            bool SaveAcc<T>(T acc, string repoPath);
-        }
-        internal interface ITransferMoney
-        {
-            bool transferMoney<T>(T acc1, T acc2, decimal summ) where T : BankAcc;
-        }
     }
 }

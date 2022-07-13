@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using ClassLibrary.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 namespace ClassLibrary.Classes
 {
-    public class BankAccDepo : BankAcc
+    public class BankAccDepo : BankAccForClient, IPushMoney<BankAccForClient>
     {
+        public string AccType => "Depo";
         bool _canAddMoney;
 
         /// <summary>
@@ -54,6 +54,11 @@ namespace ClassLibrary.Classes
 
         public bool CanAddMoney { get { return _canAddMoney; } set { _canAddMoney = value; } }
 
+        public BankAccForClient PushMoneyToAcc(decimal summ)
+        {
+            this.Amount += summ;
+            return this;
+        }
         public override string ToString()
         {
             return $"ClientId: {ClientId}\n" +

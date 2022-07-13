@@ -13,8 +13,10 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Classes
 {
-    public class BankAccActionsJSON : IBankAccActions
-        
+    public class BankAccActionsJSON :
+        IBankAccActions,
+        IBankAccGetByAccNum,
+        ITransactionsActions
     {
 
         #region создание главного и депозитного счета
@@ -23,23 +25,24 @@ namespace ClassLibrary.Classes
             BankAccFabric<BankAccMain> newMainAcc = new BankAccFabric<BankAccMain>(new BankAccMain(clId));
             newMainAcc.acc.AccNumber = GetNewAccNumber();
             if (newMainAcc.acc.AccNumber == 0) return null;
-            if (SaveAcc(newMainAcc.acc, GlobalVarsAndActions.MainAccsRepoPath))
-            {
-                return newMainAcc.acc;
-            }
-            else
-            {
-                return null;
-            }
+            //if (SaveAcc(newMainAcc.acc, GlobalVarsAndActions.MainAccsRepoPath, DateTime.Now))
+            //{
+            //    return newMainAcc.acc;
+            //}
+            //else
+            //{
+            //    return null;
+            //}
             return newMainAcc.acc;
         }
 
-        internal BankAccDepo GetNewDepoAcc(long clId)
+        public BankAccDepo GetNewDepoAcc(long clId)
         {
             BankAccFabric<BankAccDepo> newDepoAcc = new BankAccFabric<BankAccDepo>(new BankAccDepo(clId));
             newDepoAcc.acc.AccNumber = GetNewAccNumber();
             if (newDepoAcc.acc.AccNumber == 0) return null;
-            if (SaveAcc(newDepoAcc.acc, GlobalVarsAndActions.DepoAccsRepoPath))
+            DateTime now = DateTime.Now;
+            if (SaveAcc(newDepoAcc.acc, GlobalVarsAndActions.DepoAccsRepoPath, now, now))
             {
                 return newDepoAcc.acc;
             }
@@ -49,15 +52,20 @@ namespace ClassLibrary.Classes
             }
             return newDepoAcc.acc;
         }
+
+        internal BankAccForClient GetAccNumberById(long v, object accNum)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region получение нового номера счета для создания нового банковского счета
-        
+
         /// <summary>
         /// получение нового номера счета для создания нового банковского счета
         /// </summary>
         /// <returns>номер счета</returns>        
-        public long GetNewAccNumber()
+        long GetNewAccNumber()
         {
             var accs = GetAllBankAccs();
             long newAccNumber = 0;
@@ -73,23 +81,23 @@ namespace ClassLibrary.Classes
         }
         #endregion
 
-        #region процедура сохранения в бд (в json)
+        #region сохранение в бд (в json)
         /// <summary>
         /// метод предназначен для определения типа счета, который закрывается и вызова метода сохранения счета
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="acc"></param>
         /// <returns>истина если сохранение прошло успешно, ложь - сохранение не удалось</returns>
-        public bool SaveAcc<T>(T acc)
+        public bool SaveAcc<T>(T acc, DateTime dateTime) where T : BankAccForClient
         {
             if (acc.GetType() == typeof(BankAccMain))
             {
-                SaveAcc(acc, GlobalVarsAndActions.MainAccsRepoPath);
+                SaveAcc(acc, GlobalVarsAndActions.MainAccsRepoPath, default, dateTime);
                 return true;
             }
             if (acc.GetType() == typeof(BankAccDepo))
             {
-                SaveAcc(acc, GlobalVarsAndActions.DepoAccsRepoPath);
+                SaveAcc(acc, GlobalVarsAndActions.DepoAccsRepoPath, default, dateTime);
                 return true;
             }
             return false;
@@ -102,7 +110,7 @@ namespace ClassLibrary.Classes
         /// <param name="acc"></param>
         /// <param name="bankAccRepo"></param>
         /// <returns></returns>
-        public bool SaveAcc<T>(T acc, string bankAccRepo)
+        public bool SaveAcc<T>(T acc, string bankAccRepo, DateTime createDateTime, DateTime updateDateTime) where T : BankAccForClient
         {
             var options = new JsonSerializerOptions
             {
@@ -113,6 +121,11 @@ namespace ClassLibrary.Classes
             {
                 using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
                 {
+                    if (createDateTime == updateDateTime) // если дата создания и изменения равны, то это создание счета, если нет, то изменение
+                    {
+                        acc.CreateDate = createDateTime;
+                    } 
+                    acc.UpdateDate = updateDateTime;
                     System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
                 }
                 return true;
@@ -123,31 +136,27 @@ namespace ClassLibrary.Classes
             }
         }
         //старая
-        //public bool SaveAcc(BankAcc bankAcc)
+        //public bool SaveAcc<T>(T acc, string bankAccRepo, DateTime dateTime) where T : BankAccForClient
+        //        {
+        //            var options = new JsonSerializerOptions
+        //            {
+        //                WriteIndented = true, //фрматированный json
+        //                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+        //            };
+        //            try
+        //            {
+        //                using (FileStream fs = new FileStream(bankAccRepo, FileMode.Append))
+        //                {
+        //                    acc.UpdateDate = dateTime;
+        //                    System.Text.Json.JsonSerializer.SerializeAsync<T>(fs, acc, options);
+        //                }
+        //                return true;
+        //            }
+        //            catch
         //{
-        //    string bancAccRepo = DbPaths.getBankAccRepoPath();
-        //    var options = new JsonSerializerOptions
-        //    {
-        //        WriteIndented = true, //фрматированный json
-        //        Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
-        //    };
-        //    if (File.Exists(bancAccRepo))
-        //    {
-        //        using (FileStream fs = new FileStream(bancAccRepo, FileMode.Append))
-        //        {
-        //            System.Text.Json.JsonSerializer.SerializeAsync<BankAcc>(fs, bankAcc, options);
-        //        }
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        using (FileStream fs = new FileStream(bancAccRepo, FileMode.Create))
-        //        {
-        //            System.Text.Json.JsonSerializer.SerializeAsync<BankAcc>(fs, bankAcc, options);
-        //        }
-        //        return true;
-        //    }
         //    return false;
+        //}
+        //        }
         //}
         #endregion
 
@@ -165,7 +174,7 @@ namespace ClassLibrary.Classes
             else
             {
                 accToClose.Active = false;
-                if (SaveAcc(accToClose)) return true;
+                if (SaveAcc(accToClose, DateTime.Now)) return true;
                 else return false;
                 return true;
             }
@@ -178,9 +187,9 @@ namespace ClassLibrary.Classes
         /// получение всех счетов, независимо от типа
         /// </summary>
         /// <returns>список счетов</returns>
-        public List<BankAcc> GetAllBankAccs()
+        List<BankAccForClient> GetAllBankAccs()
         {
-            List<BankAcc> accs = new List<BankAcc>();
+            List<BankAccForClient> accs = new List<BankAccForClient>();
             accs.AddRange(getAllMainAccs());
             accs.AddRange(getAllDepoAccs());
             return accs;
@@ -242,9 +251,9 @@ namespace ClassLibrary.Classes
         /// </summary>
         /// <param name="clId"></param>
         /// <returns></returns>
-        public List<BankAcc> GetClientAccs(long clId)
+        public List<BankAccForClient> GetClientAccs(long clId)
         {
-            List<BankAcc> bankAccList = new List<BankAcc>();
+            List<BankAccForClient> bankAccList = new List<BankAccForClient>();
 
             var clientAccs = GetAllBankAccs()
                 .Where(a => a.ClientId == clId)
@@ -265,5 +274,100 @@ namespace ClassLibrary.Classes
             return bankAccList;
         }
         #endregion
+
+        #region получение активного счета по его номеру
+        public BankAccForClient GetAccByNum(long accNumber)
+        {
+            var accs = GetAllBankAccs().Where(a => a.AccNumber == accNumber);
+            foreach (var acc in accs.Reverse())
+            {
+                if (acc.Active == true)
+                {
+                    return acc;
+                }
+                else continue;
+            }
+            return null;
+        }
+        #endregion
+
+        #region получение перечня движений по счету
+        public List<BankAccForClient> GetAccTransactions(long accNum)
+        {
+            var allAccs = GetAllBankAccs();
+            var result = allAccs.Where(a => a.AccNumber == accNum).ToList();
+            return result;
+        }
+
+        #endregion
+
+
+
+
+
+        #region сохранение транзакции (скорее всего будет отдельный интерфейс чуть позже)
+
+        public bool SaveTransaction(BankAccTransaction tr)
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true, //фрматированный json
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+            };
+            try
+            {
+                string transactionsRepo = DbPaths.getTransactionsPath();
+                using (FileStream fs = new FileStream(transactionsRepo, FileMode.Append))
+                {
+                    System.Text.Json.JsonSerializer.SerializeAsync(fs, tr, options);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region получение всех транзакций
+        List<BankAccTransaction> getAllTransactions()
+        {
+            List<BankAccTransaction> trs = new List<BankAccTransaction>();
+            string trsRepo = DbPaths.getTransactionsPath();
+            using (var sr = new StreamReader(trsRepo, new UTF8Encoding()))
+            {
+                var ser = new Newtonsoft.Json.JsonSerializer();
+                var reader = new JsonTextReader(sr);
+                while (reader.Read())
+                {
+                    reader.CloseInput = false;
+                    reader.SupportMultipleContent = true;
+
+                    var trsObj = ser.Deserialize<BankAccTransaction>(reader);
+                    trs.Add(trsObj);
+                }
+            }
+            return trs;
+        }
+        #endregion
+
+        public List<BankAccTransactionFull> GetBankAccTransactionsFull(long accNum)
+        {
+            List<BankAccTransactionFull> trsf = new List<BankAccTransactionFull>();
+            var accs = GetAccTransactions(accNum);
+            var trs = getAllTransactions();
+            foreach (var acc in accs)
+            {
+                foreach (var tr in trs)
+                {
+                    if ((tr.AccNumberSource == accNum || tr.AccNumberTarget == accNum) && acc.UpdateDate == tr.Date)
+                    {
+                        trsf.Add(new BankAccTransactionFull() { Acc = acc, Tr = tr });
+                    }
+                }
+            }
+            return trsf;
+        }
     }
 }

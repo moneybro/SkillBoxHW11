@@ -1,0 +1,38 @@
+﻿<Window x:Class="EmployeeApp.Views.EditClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EmployeeApp.Views"
+      mc:Ignorable="d" 
+      Title="Клиент" Height="261" Width="268" Closed="Window_Closed">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="177"/>
+                <RowDefinition Height="167"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="133"/>
+                <ColumnDefinition Width="134*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Фаимлия" Margin="10,10,10,0" VerticalAlignment="Top" Height="26" Grid.Column="0"/>
+            <Label Content="Имя" Margin="10,36,10,0" VerticalAlignment="Top" Height="26" Grid.Column="0"/>
+            <Label Content="Отчество" Margin="10,62,10,0" VerticalAlignment="Top" Height="26" Grid.Column="0"/>
+            <Label Content="Моб. тел." Margin="10,88,10,0" VerticalAlignment="Top" Height="26" Grid.Column="0"/>
+            <Label Content="Серия паспорта" Margin="10,115,10,0" VerticalAlignment="Top" Height="26" Grid.Column="0"/>
+            <Label Content="Номер паспорта" Margin="10,141,10,0" VerticalAlignment="Top" Height="26" Grid.Column="0"/>
+            <TextBox x:Name="EditLastName" Grid.Column="1" Margin="1,10,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+            <TextBox x:Name="EditName" Grid.Column="1" Margin="1,36,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+            <TextBox x:Name="EditPatronymic" Grid.Column="1" Margin="1,62,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+            <TextBox x:Name="EditMobPhone" Grid.Column="1" Margin="1,88,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+            <TextBox x:Name="EditPaspSeria" Grid.Column="1" Margin="1,114,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+            <TextBox x:Name="EditPaspNum" Grid.Column="1" Margin="1,140,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+            <Button Content="Сохранить" Margin="10,10,13,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="Button_Click" Height="42"/>
+        </Grid>
+    </Grid>
+</Window>

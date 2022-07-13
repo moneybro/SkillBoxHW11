@@ -8,5 +8,6 @@ namespace GenericBankAcc
 {
     public class Bank
     {
+        public decimal Amount { get; set; }
     }
 }
