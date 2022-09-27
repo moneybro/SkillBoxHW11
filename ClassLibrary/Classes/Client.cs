@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Unicode;
 using ClassLibrary.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClassLibrary.Classes
 {
@@ -23,7 +24,9 @@ namespace ClassLibrary.Classes
         public string? ChangeType { get; set; }
         public string? EmployeeType { get; set; }
         public string? Status { get; set; } // активен = active, удален = deleted и т.п.
+        [NotMapped]
         public IBankAccActions BankAccActions { get; set; }
+        [NotMapped]
         public ITransactionsActions TransactionsActions { get; set; }
 
         // пустой конструктор для десирализации, так как если не прописать инициализацию интерфейсов, то оно ругается на то, что нельзя создать объект интерфейса или абстрактного класса

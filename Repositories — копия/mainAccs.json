@@ -1,0 +1,2072 @@
+{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 1000,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 11111,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:08:22.5817004+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 11333,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:09:31.9904087+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:11:20.2634943+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 23154,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:13:33.1094208+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:18:51.5677714+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 10000,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:30:37.2989223+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 10000,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:31:22.6718602+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 9889,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:35:05.7310025+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 9778,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:36:30.5781402+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 1,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-11T11:52:37.1669242+03:00",
+  "UpdateDate": "2022-06-14T19:41:11.2389544+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 4,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:41:17.8551089+03:00",
+  "UpdateDate": "2022-06-14T19:41:17.8556065+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 4,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:41:17.8551089+03:00",
+  "UpdateDate": "2022-06-14T19:46:03.2767583+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 6,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:46:09.1072894+03:00",
+  "UpdateDate": "2022-06-14T19:46:09.1078232+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 6,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:46:09.1072894+03:00",
+  "UpdateDate": "2022-06-14T19:47:23.5149602+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-06-14T19:47:25.9461461+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10000,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-06-14T19:47:47.1689342+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 8956,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-06-14T19:48:01.2134741+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-06-24T16:13:19.7021685+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-06-24T17:02:46.3518304+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2134,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-06-24T17:04:01.4981403+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-06-24T17:04:29.8265342+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-06-24T17:04:36.9842223+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 16,
+  "AccNumber": 21,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-26T10:41:21.570128+03:00",
+  "UpdateDate": "2022-06-26T10:41:21.6799864+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 16,
+  "AccNumber": 21,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-26T10:41:21.570128+03:00",
+  "UpdateDate": "2022-06-26T10:41:27.3038563+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 11956,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-06-26T12:51:02.0372353+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 9956,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-06-26T12:54:57.9065617+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 565,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-06-26T19:03:45.3253122+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 17,
+  "AccNumber": 22,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-27T15:31:31.5701593+03:00",
+  "UpdateDate": "2022-06-27T15:31:31.5718151+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 2222,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-06-27T17:29:07.2103955+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 2322,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-06-27T17:38:24.8596883+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 2622,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-06-27T17:43:32.4986655+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 5652,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-06-27T17:49:12.7092286+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10211,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-06-27T17:49:37.2530189+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 676,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-07-01T15:24:39.878205+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 898,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-07-01T16:40:24.6843419+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2356,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-01T16:49:48.3407635+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2479,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-01T17:00:25.7072717+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2590,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-01T17:03:14.3475091+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 8985,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-07-01T17:30:33.9670158+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 1453,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-07-01T17:31:56.4051623+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 2341,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-07-01T17:33:10.142869+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 9873,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-07-01T17:33:46.3935607+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10334,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-01T18:09:11.3893513+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10556,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-01T18:13:59"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10656,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-01T18:16:31"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10767,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-01T18:17:29"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10878,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-01T18:18:25.2947792+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10378,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T15:25:29.1200102+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2600,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T15:51:19.7726846+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 18,
+  "Amount": 2452,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:46.3511034+03:00",
+  "UpdateDate": "2022-07-02T15:56:09.1197667+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2477,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T16:04:57.148245+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 3032,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T16:06:37.5262297+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 2832,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T16:43:28.312946+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 3182,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T18:19:46.6984234+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 3682,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T18:20:09.4108167+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 16,
+  "Amount": 3582,
+  "Active": true,
+  "CreateDate": "2022-06-24T16:13:19.565056+03:00",
+  "UpdateDate": "2022-07-02T18:25:10.7458812+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10478,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:25:53.207286+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10478,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:26:19.4439256+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10578,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:26:43.1631087+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10011,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:32:56.2534639+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10311,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:34:06.1472629+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 9811,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:37:48.2716528+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 10255,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:40:09.9017125+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 11032,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:41:50.8973694+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 11587,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-02T18:42:39.8086053+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 17,
+  "AccNumber": 25,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-03T19:59:58.5005864+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 17,
+  "AccNumber": 26,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:25:24.5525501+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 17,
+  "AccNumber": 26,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:25:50.2178696+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 18,
+  "AccNumber": 27,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:26:51.6231097+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 18,
+  "AccNumber": 27,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:27:00.1008122+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 19,
+  "AccNumber": 28,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:27:31.3735741+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 19,
+  "AccNumber": 28,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:27:39.216648+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 20,
+  "AccNumber": 29,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:28:52.6329243+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 20,
+  "AccNumber": 29,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T15:29:01.3129329+03:00"
+}{
+  "ClientId": 20,
+  "AccNumber": 29,
+  "Amount": 111,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:03:26.8969424+03:00"
+}{
+  "ClientId": 20,
+  "AccNumber": 29,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:10:54.717769+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 21,
+  "AccNumber": 30,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:33:49.2906759+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 21,
+  "AccNumber": 30,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:34:13.4230293+03:00"
+}{
+  "ClientId": 21,
+  "AccNumber": 30,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:36:43.4080399+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 22,
+  "AccNumber": 31,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:38:27.423035+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 22,
+  "AccNumber": 31,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:38:31.2445374+03:00"
+}{
+  "ClientId": 22,
+  "AccNumber": 31,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:38:36.4496997+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 23,
+  "AccNumber": 32,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:39:39.3155818+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 23,
+  "AccNumber": 32,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:39:43.7578551+03:00"
+}{
+  "ClientId": 23,
+  "AccNumber": 32,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:40:04.1946894+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 24,
+  "AccNumber": 33,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:41:07.8062358+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 24,
+  "AccNumber": 33,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:41:13.0962893+03:00"
+}{
+  "ClientId": 24,
+  "AccNumber": 33,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:44:53.9884056+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 25,
+  "AccNumber": 34,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:45:08.0586374+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 25,
+  "AccNumber": 34,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:45:11.9774406+03:00"
+}{
+  "ClientId": 25,
+  "AccNumber": 34,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:45:41.6151937+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 26,
+  "AccNumber": 35,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:46:25.8208879+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 26,
+  "AccNumber": 35,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:46:31.2973001+03:00"
+}{
+  "ClientId": 26,
+  "AccNumber": 35,
+  "Amount": 34523452345,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:46:59.0406083+03:00"
+}{
+  "ClientId": 26,
+  "AccNumber": 35,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:47:20.3423935+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 27,
+  "AccNumber": 36,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:48:27.8280692+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 27,
+  "AccNumber": 36,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:48:34.1827745+03:00"
+}{
+  "ClientId": 27,
+  "AccNumber": 36,
+  "Amount": 350,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:53:20.4287196+03:00"
+}{
+  "ClientId": 27,
+  "AccNumber": 36,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:53:27.5781178+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 28,
+  "AccNumber": 37,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:57:09.8351579+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 28,
+  "AccNumber": 37,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:57:17.3148356+03:00"
+}{
+  "ClientId": 28,
+  "AccNumber": 37,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T17:59:57.602036+03:00"
+}{
+  "ClientId": 19,
+  "AccNumber": 28,
+  "Amount": 500,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T19:36:39.0846463+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 29,
+  "AccNumber": 39,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T10:52:16.8580249+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 29,
+  "AccNumber": 40,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T10:56:14.1010949+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 29,
+  "AccNumber": 40,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T10:56:21.7088484+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 30,
+  "AccNumber": 41,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:12:05.5693992+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 30,
+  "AccNumber": 41,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:12:10.8697359+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 39,
+  "Amount": 111,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:12:28.5143651+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 40,
+  "Amount": 111,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:12:35.3534289+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 39,
+  "Amount": -111,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:14:07.4983203+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 40,
+  "Amount": 333,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:14:07.4983203+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 41,
+  "Amount": 65756,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:37:16.8210357+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 41,
+  "Amount": 66533,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:37:33.3373312+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 41,
+  "Amount": 67310,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:38:14.2829443+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 41,
+  "Amount": 66755,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:20:58.1365896+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 11,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:47:25.9456065+03:00",
+  "UpdateDate": "2022-07-06T15:22:56.4940077+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 31,
+  "AccNumber": 51,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:31:18.1980592+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 31,
+  "AccNumber": 51,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:31:41.2350684+03:00"
+}{
+  "ClientId": 31,
+  "AccNumber": 51,
+  "Amount": 2222,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:31:57.7800489+03:00"
+}{
+  "ClientId": 31,
+  "AccNumber": 51,
+  "Amount": 1667,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:32:05.0089918+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 32,
+  "AccNumber": 53,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T16:57:37.2083876+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 32,
+  "AccNumber": 53,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T16:57:55.9447311+03:00"
+}{
+  "ClientId": 32,
+  "AccNumber": 53,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:03:27.2711+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 33,
+  "AccNumber": 54,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:04:07.2120775+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 33,
+  "AccNumber": 54,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:04:21.740865+03:00"
+}{
+  "ClientId": 33,
+  "AccNumber": 54,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:05:23.3927025+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 34,
+  "AccNumber": 55,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:05:26.670793+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 34,
+  "AccNumber": 55,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:05:37.3194579+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 35,
+  "AccNumber": 56,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:50:04.2998736+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 35,
+  "AccNumber": 56,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:50:24.1231215+03:00"
+}{
+  "ClientId": 35,
+  "AccNumber": 56,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:51:43.8426237+03:00"
+}{
+  "ClientId": 34,
+  "AccNumber": 55,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:51:48.5461963+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 36,
+  "AccNumber": 57,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:51:49.1452168+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 36,
+  "AccNumber": 57,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:51:54.8897489+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 37,
+  "AccNumber": 58,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:54:26.020809+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 37,
+  "AccNumber": 58,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:54:30.7133551+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 38,
+  "AccNumber": 59,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:55:09.5692408+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 38,
+  "AccNumber": 59,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:55:14.649465+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 39,
+  "AccNumber": 60,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:55:27.4508977+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 39,
+  "AccNumber": 60,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:55:31.6696269+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 40,
+  "AccNumber": 61,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:57:52.4550718+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 40,
+  "AccNumber": 61,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:57:56.723469+03:00"
+}{
+  "ClientId": 40,
+  "AccNumber": 61,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:58:04.881851+03:00"
+}{
+  "ClientId": 36,
+  "AccNumber": 57,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:59:26.8568883+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 41,
+  "AccNumber": 62,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:59:45.971671+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 41,
+  "AccNumber": 62,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T17:59:49.6652403+03:00"
+}{
+  "ClientId": 41,
+  "AccNumber": 62,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:00:20.8467568+03:00"
+}{
+  "ClientId": 37,
+  "AccNumber": 58,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:00:24.9281783+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 42,
+  "AccNumber": 63,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:00:28.4729153+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 42,
+  "AccNumber": 63,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:00:32.5483899+03:00"
+}{
+  "ClientId": 42,
+  "AccNumber": 63,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:01:01.1390274+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 43,
+  "AccNumber": 64,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:01:05.9785368+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 43,
+  "AccNumber": 64,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:01:14.0344559+03:00"
+}{
+  "ClientId": 38,
+  "AccNumber": 59,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:03:04.8832739+03:00"
+}{
+  "ClientId": 43,
+  "AccNumber": 64,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:03:13.2111037+03:00"
+}{
+  "ClientId": 39,
+  "AccNumber": 60,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:04:13.9333396+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 44,
+  "AccNumber": 65,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:04:16.1500465+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 44,
+  "AccNumber": 65,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-07T18:04:20.7684199+03:00"
+}{
+  "ClientId": 44,
+  "AccNumber": 65,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:10:31.2941034+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 45,
+  "AccNumber": 66,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:10:43.847478+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 45,
+  "AccNumber": 66,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:10:51.6242082+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 46,
+  "AccNumber": 67,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:11:07.8784916+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 46,
+  "AccNumber": 67,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:11:12.0415103+03:00"
+}{
+  "ClientId": 45,
+  "AccNumber": 66,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:11:48.0157503+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 47,
+  "AccNumber": 68,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:22:46.1133264+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 47,
+  "AccNumber": 68,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:22:58.3978671+03:00"
+}{
+  "ClientId": 46,
+  "AccNumber": 67,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:23:36.0717266+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 48,
+  "AccNumber": 69,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:24:01.6367043+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 48,
+  "AccNumber": 69,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T12:24:08.7647814+03:00"
+}{
+  "ClientId": 47,
+  "AccNumber": 68,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:16:00.6757905+03:00"
+}{
+  "ClientId": 48,
+  "AccNumber": 69,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:16:03.3947711+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 49,
+  "AccNumber": 70,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:16:06.4428528+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 49,
+  "AccNumber": 70,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:16:24.3398408+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 50,
+  "AccNumber": 71,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:17:45.2732554+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 50,
+  "AccNumber": 71,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:17:49.8173429+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 51,
+  "AccNumber": 72,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:22:17.8998112+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 51,
+  "AccNumber": 72,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T15:22:24.9711308+03:00"
+}{
+  "ClientId": 49,
+  "AccNumber": 70,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:27:10.455845+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 52,
+  "AccNumber": 73,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:27:57.5594089+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 52,
+  "AccNumber": 73,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:28:05.0132638+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 53,
+  "AccNumber": 74,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:36:33.9274271+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 53,
+  "AccNumber": 74,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:36:39.3066494+03:00"
+}{
+  "ClientId": 53,
+  "AccNumber": 74,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:36:59.9614899+03:00"
+}{
+  "ClientId": 51,
+  "AccNumber": 72,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:37:40.6897503+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 54,
+  "AccNumber": 75,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:38:13.8010428+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 54,
+  "AccNumber": 75,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:38:18.5851127+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 55,
+  "AccNumber": 76,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:38:40.6101747+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 55,
+  "AccNumber": 76,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:38:44.7597206+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 56,
+  "AccNumber": 77,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:39:29.3745547+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 56,
+  "AccNumber": 77,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:39:34.0895498+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 57,
+  "AccNumber": 78,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:46:22.5983834+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 57,
+  "AccNumber": 78,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:46:26.6829047+03:00"
+}{
+  "ClientId": 56,
+  "AccNumber": 77,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:49:38.7879367+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 58,
+  "AccNumber": 79,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:49:51.140447+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 58,
+  "AccNumber": 79,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:49:56.576633+03:00"
+}{
+  "ClientId": 58,
+  "AccNumber": 79,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:50:06.3464229+03:00"
+}{
+  "ClientId": 57,
+  "AccNumber": 78,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:52:54.1478385+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 59,
+  "AccNumber": 80,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:52:58.0663882+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 59,
+  "AccNumber": 80,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:53:02.3482809+03:00"
+}{
+  "ClientId": 52,
+  "AccNumber": 73,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:55:56.4960219+03:00"
+}{
+  "ClientId": 50,
+  "AccNumber": 71,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:56:02.0063918+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 60,
+  "AccNumber": 81,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:56:09.5442633+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 60,
+  "AccNumber": 81,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:56:16.7086378+03:00"
+}{
+  "ClientId": 60,
+  "AccNumber": 81,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:56:45.5266966+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 20,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-24T17:04:29.8253436+03:00",
+  "UpdateDate": "2022-07-08T16:57:50.19741+03:00"
+}{
+  "ClientId": 59,
+  "AccNumber": 80,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:58:48.6320171+03:00"
+}{
+  "ClientId": 54,
+  "AccNumber": 75,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:09:33.5206441+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 61,
+  "AccNumber": 82,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:13:10.3009673+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 61,
+  "AccNumber": 83,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:13:17.8821569+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 61,
+  "AccNumber": 83,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:13:25.910096+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 62,
+  "AccNumber": 84,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:14:06.2512512+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 62,
+  "AccNumber": 84,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:14:09.454458+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 63,
+  "AccNumber": 85,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:15:35.1441924+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 63,
+  "AccNumber": 85,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:15:39.7066472+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 64,
+  "AccNumber": 86,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:24:22.8340348+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 64,
+  "AccNumber": 86,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:24:26.8923538+03:00"
+}{
+  "ClientId": 64,
+  "AccNumber": 86,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:33:40.7447285+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:33:55.4209818+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T17:34:00.857435+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 66,
+  "AccNumber": 88,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T17:06:54.4650134+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 66,
+  "AccNumber": 88,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T17:07:11.9171961+03:00"
+}{
+  "ClientId": 66,
+  "AccNumber": 88,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T17:07:48.185069+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 67,
+  "AccNumber": 89,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T17:29:43.0603994+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 67,
+  "AccNumber": 90,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T18:54:05.557203+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 67,
+  "AccNumber": 90,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T18:54:13.9653243+03:00"
+}{
+  "ClientId": 67,
+  "AccNumber": 89,
+  "Amount": 100,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T18:54:48.0990177+03:00"
+}{
+  "ClientId": 67,
+  "AccNumber": 90,
+  "Amount": 200,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-10T18:56:05.1654885+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 40,
+  "Amount": 222,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:19:39.2650927+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 39,
+  "Amount": 222,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:19:39.2650927+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 39,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:23:30.3363812+03:00"
+}{
+  "ClientId": 29,
+  "AccNumber": 40,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:23:30.3447734+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 68,
+  "AccNumber": 91,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:23:48.6689583+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 68,
+  "AccNumber": 92,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:25:19.0338744+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 68,
+  "AccNumber": 93,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:26:07.4650615+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 68,
+  "AccNumber": 93,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:26:14.0037956+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 69,
+  "AccNumber": 94,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:42:15.870997+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 69,
+  "AccNumber": 95,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T11:45:16.3950177+03:00"
+}{
+  "ClientId": 68,
+  "AccNumber": 91,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T13:59:14.4812157+03:00"
+}{
+  "ClientId": 68,
+  "AccNumber": 92,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T13:59:14.4999049+03:00"
+}{
+  "ClientId": 68,
+  "AccNumber": 93,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T13:59:14.5077952+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 69,
+  "AccNumber": 96,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:00:25.1149066+03:00",
+  "UpdateDate": "2022-07-11T14:00:25.1149066+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 70,
+  "AccNumber": 97,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:03:57.1821125+03:00",
+  "UpdateDate": "2022-07-11T14:03:57.1821125+03:00"
+}{
+  "ClientId": 69,
+  "AccNumber": 96,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:00:25.1149066+03:00",
+  "UpdateDate": "2022-07-11T14:06:27.3075476+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 71,
+  "AccNumber": 98,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:06:39.1463969+03:00",
+  "UpdateDate": "2022-07-11T14:06:39.1463969+03:00"
+}{
+  "ClientId": 67,
+  "AccNumber": 89,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T14:08:29.9389191+03:00"
+}{
+  "ClientId": 67,
+  "AccNumber": 90,
+  "Amount": 300,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T14:08:29.9389191+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 72,
+  "AccNumber": 99,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:25.1321176+03:00",
+  "UpdateDate": "2022-07-11T14:12:25.1321176+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 99,
+  "Amount": 1000,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:25.1321176+03:00",
+  "UpdateDate": "2022-07-11T14:12:58.3388851+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 99,
+  "Amount": 700,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:25.1321176+03:00",
+  "UpdateDate": "2022-07-11T14:13:06.599913+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 99,
+  "Amount": 1000,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:25.1321176+03:00",
+  "UpdateDate": "2022-07-11T14:16:40.286256+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 99,
+  "Amount": 556,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:25.1321176+03:00",
+  "UpdateDate": "2022-07-11T14:25:23.0237481+03:00"
+}{
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 500,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T15:22:37.0607285+03:00"
+}{
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 833,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T15:23:30.2868599+03:00"
+}{
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 944,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T15:23:49.756354+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 73,
+  "AccNumber": 106,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T15:24:17.6930951+03:00",
+  "UpdateDate": "2022-07-11T15:24:17.6930951+03:00"
+}{
+  "ClientId": 73,
+  "AccNumber": 106,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T15:24:17.6930951+03:00",
+  "UpdateDate": "2022-07-11T15:25:27.9093426+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 1,
+  "AccNumber": 109,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:14:19.4054298+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 109,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:14:51.5490246+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 1,
+  "AccNumber": 110,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:14:57.05261+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 110,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:16:58.4342497+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 1,
+  "AccNumber": 111,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:17:03.0707638+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 111,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:18:51.5845901+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 1,
+  "AccNumber": 113,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-11T17:21:26.8270218+03:00"
+}{
+  "ClientId": 67,
+  "AccNumber": 90,
+  "Amount": 1188,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-15T11:57:49.2557123+03:00"
+}{
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 1244,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-15T13:49:49.9452117+03:00"
+}{
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 3244,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-15T15:36:24.7008021+03:00"
+}{
+  "ClientId": 65,
+  "AccNumber": 87,
+  "Amount": 3744,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-17T12:01:56.6249545+03:00"
+}{
+  "ClientId": 71,
+  "Id": 0,
+  "AccNumber": 98,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:06:39.1463969+03:00",
+  "UpdateDate": "2022-09-17T12:44:03.9462201+03:00"
+}{
+  "AccType": "Main",
+  "ClientId": 74,
+  "Id": 0,
+  "AccNumber": 114,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-09-17T12:44:19.2194939+03:00",
+  "UpdateDate": "2022-09-17T12:44:19.2194939+03:00"
+}{
+  "ClientId": 74,
+  "Id": 0,
+  "AccNumber": 114,
+  "Amount": 1000,
+  "Active": true,
+  "CreateDate": "2022-09-17T12:44:19.2194939+03:00",
+  "UpdateDate": "2022-09-17T12:44:32.298214+03:00"
+}{
+  "ClientId": 74,
+  "Id": 0,
+  "AccNumber": 114,
+  "Amount": 667,
+  "Active": true,
+  "CreateDate": "2022-09-17T12:44:19.2194939+03:00",
+  "UpdateDate": "2022-09-17T12:44:53.9075621+03:00"
+}

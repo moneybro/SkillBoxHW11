@@ -16,6 +16,7 @@ namespace ClassLibrary.Interfaces
         bool SaveAcc<T>(T acc, string repoPath, DateTime createDateTime, DateTime updateDateTime) where T : BankAccForClient;
         bool CloseAcc(long accNum);
         public List<BankAccForClient> GetAccTransactions(long accNum);
+        BankAccForClient GetAccByNum(long accNumber);
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Classes;
+using EmployeeApp.Classes;
 using EmployeeApp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,6 @@ namespace EmployeeApp.Views
         public event Action CloseDepoAccBtnEvent;
 
         long selectedClientId;
-
         public EmployeePage(Employee employee)
         {
             ep = this;
@@ -45,6 +45,13 @@ namespace EmployeeApp.Views
             workEmployee = new WorkEmployee(employee, this);
             this.DataContext = workEmployee;
             ClientsDG.ItemsSource = workEmployee.Clients;
+            
+            if (employee is Consultant)
+            {
+                ClientsDG.Columns[5].Visibility = Visibility.Hidden;
+                ClientsDG.Columns[6].Visibility = Visibility.Hidden;
+            }
+
             bankAccsListBox.ItemsSource = workEmployee.ClientAccs;
             bankAccTransactions.ItemsSource = workEmployee.AccTransactions;
             employeeValue.Text = $"{employee.FirstName} {employee.LastName}";

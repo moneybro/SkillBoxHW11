@@ -7,20 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Classes;
 
-namespace ClassLibrary.Methods
+namespace SqlDbManager
 {
     public static class ClientCommonMethods
     {
-        public static Client GetClientById(long clientId)
-        {
-            return GetClientsAllData().Find(c => c.ID == clientId);
-        }
+        //public static Client GetClientById(long clientId)
+        //{
+        //    return GetClientsAllData().Find(c => c.ID == clientId);
+        //}
         public static List<Client> GetClientsAllData()
         {
             var c = getClientsRawData();
             return filteredClients(c);
         }
-
         static List<Client> getClientsRawData()
         {
             var clientsDbPath = DbPaths.getClientsPath();
@@ -70,18 +69,18 @@ namespace ClassLibrary.Methods
             }
             return cl;
         }
-        public static long getNewClientId()
-        {
-            var cls = getClientsRawData();
-            if (cls.Count > 0)
-            {
-                var clientId = cls.Max(c => c.ID);
-                return clientId + 1;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        //public static long getNewClientId()
+        //{
+        //    var cls = getClientsRawData();
+        //    if (cls.Count > 0)
+        //    {
+        //        var clientId = cls.Max(c => c.ID);
+        //        return clientId + 1;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
+        //}
     }
 }

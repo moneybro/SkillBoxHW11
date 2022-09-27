@@ -12,7 +12,7 @@ using System.Text.Unicode;
 using System.Threading.Tasks;
 using ClassLibrary.Methods;
 
-namespace EmployeeApp
+namespace EmployeeApp.Classes
 {
     public abstract class Employee
     {
@@ -22,54 +22,25 @@ namespace EmployeeApp
         public int Age { get; set; }
         public int Salary { get; set; }
         public abstract string Type { get; }
-        public abstract List<Client> GetClients();
         public abstract Client AddNewClient();
-        public abstract void ChangeClient(Client client);
-        public IBankAccActions BankAccActions { get; set; }
-        public ITransactionsActions TransactionsActions { get; set; }
-
-        /// <summary>
-        /// сохранить измененного клиента
-        /// </summary>
-        /// <param name="client"></param>
-        /// <param name="employee"></param>
-        /// <returns></returns>
-        public bool SaveEditedClient(Client client, Employee employee)
-        {
-            var clientsDb = DbPaths.getClientsPath();
-            client.ChangeType = "edited";
-            client.EmployeeType = employee.Type;
-            client.LastChangeDate = DateTime.Now;
-            if (client.Status == null)
-            {
-                client.Status = "active";
-            }
-            // todo: какие данные изменены будет определяться сравнением (в будущем)
-            string clientsPath = Path.Combine(clientsDb);
-            var options = new JsonSerializerOptions 
-            {
-                WriteIndented = true, //фрматированный json
-                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
-            };
-            if (File.Exists(clientsPath))
-            {
-                using (FileStream fs = new FileStream(clientsPath, FileMode.Append))
-                {
-                    System.Text.Json.JsonSerializer.SerializeAsync<Client>(fs, client, options);
-                }
-                return true;
-            }
-            else
-            {
-                using (FileStream fs = new FileStream(clientsPath, FileMode.Create))
-                {
-                    System.Text.Json.JsonSerializer.SerializeAsync<Client>(fs, client, options);
-                }
-                return true;
-            }
-            return false;
-        }
+        public abstract bool ChangeClient(Client client);
         public abstract bool DeleteClient(Client client);
+        public abstract List<Client> GetClients();
+        public bool CanAddRemoveDepoAcc { get; set; }
+
+        // работа со счетами, метод нужен для обеспечения разрешения на доступ к общему методу в интерфейсе
+        public abstract BankAccDepo GetNewDepoAcc(long clId);
+
+        EmployeeActions employeeActions = new EmployeeActions(GlobalVarsAndActions.StorageType);
+        internal EmployeeActions EmployeeActions 
+        {
+            get { return employeeActions; }
+            //объединил все эти интерфейсы в один
+            //public IBankAccActions BankAccActions { get; set; }
+            //public ITransactionsActions TransactionsActions { get; set; }
+            //public IClientActions ClientActions { get; set; }
+        }
+
         public enum SortedCriterion
         {
             Age,
@@ -89,8 +60,8 @@ namespace EmployeeApp
         {
             public int Compare(Employee? x, Employee? y)
             {
-                Employee X = (Employee)x;
-                Employee Y = (Employee)y;
+                Employee X = x;
+                Employee Y = y;
 
                 return x.LastName.CompareTo(y.LastName);
             }
@@ -102,8 +73,8 @@ namespace EmployeeApp
         {
             public int Compare(Employee? x, Employee? y)
             {
-                Employee? X = (Employee)x;
-                Employee? Y = (Employee)y;
+                Employee? X = x;
+                Employee? Y = y;
 
                 if (X.Age == Y.Age) return 0;
                 else if (X.Age > Y.Age) return 1;

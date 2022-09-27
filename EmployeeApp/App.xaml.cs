@@ -26,6 +26,8 @@ namespace EmployeeApp
             App app = new App();
             MainWindow window = new MainWindow();
 
+            
+
             //Log.Logger = new LoggerConfiguration()
             //    .MinimumLevel.Information()
             //    .WriteTo.File("logs\\employeeAppLog.txt", rollingInterval: RollingInterval.Day)

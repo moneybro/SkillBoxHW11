@@ -12,6 +12,8 @@ namespace ClassLibrary.Classes
         public string AccType => "Depo";
         bool _canAddMoney;
 
+        public BankAccDepo() {}
+
         /// <summary>
         /// конструктор для создания нового счета
         /// </summary>

@@ -10,12 +10,10 @@ namespace ClassLibrary.Classes
     public class BankAccTransferStorage<T> : IStorageTransferMoney<T> where T : BankAccBase
     {
         List<T> db;
-        BankAccActions accActions = new BankAccActions();
         public BankAccTransferStorage()
         {
             db = new List<T>();
         }
-
         public T addAcc { 
             set
             {
@@ -31,18 +29,18 @@ namespace ClassLibrary.Classes
                 }
             }
         }
-
-        public bool TransferMoney(decimal summ, DateTime dateTime)
+        public bool TransferMoney(decimal summ, DateTime dateTime, IBankAccActions accActions)
         {
             if (db.Count == 2)
             {
                 var accSource = accActions.GetAccByNum(db[0].AccNumber);
                 var accTarget = accActions.GetAccByNum(db[1].AccNumber);
 
-                db[0].Amount -= summ;
-                db[1].Amount += summ;
                 accSource.Amount -= summ;
                 accTarget.Amount += summ;
+
+                db[0].Amount = accSource.Amount;
+                db[1].Amount = accTarget.Amount;
 
                 // если информация об счетах не сохранилась, то возвращаем баланс 
                 var successSource = accActions.SaveAcc(accSource, dateTime);
@@ -50,16 +48,19 @@ namespace ClassLibrary.Classes
 
                 if (!successSource || !successTarget)
                 {
-                    db[0].Amount += summ;
-                    db[1].Amount -= summ;
                     accSource.Amount += summ;
                     accTarget.Amount -= summ;
+                    //db[0].Amount += summ;
+                    //db[1].Amount -= summ;
+                    db[0].Amount = accSource.Amount;
+                    db[1].Amount = accTarget.Amount;
+
+
                     accActions.SaveAcc(accSource, dateTime);
                     accActions.SaveAcc(accTarget, dateTime);
                     return false;
                 }
                 else return true;
-                
             }
             else
             {

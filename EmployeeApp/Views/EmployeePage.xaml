@@ -58,8 +58,14 @@
                 <ListBox x:Name="bankAccsListBox" Grid.Column="0"  SelectionChanged="OnClientBankAccSelected" Margin="5,0,0,0" Height="180">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <GroupBox Header="{Binding Path=AccType}" VerticalAlignment="Center" Margin="5,0,10,5" Height="40" Background="AliceBlue">
-                                <TextBlock Text="{Binding Path=AccNumber}"/>
+                            <GroupBox Header="{Binding Path=AccType}" VerticalAlignment="Center" Margin="5,0,10,5" Height="60" Background="AliceBlue">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Path=AccNumber}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Доступно: "/>
+                                        <TextBlock Text="{Binding Path=Amount}"/>
+                                    </StackPanel>
+                                </StackPanel>
                             </GroupBox>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -85,7 +91,7 @@
         </Grid>
         <StackPanel Margin="5,0,0,0" Grid.Column="2" Grid.Row="2">
             <Button x:Name="PutMoneyToMainAccBtn" Content="Пополнить" FontSize="16" Height="30" Padding="5 0" Margin="0,0,5,3" Click="PutMoneyToMainAccBtn_Click" IsEnabled="{Binding PutMoneyBtnEnabled}"/>
-            <Button x:Name="TransferMoneyFromMainAccBtn" Content="Перевести" FontSize="16" Height="30" Padding="5 0" Margin="0,0,5,3" Click="TransferMoneyFromMainAccBtn_Click" IsEnabled="{Binding TfrMoneyBtnEnabled}"/>
+            <Button x:Name="TfrMoneyBtnEnabled" Content="Перевести" FontSize="16" Height="30" Padding="5 0" Margin="0,0,5,3" Click="TransferMoneyFromMainAccBtn_Click" IsEnabled="{Binding TfrMoneyBtnEnabled}"/>
             <Button x:Name="openDepoAccBtn" Content="Открыть депо счет" Height="30" Padding="5 0" Margin="0,0,5,3" Click="OpenDepoAccBtn_Click" IsEnabled="{Binding OpenDepoAccBtnEnabled}" FontSize="11"/>
             <Button x:Name="CloseAccBtn" Content="Закрыть счет" FontSize="16" Height="30" Padding="5 0" Margin="0,0,5,3" Click="CloseAccBtn_Click" IsEnabled="{Binding CloseAccBtnEnabled}"/>
             

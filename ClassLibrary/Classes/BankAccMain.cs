@@ -10,11 +10,16 @@ namespace ClassLibrary.Classes
     public class BankAccMain : BankAccForClient, IPushMoney<BankAccForClient>
     {
         public string AccType => "Main";
-        /// <summary>
-        /// конструктор для создания нового счета
-        /// </summary>
-        /// <param name="clId">идентификатор клиента</param> 
-        public BankAccMain(long clId)
+
+        public BankAccMain()
+        {
+        }
+
+            /// <summary>
+            /// конструктор для создания нового счета
+            /// </summary>
+            /// <param name="clId">идентификатор клиента</param> 
+            public BankAccMain(long clId)
         {
             this.ClientId = clId;
             this.Active = true;

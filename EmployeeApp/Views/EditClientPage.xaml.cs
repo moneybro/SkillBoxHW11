@@ -13,28 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassLibrary.Classes;
+using EmployeeApp.Classes;
 
 namespace EmployeeApp.Views
 {
     /// <summary>
     /// Логика взаимодействия для EditClient.xaml
     /// </summary>
-    public partial class EditClient : Window
+    public partial class EditClientPage : Window
     {
         public Client editedClient;
         Employee bankOperator;
-        public EditClient()
+        public EditClientPage()
         {
 
         }
-        public EditClient(long clId)
+        public EditClientPage(long clId)
         {
             InitializeComponent();
             bankOperator = new Manager();
             editedClient = new Client(clId);
         }
 
-        public EditClient(Client client, Employee employee)
+        public EditClientPage(Client client, Employee employee)
         {
             InitializeComponent();
             editedClient = client;
@@ -65,7 +66,6 @@ namespace EmployeeApp.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Client client = editedClient.Clone();
             int paspSeria;
             long paspNum;
 
@@ -75,6 +75,8 @@ namespace EmployeeApp.Views
                 editedClient.FirstName = EditName.Text;
                 editedClient.Patronymic = EditPatronymic.Text;
                 editedClient.MobPhone = EditMobPhone.Text;
+                editedClient.LastChangeDate = DateTime.Now;
+                editedClient.EmployeeType = bankOperator.Type;
                 if (int.TryParse(EditPaspSeria.Text, out paspSeria)) editedClient.PaspSeria = paspSeria;
                 else editedClient.PaspSeria = 0;
                 if (long.TryParse(EditPaspNum.Text, out paspNum)) editedClient.PaspNum = paspNum;
@@ -84,6 +86,8 @@ namespace EmployeeApp.Views
             if (bankOperator.GetType() == typeof(Consultant))
             {
                 editedClient.MobPhone = EditMobPhone.Text;
+                editedClient.LastChangeDate = DateTime.Now;
+                editedClient.EmployeeType = bankOperator.Type;
             }
             this.DialogResult = true;
         }

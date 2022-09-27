@@ -1,0 +1,841 @@
+{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "0001-01-01T00:00:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 1234,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:10:03.1375468+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:11:20.2648487+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:18:51.5692346+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 300,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:30:44.258517+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 300,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:31:22.6730265+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 411,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:35:05.7472211+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 522,
+  "Active": true,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:36:30.5961878+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 2,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-11T11:52:56.5724598+03:00",
+  "UpdateDate": "2022-06-14T19:38:09.7261236+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 3,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:41:14.2051897+03:00",
+  "UpdateDate": "2022-06-14T19:41:14.2060187+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 3,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:41:14.2051897+03:00",
+  "UpdateDate": "2022-06-14T19:41:20.8931727+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 5,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:41:24.7853683+03:00",
+  "UpdateDate": "2022-06-14T19:41:24.7859213+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 5,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:41:24.7853683+03:00",
+  "UpdateDate": "2022-06-14T19:45:37.7887948+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 7,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:46:11.8534442+03:00",
+  "UpdateDate": "2022-06-14T19:46:11.8539827+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 7,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:46:11.8534442+03:00",
+  "UpdateDate": "2022-06-14T19:46:14.7579565+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 8,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:46:17.0809897+03:00",
+  "UpdateDate": "2022-06-14T19:46:17.0815341+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 8,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:46:17.0809897+03:00",
+  "UpdateDate": "2022-06-14T19:46:37.1589505+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 9,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:46:41.822203+03:00",
+  "UpdateDate": "2022-06-14T19:46:41.8228982+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 9,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:46:41.822203+03:00",
+  "UpdateDate": "2022-06-14T19:47:18.1032077+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 10,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:20.569876+03:00",
+  "UpdateDate": "2022-06-14T19:47:20.5705221+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 10,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:47:20.569876+03:00",
+  "UpdateDate": "2022-06-14T19:47:29.4521015+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 12,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:31.2134093+03:00",
+  "UpdateDate": "2022-06-14T19:47:31.2139768+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 12,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:47:31.2134093+03:00",
+  "UpdateDate": "2022-06-14T19:47:32.4322058+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 13,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:33.69861+03:00",
+  "UpdateDate": "2022-06-14T19:47:33.6991831+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 13,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:47:33.69861+03:00",
+  "UpdateDate": "2022-06-14T19:47:35.7207993+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 14,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:36.9592122+03:00",
+  "UpdateDate": "2022-06-14T19:47:36.959782+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 14,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-06-14T19:47:36.9592122+03:00",
+  "UpdateDate": "2022-06-14T19:47:38.1594822+03:00"
+}{
+  "CanAddMoney": true,
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-06-14T19:47:39.2370425+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 1044,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-06-14T19:48:01.2145455+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 10,
+  "AccNumber": 17,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:11.0057197+03:00",
+  "UpdateDate": "2022-06-24T17:02:11.0395706+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-06-24T17:03:26.1636081+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 3044,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-06-26T12:54:57.9077875+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 3167,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-01T17:29:09.1430958+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 17,
+  "Amount": 111,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:11.0057197+03:00",
+  "UpdateDate": "2022-07-01T17:34:25.0123539+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 17,
+  "Amount": 333,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:11.0057197+03:00",
+  "UpdateDate": "2022-07-01T17:34:45.1494138+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": 123,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-07-02T15:19:31.1697199+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 15,
+  "AccNumber": 23,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-02T15:22:25.5130703+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 23,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-02T15:22:28.0250279+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 15,
+  "AccNumber": 24,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-02T15:22:30.8142544+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 24,
+  "Amount": 156,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-02T15:22:39.8319005+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 3667,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T15:25:29.1200102+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": 234,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-07-02T15:52:16.3278579+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": 357,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-07-02T16:04:57.148245+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": -198,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-07-02T16:06:37.5262297+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": 2,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-07-02T16:43:28.312946+03:00"
+}{
+  "ClientId": 14,
+  "AccNumber": 19,
+  "Amount": 102,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:03:26.1629607+03:00",
+  "UpdateDate": "2022-07-02T18:25:10.7458812+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 4167,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T18:29:38.4516865+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 4500,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T18:31:41.1823772+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 4556,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T18:32:25.6572878+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 5123,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T18:32:56.2534639+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 4823,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T18:34:06.1472629+03:00"
+}{
+  "ClientId": 1,
+  "AccNumber": 15,
+  "Amount": 5323,
+  "Active": true,
+  "CreateDate": "2022-06-14T19:47:39.2364791+03:00",
+  "UpdateDate": "2022-07-02T18:37:48.2716528+03:00"
+}{
+  "ClientId": 10,
+  "AccNumber": 17,
+  "Amount": 433,
+  "Active": true,
+  "CreateDate": "2022-06-24T17:02:11.0057197+03:00",
+  "UpdateDate": "2022-07-02T18:42:18.9326157+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 19,
+  "AccNumber": 38,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T19:35:50.6736618+03:00"
+}{
+  "ClientId": 19,
+  "AccNumber": 38,
+  "Amount": 1000,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T19:36:28.3358605+03:00"
+}{
+  "ClientId": 19,
+  "AccNumber": 38,
+  "Amount": 500,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-04T19:36:39.0846463+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 42,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:13:02.499933+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 42,
+  "Amount": 222,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:13:07.1128413+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 42,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:16:05.9582369+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 43,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:18:51.3306633+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 43,
+  "Amount": 222,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:19:00.5193912+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 43,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:19:06.7357061+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 44,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:21:21.7262997+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 44,
+  "Amount": 500,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:21:30.6878455+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 44,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:21:35.9525286+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 45,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:24:21.7840905+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 45,
+  "Amount": 500,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:24:27.7927574+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 45,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:24:33.9947709+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 46,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:29:17.5643197+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 46,
+  "Amount": 333,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:29:24.8079751+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 46,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:35:01.5799221+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 47,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:36:50.516285+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 47,
+  "Amount": 73673456,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:37:03.9792164+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 47,
+  "Amount": 73607700,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:37:16.8210357+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 47,
+  "Amount": 73606923,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:37:33.3373312+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 47,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:37:41.8485994+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 48,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:38:04.4886429+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 48,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:38:21.2325241+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 49,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:40:14.9755418+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 49,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T11:40:18.0995413+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 30,
+  "AccNumber": 50,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T14:59:33.8757579+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 50,
+  "Amount": 111,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:19:46.9691991+03:00"
+}{
+  "ClientId": 30,
+  "AccNumber": 50,
+  "Amount": 666,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:20:58.1365896+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 31,
+  "AccNumber": 52,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:31:52.7946837+03:00"
+}{
+  "ClientId": 31,
+  "AccNumber": 52,
+  "Amount": 555,
+  "Active": true,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-06T15:32:05.0089918+03:00"
+}{
+  "ClientId": 15,
+  "AccNumber": 24,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "0001-01-01T00:00:00",
+  "UpdateDate": "2022-07-08T16:57:50.2087038+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 72,
+  "AccNumber": 100,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:50.0925479+03:00",
+  "UpdateDate": "2022-07-11T14:12:50.0925479+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 100,
+  "Amount": 300,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:50.0925479+03:00",
+  "UpdateDate": "2022-07-11T14:13:06.599913+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 100,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:12:50.0925479+03:00",
+  "UpdateDate": "2022-07-11T14:16:40.286256+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 100,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:12:50.0925479+03:00",
+  "UpdateDate": "2022-07-11T14:16:44.7893784+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 72,
+  "AccNumber": 101,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:19:16.3433184+03:00",
+  "UpdateDate": "2022-07-11T14:19:16.3433184+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 101,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:19:16.3433184+03:00",
+  "UpdateDate": "2022-07-11T14:20:53.0069027+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 72,
+  "AccNumber": 102,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:21:12.8314646+03:00",
+  "UpdateDate": "2022-07-11T14:21:12.8314646+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 102,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:21:12.8314646+03:00",
+  "UpdateDate": "2022-07-11T14:22:16.9772822+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 72,
+  "AccNumber": 103,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:22:24.7754515+03:00",
+  "UpdateDate": "2022-07-11T14:22:24.7754515+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 103,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:22:24.7754515+03:00",
+  "UpdateDate": "2022-07-11T14:24:28.0954116+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 72,
+  "AccNumber": 104,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:24:30.0481326+03:00",
+  "UpdateDate": "2022-07-11T14:24:30.0481326+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 104,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T14:24:30.0481326+03:00",
+  "UpdateDate": "2022-07-11T14:24:44.1037827+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 72,
+  "AccNumber": 105,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:25:06.9762514+03:00",
+  "UpdateDate": "2022-07-11T14:25:06.9762514+03:00"
+}{
+  "ClientId": 72,
+  "AccNumber": 105,
+  "Amount": 444,
+  "Active": true,
+  "CreateDate": "2022-07-11T14:25:06.9762514+03:00",
+  "UpdateDate": "2022-07-11T14:25:23.0237481+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 71,
+  "AccNumber": 107,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T16:57:20.2012061+03:00",
+  "UpdateDate": "2022-07-11T16:57:20.2012061+03:00"
+}{
+  "ClientId": 71,
+  "AccNumber": 107,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T16:57:20.2012061+03:00",
+  "UpdateDate": "2022-07-11T16:57:36.8705651+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 71,
+  "AccNumber": 108,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T17:01:12.6960548+03:00",
+  "UpdateDate": "2022-07-11T17:01:12.6960548+03:00"
+}{
+  "ClientId": 71,
+  "AccNumber": 108,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T17:01:12.6960548+03:00",
+  "UpdateDate": "2022-07-11T17:01:15.4237939+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 71,
+  "AccNumber": 112,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-07-11T17:17:26.8550628+03:00",
+  "UpdateDate": "2022-07-11T17:17:26.8550628+03:00"
+}{
+  "ClientId": 71,
+  "AccNumber": 112,
+  "Amount": 0,
+  "Active": false,
+  "CreateDate": "2022-07-11T17:17:26.8550628+03:00",
+  "UpdateDate": "2022-07-13T16:41:34.4547358+03:00"
+}{
+  "AccType": "Depo",
+  "CanAddMoney": true,
+  "ClientId": 74,
+  "Id": 0,
+  "AccNumber": 115,
+  "Amount": 0,
+  "Active": true,
+  "CreateDate": "2022-09-17T12:44:43.1299905+03:00",
+  "UpdateDate": "2022-09-17T12:44:43.1299905+03:00"
+}{
+  "ClientId": 74,
+  "Id": 0,
+  "AccNumber": 115,
+  "Amount": 333,
+  "Active": true,
+  "CreateDate": "2022-09-17T12:44:43.1299905+03:00",
+  "UpdateDate": "2022-09-17T12:44:53.9075621+03:00"
+}

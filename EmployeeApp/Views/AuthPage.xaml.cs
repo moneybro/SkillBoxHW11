@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassLibrary.Classes.Exceptions;
+using EmployeeApp.Classes;
 
 namespace EmployeeApp.Views
 {

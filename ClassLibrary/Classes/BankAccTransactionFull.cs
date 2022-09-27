@@ -36,7 +36,11 @@ namespace ClassLibrary.Classes
             {
                 descr = $"перевод на счет {Tr.AccNumberTarget}";
             }
-            return $"{Acc.UpdateDate} {descr}, сумма {Tr.Summ}, баланс: {Acc.Amount}";
+
+            var trString = $"ID:{Tr.Id} {Acc.UpdateDate} {descr}, сумма {Tr.Summ}, баланс: {Acc.Amount}"; // отладочная строка
+            //var trString = $"ID:{Tr.Id} {Acc.UpdateDate} {descr}, сумма {Tr.Summ}, баланс: {Acc.Amount}"; // отладочная строка
+
+            return trString;
         }
     }
 }

@@ -199,7 +199,7 @@ namespace ClassLibrary.Classes
         /// метод загрузки всех главных счетов
         /// </summary>
         /// <returns>список главных счетов</returns>
-        List<BankAccMain> getAllMainAccs()
+        public List<BankAccMain> getAllMainAccs()
         {
             List<BankAccMain> accs = new List<BankAccMain>();
             string bancAccRepo = GlobalVarsAndActions.MainAccsRepoPath;
@@ -223,7 +223,7 @@ namespace ClassLibrary.Classes
         /// метод загрузки всех депозитных счетов
         /// </summary>
         /// <returns>список депозитных счетов</returns>
-        List<BankAccDepo> getAllDepoAccs()
+        public List<BankAccDepo> getAllDepoAccs()
         {
             List<BankAccDepo> accs = new List<BankAccDepo>();
             string bancAccRepo = GlobalVarsAndActions.DepoAccsRepoPath;
@@ -331,7 +331,7 @@ namespace ClassLibrary.Classes
         #endregion
 
         #region получение всех транзакций
-        List<BankAccTransaction> getAllTransactions()
+        public List<BankAccTransaction> getAllTransactions()
         {
             List<BankAccTransaction> trs = new List<BankAccTransaction>();
             string trsRepo = DbPaths.getTransactionsPath();

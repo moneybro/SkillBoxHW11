@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

@@ -6,35 +6,42 @@ using System.Threading;
 using System.Threading.Tasks;
 using ClassLibrary.Classes;
 using ClassLibrary.Methods;
+using ClassLibrary.Interfaces;
 using EmployeeApp.Views;
 
-namespace EmployeeApp
+namespace EmployeeApp.Classes
 {
     public class Manager : Employee
     {
+        public override string Type => "manager";
         public Manager()
         {
-            this.FirstName = default;
-            this.LastName = default;
-            this.Age = default;
-            this.Salary = default;
+            FirstName = default;
+            LastName = default;
+            Age = default;
+            Salary = default;
+            CanAddRemoveDepoAcc = true;
         }
         public Manager(int id, string fn, string ln, int age, int salary)
         {
-            this.Id = id;
-            this.FirstName = fn;
-            this.LastName = ln;
-            this.Age = age;
-            this.Salary = salary;
-            this.BankAccActions = new BankAccActions();
-            this.TransactionsActions = new BankAccActions();
+            Id = id;
+            FirstName = fn;
+            LastName = ln;
+            Age = age;
+            Salary = salary;
+            CanAddRemoveDepoAcc = true;
         }
-        public override string Type => "manager";
+        public override List<Client> GetClients()
+        {
+            return EmployeeActions.ClientActions.GetClients();
+        }
         public override Client AddNewClient()
         {
             Client newClient;
-            long newClID = ClientCommonMethods.getNewClientId();
-            EditClient createNewClientWin = new EditClient(newClID);
+            long newClID = EmployeeActions.ClientActions.getNewClientId(); 
+
+            EditClientPage createNewClientWin = new EditClientPage(newClID);
+
             if (createNewClientWin.ShowDialog() == true)
             {
                 var newMainAccForNewClient = GetNewMainAcc(newClID);
@@ -42,9 +49,15 @@ namespace EmployeeApp
                 if (newClient != null)
                 {
                     createNewClientWin.Close();
-                    base.SaveEditedClient(newClient, this);
+                    newClient.EmployeeType = this.Type;
+                    // сохранение клиента
+                    EmployeeActions.ClientActions.SaveNewClient(newClient);
+
                     DateTime now = DateTime.Now;
-                    this.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath, now, now);
+
+                    // сохранение его главного счета, одинаковое в ремя (с точностью до милисекнд) нужно для проверки были ли изменения счета или он только создался
+                    EmployeeActions.BankAccActions.SaveAcc(newMainAccForNewClient, GlobalVarsAndActions.MainAccsRepoPath, now, now);
+
                     return newClient;
                 }
                 else
@@ -57,51 +70,42 @@ namespace EmployeeApp
                 return null;
             }
         }
-
-        public override void ChangeClient(Client _client)
+        public override bool ChangeClient(Client client)
         {
-            EditClient editClient = new EditClient(_client, this);
-            if (editClient.ShowDialog() == true) editClient.Close();
+            EditClientPage editClientForm = new EditClientPage(client, this);
+            if (editClientForm.ShowDialog() == true) editClientForm.Close();
+            if (EmployeeActions.ClientActions.UpdateClient(client)) { return true; }
+            else return false;
         }
         public override bool DeleteClient(Client client)
         {
-            Client clientToDel = client;
-            if (clientToDel != null)
+            if (EmployeeActions.ClientActions.DeleteClient(client, this.Type))
             {
-                clientToDel.Status = "deleted";
-                if (base.SaveEditedClient(clientToDel, this))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {
                 return false;
             }
         }
-        public override List<Client> GetClients()
-        {
-            return ClientCommonMethods.GetClientsAllData();
-        }
+
+
+
         internal BankAccMain GetNewMainAcc(long clId)
         {
-            return BankAccActions.GetNewMainAcc(clId);
+            return EmployeeActions.BankAccActions.GetNewMainAcc(clId);
         }
-        public BankAccDepo GetNewDepoAcc(long clId)
+        public override BankAccDepo GetNewDepoAcc(long clId)
         {
-            return BankAccActions.GetNewDepoAcc(clId);
+            return EmployeeActions.BankAccActions.GetNewDepoAcc(clId);
         }
         public List<BankAccForClient> GetClientAccs(long clId)
         {
-            return BankAccActions.GetClientAccs(clId);
+            return EmployeeActions.BankAccActions.GetClientAccs(clId);
         }
         bool CloseAcc(long accNum)
         {
-            return BankAccActions.CloseAcc(accNum);
+            return EmployeeActions.BankAccActions.CloseAcc(accNum);
         }
     }
 }

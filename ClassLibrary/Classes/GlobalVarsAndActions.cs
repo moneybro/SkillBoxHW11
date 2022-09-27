@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -16,6 +18,9 @@ namespace ClassLibrary.Classes
         static string _depoAccsRepoPath = $"{mp}depoAccs.json";
         static string _transactionsRepoPath = $"{mp}transactions.json";
         static string _logsPath = @"d:\repos\_BankAppSkillBoxHW\log\";
+
+        static string storageType = "mssql";
+        //static string storageType = "json";
 
         public static string ClientsRepoPath
         {
@@ -65,7 +70,9 @@ namespace ClassLibrary.Classes
                 }
             }
         }
-        
+        public static string StorageType { get => storageType; }
+
+
         public static void SetLogger()
         {
             Log.Logger = new LoggerConfiguration()
