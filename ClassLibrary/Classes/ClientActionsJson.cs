@@ -120,8 +120,14 @@ namespace ClassLibrary.Classes
         static List<Client> getClientsRawData()
         {
             var clientsDbPath = DbPaths.getClientsPath();
-
-            if (!File.Exists(clientsDbPath)) File.CreateText(clientsDbPath).Close();
+            //if (!Directory.Exists(Path.GetDirectoryName(clientsDbPath)))
+            //{
+            //    Directory.CreateDirectory(Path.GetDirectoryName(clientsDbPath));
+            //}
+            //if (!File.Exists(clientsDbPath)) 
+            //{ 
+            //    File.CreateText(clientsDbPath).Close();
+            //};
             var ser = new Newtonsoft.Json.JsonSerializer();
             var streamreader = new StreamReader(clientsDbPath, new UTF8Encoding());
             List<Client> clients = new List<Client>();

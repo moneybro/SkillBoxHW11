@@ -23,6 +23,7 @@ namespace ClassLibrary.Contexts
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; initial catalog=SkillBoxBankSqlDb; integrated security=true;");
             optionsBuilder.EnableSensitiveDataLogging();
+            //optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);  // отключение отслежвания наборов
         }
 
 

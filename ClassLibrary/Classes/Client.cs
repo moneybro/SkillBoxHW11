@@ -41,6 +41,15 @@ namespace ClassLibrary.Classes
             this.BankAccActions = new BankAccActions();
             this.TransactionsActions = new BankAccActions();
         }
+
+        //public Client(Client client)
+        //{
+        //    this.ID = 0;
+        //    this.LastName = client.LastName;
+        //    this.FirstName = client.FirstName;
+        //    this.
+        //}
+
         public override bool Equals(object? obj)
         {
             return Equals(obj as Client);
@@ -54,6 +63,22 @@ namespace ClassLibrary.Classes
         {
             return $"ФИО: {LastName} {FirstName} {Patronymic}, мобильный телефон: {MobPhone}";
         }
+
+        /// <summary>
+        /// копия клиента без ID (с нулевым), для сравнения полей
+        /// </summary>
+        /// <returns>нового клиента с ID=0</returns>
+        public Client getClientCopy()
+        {
+            var client = (Client)MemberwiseClone();
+            client.ID = 0;
+            return client;
+        }
+
+        /// <summary>
+        /// клонируем клиентов для заполнения коллекций и изменением данных, которые не должны сохранится в БД, для отображения коллекции и скрытыми полями
+        /// </summary>
+        /// <returns></returns>
         public Client Clone()
         {
             return (Client)MemberwiseClone();

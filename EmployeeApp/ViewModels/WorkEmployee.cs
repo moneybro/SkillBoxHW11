@@ -23,6 +23,7 @@ namespace EmployeeApp.ViewModels
         Employee _employee;
         EmployeePage _employeePage;
         Client _selectedClient;
+        BankAccForClient? _selectedAcc;
         ObservableCollection<Client> _clients;
         public event PropertyChangedEventHandler PropertyChanged;
         NotifyCollectionChangedEventArgs e;
@@ -140,17 +141,31 @@ namespace EmployeeApp.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.SelectedClient)));
             }
         }
-        internal Employee Employee 
+        public BankAccForClient? SelectedAcc
+        {
+            get
+            {
+                return _selectedAcc;
+            }
+            set
+            {
+                _selectedAcc = value;
+                selectedAccChanged(_selectedAcc);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.SelectedAcc)));
+            }
+        }
+        public Employee Employee 
         { 
             get { return _employee; }
             set { _employee = value; }
         }
         internal EmployeePage EmployeePage { get; set; }
-        public ObservableCollection<Client> Clients { get; set; } = new ObservableCollection<Client>();
-        public ObservableCollection<BankAccForClient> ClientAccs { get; set; } = new ObservableCollection<BankAccForClient>();
-        public ObservableCollection<BankAccTransactionFull> AccTransactions { get; set; } = new ObservableCollection<BankAccTransactionFull>();
+        public ObservableCollection<Client> Clients { get; set; }
+        public ObservableCollection<Client> ClientsView { get; set; }
+        public ObservableCollection<BankAccForClient> ClientAccs { get; set; } 
+        public ObservableCollection<BankAccTransactionFull> AccTransactions { get; set; }
 
-        BankAccForClient? selectedAcc;
+        
         SummToPutStorage summToPutStorage;
         internal decimal summStorage;
 
@@ -176,23 +191,13 @@ namespace EmployeeApp.ViewModels
                 OpenDepoAccBtnEnabled = false;
             }
 
-
             Clients = new ObservableCollection<Client>();
+            ClientsView = new ObservableCollection<Client>();
+            ClientAccs = new ObservableCollection<BankAccForClient>();
+            AccTransactions = new ObservableCollection<BankAccTransactionFull>();
+
             GetClients();
             EditClientBtnEnabled = false;
-            _employeePage.ClientSelectChangedEvent += selectClient;
-
-            _employeePage.BankAccSelectEvent += getAccTransactionsFull;
-            _employeePage.BankAccSelectEvent += selectedAccChanged;
-
-            _employeePage.EditUserEventSuccess += changeClient;
-            _employeePage.AddNewClientEventSuccess += addNewClient;
-            _employeePage.RemoveClientEventSuccess += removeClient;
-
-            _employeePage.PutMoneyBtnEvent += putMoney;
-            _employeePage.TfrMoneyBtnEvent += tfrMoney;
-            _employeePage.OpenDepoAccBtnEvent += openDepoAcc;
-            _employeePage.CloseDepoAccBtnEvent += closeDepoAcc;
 
             WorkEmployeeEvent += logInfo;
             AccsAmountSummChanged += SetAccsAmountSumm;
@@ -209,6 +214,29 @@ namespace EmployeeApp.ViewModels
             foreach (var item in cls)
             {
                 Clients.Add(item);
+            }
+            clientsViewFillOrRefresh();
+        }
+        private void clientsViewFillOrRefresh()
+        {
+            this.ClientsView.Clear();
+            if (this.Employee is Manager)
+            {
+                foreach (var item in Clients)
+                {
+                    this.ClientsView.Add(item);
+                }
+            }
+            if (this.Employee is Consultant)
+            {
+                foreach (var item in Clients)
+                {
+                    var n = item.Clone();
+                    n.PaspNum = 0;
+                    n.PaspSeria = 0;
+                    this.ClientsView.Add(n);
+                }
+                //ClientsView.sortByLastName();
             }
         }
         private void selectClient(Client? client)
@@ -241,8 +269,6 @@ namespace EmployeeApp.ViewModels
                         OpenDepoAccBtnEnabled = false;
                     }
                 }
-                
-                
             }
 
             AccsAmountSummChanged();
@@ -252,46 +278,21 @@ namespace EmployeeApp.ViewModels
             TfrMoneyBtnEnabled = false;
             CloseAccBtnEnabled = false;
         }
-        private bool changeClient()
+
+        #region команда добавление нового клиента
+        // команда добавления нового объекта
+        private RelayCommand addNewClientCommand;
+        public RelayCommand AddNewClientCommand
         {
-            var clientBeforeEdit = _selectedClient.Clone();
-            _employee.ChangeClient(_selectedClient);
-            string changes = "";
-
-            changes += _selectedClient.LastName != clientBeforeEdit.LastName ? $"фамилия было: {clientBeforeEdit.LastName}, стало:{_selectedClient.LastName} | " : "";
-
-            changes += _selectedClient.FirstName != clientBeforeEdit.FirstName ? $"имя было: {clientBeforeEdit.FirstName}, стало:{_selectedClient.FirstName} | " : "";
-
-            changes += _selectedClient.Patronymic != clientBeforeEdit.Patronymic ? $"отчество было: {clientBeforeEdit.Patronymic}, стало:{_selectedClient.Patronymic} | " : "";
-
-            changes += _selectedClient.MobPhone != clientBeforeEdit.MobPhone ? $"мобильный телефон было: {clientBeforeEdit.MobPhone}, стало:{_selectedClient.MobPhone} | " : "";
-
-            changes += _selectedClient.PaspSeria != clientBeforeEdit.PaspSeria ? $"серия паспорта было: {clientBeforeEdit.PaspSeria}, стало:{_selectedClient.PaspSeria} | " : "";
-
-            changes += _selectedClient.PaspNum != clientBeforeEdit.PaspNum ? $"номер паспорта было: {clientBeforeEdit.PaspNum}, стало:{_selectedClient.PaspNum}" : "";
-
-
-
-            if (changes != "")
+            get
             {
-                //clientBeforeEdit.EmployeeType = _employee.Type;
-                    //Clients.Remove(clientBeforeEdit);
-                    //Clients.Add(_selectedClient);
-                    GetClients();
-                    WorkEmployeeEvent($"обновление данных клиента:  {changes}, обновил данные {_employee.Type} {_employee.LastName} {_employee.FirstName}");
-                return true;
+                return addNewClientCommand ??
+                  (addNewClientCommand = new RelayCommand(obj =>
+                  {
+                      addNewClient();
+                  }));
             }
-            else return false;
         }
-        //private bool changeClient()
-        //{
-        //    bool result = false;
-        //    if (_selectedClient != null)
-        //    {
-        //        result = _employee.ChangeClient(_selectedClient);
-        //    }
-        //    return result;
-        //}
         private void addNewClient()
         {
             var result = _employee.AddNewClient();
@@ -300,15 +301,92 @@ namespace EmployeeApp.ViewModels
                 WorkEmployeeEvent($"{_employee.Type}  {_employee.LastName} {_employee.FirstName} создал пользователя ID:{result.ID} {result.LastName} {result.FirstName}");
                 WorkEmployeeEvent($"создан счет {_employee.EmployeeActions.BankAccActions.GetClientAccs(result.ID)[0].AccNumber}");
                 Clients.Add(result);
-                SelectedClient = result;
                 AccsAmountSummChanged();
                 GetClients();
+                SelectedClient = result;
             }
             else
             {
                 MessageBox.Show("Не удалось создать клиента");
             }
         }
+
+
+        #endregion
+
+        #region команда редактирования клиента
+        private RelayCommand editClientCommand;
+        public RelayCommand EditClientCommand
+        {
+            get
+            {
+                return editClientCommand ??
+                  (editClientCommand = new RelayCommand(obj =>
+                  {
+                      changeClient();
+                  }));
+            }
+        }
+
+        private bool changeClient()
+        {
+            if (_selectedClient == null) return false;
+            Client changedClientFromDB; // сюда сохраняем обновленного клиента, которого изменили на форме и его перечитываем из базы
+
+            var clientBeforeEdit = Clients.FirstOrDefault(c => c.ID == _selectedClient.ID).getClientCopy(); // делаем копию данных (из коллекции, где полные данные, чтобы закрытые поля не терялись и не перезаписывались) клиента для определения какие поля изменились и сохранения изменений в логи
+            var IDeditClient = _selectedClient.ID;  // сохраняем ID клиента, которого редактируем
+            var success = _employee.ChangeClient(Clients.FirstOrDefault(c => c.ID == _selectedClient.ID)); // редактировение, возравт успешности редактирования
+            if (success) changedClientFromDB = _employee.GetClients().Find(c => c.ID == IDeditClient);      // если ред-е успешно, то перечитываем этого клиента из базы, потому что сюда его обновленный экземпляр не возвращается
+            else return false; // если ред-е не удалось, то выходим
+            string changes = "";
+
+            changes += changedClientFromDB.LastName != clientBeforeEdit.LastName ? $"фамилия было: {clientBeforeEdit.LastName}, стало:{changedClientFromDB.LastName} | " : "";
+
+            changes += changedClientFromDB.FirstName != clientBeforeEdit.FirstName ? $"имя было: {clientBeforeEdit.FirstName}, стало:{changedClientFromDB.FirstName} | " : "";
+
+            changes += changedClientFromDB.Patronymic != clientBeforeEdit.Patronymic ? $"отчество было: {clientBeforeEdit.Patronymic}, стало:{changedClientFromDB.Patronymic} | " : "";
+
+            changes += changedClientFromDB.MobPhone != clientBeforeEdit.MobPhone ? $"мобильный телефон было: {clientBeforeEdit.MobPhone}, стало:{changedClientFromDB.MobPhone} | " : "";
+
+            changes += changedClientFromDB.PaspSeria != clientBeforeEdit.PaspSeria ? $"серия паспорта было: {clientBeforeEdit.PaspSeria}, стало:{changedClientFromDB.PaspSeria} | " : "";
+
+            changes += changedClientFromDB.PaspNum != clientBeforeEdit.PaspNum ? $"номер паспорта было: {clientBeforeEdit.PaspNum}, стало:{changedClientFromDB.PaspNum}" : "";
+
+            //clientBeforeEdit = null;  
+            if (changes != "")
+            {
+                GetClients();
+                SelectedClient = changedClientFromDB;
+                WorkEmployeeEvent($"обновление данных клиента:  {changes}, обновил данные {_employee.Type} {_employee.LastName} {_employee.FirstName}");
+                return true;
+            }
+            else return false;
+        }
+        #endregion
+
+        #region команда удаления клиента
+
+        // команда удаления объекта
+        private RelayCommand removeClientCommand;
+        public RelayCommand RemoveClientCommand
+        {
+            get
+            {
+                return removeClientCommand ??
+                    (removeClientCommand = new RelayCommand(obj =>
+                    {
+                        // оставил в качестве примера передачи параметра в команду
+                        //Client client = obj as Client;
+                        //if (client != null)
+                        //{
+                        //    removeClient();
+                        //}
+                        removeClient(); // параметр можно не проверять, так как существующий метод предусматривает проверку выделенного клиента (подлежащий удалению)
+                    },
+                    (obj) => Clients.Count > 0)); // если в коллекции нет элементов, то команда не может быть выполнена
+            }
+        }
+
         private bool removeClient()
         {
             if (_selectedClient != null)
@@ -336,6 +414,8 @@ namespace EmployeeApp.ViewModels
             }
             else { return false; }
         }
+        #endregion
+
         private void SetAccsAmountSumm()
         {
             try
@@ -349,16 +429,8 @@ namespace EmployeeApp.ViewModels
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         #endregion
+
         #region работа с банковскими счетами
-        //private void getAccTransactions(BankAccForClient accNum)
-        //{
-        //    var trs = _employee.EmployeeActions.BankAccActions.GetAccTransactions(accNum.AccNumber);
-        //    AccTransactions.Clear();
-        //    foreach (var tr in trs)
-        //    {
-        //        //AccTransactions.Add(tr);
-        //    }
-        //}
         private void getAccTransactionsFull(BankAccForClient accNum)
         {
             if (accNum != null)
@@ -371,28 +443,45 @@ namespace EmployeeApp.ViewModels
                 }
             }
         }
-        private void selectedAccChanged(BankAccForClient accNum)
+        private void selectedAccChanged(BankAccForClient acc)
         {
-            if (accNum == null)
+            if (acc == null)
             {
+                AccTransactions.Clear();
                 return;
             }
-            selectedAcc = accNum;
             PutMoneyBtnEnabled = true;
             CloseAccBtnEnabled = false;
+            getAccTransactionsFull(acc);
             if (ClientAccs.Count == 2)
             {
                 TfrMoneyBtnEnabled = true;
             }
-            if (selectedAcc.GetType() == typeof(BankAccDepo))
+            if (_selectedAcc.GetType() == typeof(BankAccDepo))
             {
                 CloseAccBtnEnabled = _employee.CanAddRemoveDepoAcc;
+            }
+        }
+
+        #region команда пополнения счета
+        // команда пополнения счета
+        private RelayCommand putMoneyCommand;
+        public RelayCommand PutMoneyCommand
+        {
+            get
+            {
+                return putMoneyCommand ??
+                    (putMoneyCommand = new RelayCommand(obj =>
+                    {
+                        putMoney();
+                    },
+                    (obj) => ClientAccs.Count >= 1)); // если в коллекции нет элементов, то команда не может быть выполнена
             }
         }
         private void putMoney()
         {
             PutMoneyWin putMoneyWin = new PutMoneyWin(
-                selectedAcc.AccNumber.ToString(), selectedAcc.Amount.ToString(),
+                _selectedAcc.AccNumber.ToString(), _selectedAcc.Amount.ToString(),
                 summToPutStorage);
             BankAccTransaction bankAccTansaction = new BankAccTransaction();
             if (putMoneyWin.ShowDialog() == true)
@@ -403,45 +492,62 @@ namespace EmployeeApp.ViewModels
                 {
                     var dateTime = DateTime.Now;
                     //string dateTime = DateTime.Now.ToString();
-                    selectedAcc.PushMoneyToAcc(summ);
-                    if (_employee.EmployeeActions.BankAccActions.SaveAcc(selectedAcc, dateTime))
+                    _selectedAcc.PushMoneyToAcc(summ);
+                    if (_employee.EmployeeActions.BankAccActions.SaveAcc(_selectedAcc, dateTime))
                     {
                         
                         bankAccTansaction.Date = dateTime;
                         //bankAccTansaction.TransType = BankAccTansaction.TransactionType.Income;
                         bankAccTansaction.AccNumberSource = 0;
-                        bankAccTansaction.AccNumberTarget = selectedAcc.AccNumber;
+                        bankAccTansaction.AccNumberTarget = _selectedAcc.AccNumber;
                         bankAccTansaction.Summ = summ;
                         bankAccTansaction.EmployeeId = _employee.Id;
                         bankAccTansaction.ClientId = 0;
                         bankAccTansaction.OperatorName = $"{_employee.LastName} {_employee.FirstName}";
                         bankAccTansaction.Description = "";
                         _employee.EmployeeActions.TransactionsActions.SaveTransaction(bankAccTansaction);
-                        AccTransactions.Add(new BankAccTransactionFull() { Acc = selectedAcc, Tr = bankAccTansaction }); // так просто добавляем в коллекцию и данные актуальны и базу не грузим
+                        AccTransactions.Add(new BankAccTransactionFull() { Acc = _selectedAcc, Tr = bankAccTansaction }); // так просто добавляем в коллекцию и данные актуальны и базу не грузим
                         MessageBox.Show($"Пополнение счета выполнено успешно.");
                     }
                     else
                     {
-                        selectedAcc.Amount -= summ;
+                        _selectedAcc.Amount -= summ;
                         MessageBox.Show($"Не удалось сохранить данные счета.");
                     }
                     AccsAmountSummChanged();
                 }
             }
         }
+        #endregion
+
+        #region команда перевода среств между счетами
+        // команда перевода среств между счетами
+        private RelayCommand transferMoneyCommand;
+        public RelayCommand TransferMoneyCommand
+        {
+            get
+            {
+                return transferMoneyCommand ??
+                    (transferMoneyCommand = new RelayCommand(obj =>
+                    {
+                        tfrMoney();
+                    },
+                    (obj) => ClientAccs.Count >= 2));
+            }
+        }
         private void tfrMoney()
         {
-            if (selectedAcc != null)
+            if (_selectedAcc != null)
             {
-                var targetAcc = ClientAccs.FirstOrDefault(a => a.AccNumber != selectedAcc.AccNumber);
-                string accSourceNumber = selectedAcc.AccNumber.ToString();
-                string accSourceAmount = selectedAcc.Amount.ToString();
+                var targetAcc = ClientAccs.FirstOrDefault(a => a.AccNumber != _selectedAcc.AccNumber);
+                string accSourceNumber = _selectedAcc.AccNumber.ToString();
+                string accSourceAmount = _selectedAcc.Amount.ToString();
                 string accTargetNumber = targetAcc.AccNumber.ToString();
                 string accTargetAmount = targetAcc.Amount.ToString();
 
                 IStorageTransferMoney<BankAccForClient> transferStorage = new BankAccTransferStorage<BankAccBase>();
 
-                transferStorage.addAcc = selectedAcc;
+                transferStorage.addAcc = _selectedAcc;
                 transferStorage.addAcc = targetAcc;
                 
                 MoneyTransferWin moneyTransferWin = new MoneyTransferWin(
@@ -470,7 +576,7 @@ namespace EmployeeApp.ViewModels
                         bankAccTansaction.Description = "перевод между счетами";
                         _employee.EmployeeActions.TransactionsActions.SaveTransaction(bankAccTansaction);
                         //getAccTransactionsFull(selectedAcc); // если будет обращение к большой бд, то это будет очень затратно по времени и ресурсам
-                        AccTransactions.Add(new BankAccTransactionFull() { Acc = selectedAcc, Tr = bankAccTansaction }); // так просто добавляем в коллекцию и данные актуальны и базу не грузим
+                        AccTransactions.Add(new BankAccTransactionFull() { Acc = _selectedAcc, Tr = bankAccTansaction }); // так просто добавляем в коллекцию и данные актуальны и базу не грузим
                         MessageBox.Show("Перевод выполнен успешно.");
                     }
                     else
@@ -482,6 +588,22 @@ namespace EmployeeApp.ViewModels
                 {
                     MessageBox.Show("Что-то пошло не так.");
                 }
+            }
+        }
+        #endregion
+
+        #region команда открытия счета депо
+        private RelayCommand openDepoAccCommand;
+        public RelayCommand OpenDepoAccCommand
+        {
+            get
+            {
+                return openDepoAccCommand ??
+                    (openDepoAccCommand = new RelayCommand(obj =>
+                    {
+                        openDepoAcc();
+                    },
+                    (obj) => ClientAccs.Count >= 1));
             }
         }
         private void openDepoAcc()
@@ -499,7 +621,7 @@ namespace EmployeeApp.ViewModels
                     ClientAccs.Add(result);
                     WorkEmployeeEvent($"{_employee.Type}  {_employee.LastName} {_employee.FirstName} создал для клиента ID:{_selectedClient.ID} {_selectedClient.LastName} {_selectedClient.FirstName} депозитный счет №{result.AccNumber}");
                     OpenDepoAccBtnEnabled = false;
-                    selectedAcc = ClientAccs[0];
+                    _selectedAcc = ClientAccs[0];
                     TfrMoneyBtnEnabled = true;
                 }
             }
@@ -508,20 +630,36 @@ namespace EmployeeApp.ViewModels
                 MessageBox.Show(ex.Message);
             }
         }
+        #endregion
+
+        #region команда закрытия счета депо
+        private RelayCommand closeDepoAccCommand;
+        public RelayCommand CloseDepoAccCommand
+        {
+            get
+            {
+                return closeDepoAccCommand ??
+                    (closeDepoAccCommand = new RelayCommand(obj =>
+                    {
+                        closeDepoAcc();
+                    },
+                    (obj) => ClientAccs.Count >= 2));
+            }
+        }
         private void closeDepoAcc()
         {
-            if (selectedAcc.GetType() == typeof(BankAccDepo))
+            if (_selectedAcc.GetType() == typeof(BankAccDepo))
             {
-                if (_employee.EmployeeActions.BankAccActions.CloseAcc(selectedAcc.AccNumber))
+                if (_employee.EmployeeActions.BankAccActions.CloseAcc(_selectedAcc.AccNumber))
                 {   
-                    WorkEmployeeEvent($"{_employee.Type} {_employee.LastName} {_employee.FirstName} закрыл депозитный счет №{selectedAcc.AccNumber} клиента ID:{_selectedClient.ID} {_selectedClient.LastName} {_selectedClient.FirstName}");
+                    WorkEmployeeEvent($"{_employee.Type} {_employee.LastName} {_employee.FirstName} закрыл депозитный счет №{_selectedAcc.AccNumber} клиента ID:{_selectedClient.ID} {_selectedClient.LastName} {_selectedClient.FirstName}");
 
-                    ClientAccs.Remove(selectedAcc);
-                    selectedAcc = ClientAccs.FirstOrDefault();
-                    selectedAccChanged(selectedAcc);
+                    ClientAccs.Remove(_selectedAcc);
+                    _selectedAcc = ClientAccs.FirstOrDefault();
+                    selectedAccChanged(_selectedAcc);
                     OpenDepoAccBtnEnabled = _employee.CanAddRemoveDepoAcc;
                     TfrMoneyBtnEnabled = false;
-                    getAccTransactionsFull(selectedAcc);
+                    getAccTransactionsFull(_selectedAcc);
                     SetAccsAmountSumm();
                 }
             }
@@ -531,6 +669,7 @@ namespace EmployeeApp.ViewModels
                 return;
             }
         }
+        #endregion
         private void logInfo(string msg)
         {
             GlobalVarsAndActions.LogInfo(msg);

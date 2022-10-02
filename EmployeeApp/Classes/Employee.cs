@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Text.Unicode;
 using System.Threading.Tasks;
 using ClassLibrary.Methods;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeApp.Classes
 {
@@ -35,10 +36,6 @@ namespace EmployeeApp.Classes
         internal EmployeeActions EmployeeActions 
         {
             get { return employeeActions; }
-            //объединил все эти интерфейсы в один
-            //public IBankAccActions BankAccActions { get; set; }
-            //public ITransactionsActions TransactionsActions { get; set; }
-            //public IClientActions ClientActions { get; set; }
         }
 
         public enum SortedCriterion
@@ -80,6 +77,10 @@ namespace EmployeeApp.Classes
                 else if (X.Age > Y.Age) return 1;
                 else return -1;
             }
+        }
+        public override string ToString()
+        {
+            return $"{LastName} {FirstName}";
         }
     }
 }

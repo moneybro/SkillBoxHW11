@@ -27,117 +27,20 @@ namespace EmployeeApp.Views
         WorkEmployee workEmployee;
         
         EmployeePage ep;
-        public event Action<Client> ClientSelectChangedEvent;
-        public event Func<bool> EditUserEventSuccess;
-        public event Action AddNewClientEventSuccess;
-        public event Func<bool> RemoveClientEventSuccess;
-        public event Action<BankAccForClient> BankAccSelectEvent;
-        public event Action PutMoneyBtnEvent;
-        public event Action TfrMoneyBtnEvent;
-        public event Action OpenDepoAccBtnEvent;
-        public event Action CloseDepoAccBtnEvent;
-
-        long selectedClientId;
         public EmployeePage(Employee employee)
         {
             ep = this;
             InitializeComponent();
             workEmployee = new WorkEmployee(employee, this);
-            this.DataContext = workEmployee;
-            ClientsDG.ItemsSource = workEmployee.Clients;
-            
-            if (employee is Consultant)
-            {
-                ClientsDG.Columns[5].Visibility = Visibility.Hidden;
-                ClientsDG.Columns[6].Visibility = Visibility.Hidden;
-            }
-
-            bankAccsListBox.ItemsSource = workEmployee.ClientAccs;
-            bankAccTransactions.ItemsSource = workEmployee.AccTransactions;
-            employeeValue.Text = $"{employee.FirstName} {employee.LastName}";
+            DataContext = workEmployee;
         }
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var client = ClientsDG.SelectedItem as Client;
-            if (client != null)
-            {
-                ClientSelectChangedEvent(client);
-                selectedClientId = workEmployee.SelectedClient.ID;
-            }
-        }
-
-        private void EditUserBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (!EditUserEventSuccess())
-            {
-                MessageBox.Show("Не удалось отредактировать пользователя.");
-                return;
-            }
-            ClientsDG.Items.SortDescriptions.Clear();
-            //ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
-            ClientsDG.Items.Refresh();
-        }
-
-        private void addNewClientBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AddNewClientEventSuccess();
-            ClientsDG.Items.SortDescriptions.Clear();
-            //ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
-            ClientsDG.Items.Refresh();
-        }
-
-        private void removeClientBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (!RemoveClientEventSuccess())
-            {
-                MessageBox.Show("Не удалось удалить клиента.");
-            }
-            ClientsDG.Items.SortDescriptions.Clear();
-            //ClientsDG.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("ID", System.ComponentModel.ListSortDirection.Ascending));
-            ClientsDG.Items.Refresh();
-        }
-
         private void Close_Button_Click(object sender, RoutedEventArgs e)
         {
             ep.Visibility = Visibility.Collapsed;
             ep = null;
+            workEmployee = null;
             NavigationService.GoBack();
         }
-
-        private void OnClientBankAccSelected(object sender, RoutedEventArgs e)
-        {
-            if (((System.Windows.Controls.SelectionChangedEventArgs)e).AddedItems.Count > 0) // при выборе другого клиента срабатывает это событие и тогда массив пуст, что вызывает ошибку
-            {
-                var item = ((System.Windows.Controls.SelectionChangedEventArgs)e).AddedItems[0];
-
-                var res = item as BankAccMain;
-                var res2 = item as BankAccDepo;
-
-                if (res != null) BankAccSelectEvent(res);
-                if (res2 != null) BankAccSelectEvent(res2);
-            }
-        }
-
-        private void PutMoneyToMainAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            PutMoneyBtnEvent();
-        }
-
-        private void TransferMoneyFromMainAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            TfrMoneyBtnEvent();
-        }
-
-        private void OpenDepoAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OpenDepoAccBtnEvent();
-        }
-
-        private void CloseAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            CloseDepoAccBtnEvent();
-        }
-
         private void clientAccsGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             bankAccsListBox.Height = clientAccsGrid.ActualHeight - 25;

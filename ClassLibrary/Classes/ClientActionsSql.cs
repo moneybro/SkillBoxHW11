@@ -11,18 +11,19 @@ namespace ClassLibrary.Classes
 {
     public class ClientActionsSql : IClientActions
     {
-        SqlDbContext db;
-        public ClientActionsSql()
-        {
-            db = new SqlDbContext();
-        }
-        public ClientActionsSql(DbContext dbContext)
-        {
-            db = (SqlDbContext?)dbContext;
-        }
+        public static SqlDbContext db = new SqlDbContext();
+        //public ClientActionsSql()
+        //{
+        //    //db = new SqlDbContext();
+        //}
+        //public ClientActionsSql(DbContext dbContext)
+        //{
+        //    //db = (SqlDbContext?)dbContext;
+        //}
         public List<Client> GetClients()
         {
             //todo для каждого работника хранится набор данных, из-за этого данные после редактирования одним работником для других работников не отображаются, каждый видит свои последние данные, а обновленные данные не загружаются из БД. требуется принудительно перечитать данные их БД. Только для реализации с EF Core, связано с отслеживанием объектов EF
+            
             return db.Clients.Where(c => c.Status != "deleted").ToList();
         }
         public long getNewClientId()
@@ -32,17 +33,27 @@ namespace ClassLibrary.Classes
         }
         public bool UpdateClient(Client client)
         {
-            var cl = db.Clients.FirstOrDefault(c => c.ID == client.ID);
-            cl.LastName = client.LastName;
-            cl.FirstName = client.FirstName;
-            cl.Patronymic = client.Patronymic;
-            cl.MobPhone = client.MobPhone;
-            cl.PaspSeria = client.PaspSeria;
-            cl.PaspNum = client.PaspNum;
-            cl.LastChangeDate = client.LastChangeDate;
-            cl.ChangeType = "edited";
-            cl.EmployeeType = client.EmployeeType;
-            cl.Status = client.Status;
+            if (client == null) return false;
+
+            //var cl = db.Clients.FirstOrDefault(c => c.ID == client.ID);
+            //cl.LastName = client.LastName;
+            //cl.FirstName = client.FirstName;
+            //cl.Patronymic = client.Patronymic;
+            //cl.MobPhone = client.MobPhone;
+            //cl.PaspSeria = client.PaspSeria;
+            //cl.PaspNum = client.PaspNum;
+            //cl.LastChangeDate = client.LastChangeDate;
+            //cl.ChangeType = "edited";
+            //cl.EmployeeType = client.EmployeeType;
+            //cl.Status = client.Status;
+            //client = null;
+            //db.Clients.Update(cl);
+            //cl = null;
+            //db.SaveChanges();
+            //return true;
+
+            client.ChangeType = "edited";
+            db.Clients.Update(client);
             db.SaveChanges();
             return true;
         }

@@ -48,14 +48,8 @@ namespace EmployeeApp.Classes
         {
             List<Client> clients = new List<Client>();
             clients.AddRange(EmployeeActions.ClientActions.GetClients());
-            //for (int i = 0; i < clients.Count; i++)
-            //{
-            //    clients[i].PaspSeria = 0;
-            //    clients[i].PaspNum = 0;
-            //}
             return clients;
         }
-
         public override BankAccDepo GetNewDepoAcc(long clId)
         {
             throw new EmployeeExeption(1);

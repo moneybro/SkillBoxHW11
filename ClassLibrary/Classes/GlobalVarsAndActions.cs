@@ -7,78 +7,116 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Serilog;
+using System.IO;
 
 namespace ClassLibrary.Classes
 {
     public static class GlobalVarsAndActions
     {
-        static string mp = @"d:\repos\_BankAppSkillBoxHW\Repositories\";
-        static string _clientsRepoPath = $"{mp}clients.json";
-        static string _mainAccsRepoPath = $"{mp}mainAccs.json";
-        static string _depoAccsRepoPath = $"{mp}depoAccs.json";
-        static string _transactionsRepoPath = $"{mp}transactions.json";
-        static string _logsPath = @"d:\repos\_BankAppSkillBoxHW\log\";
+        static string storageType = "json";
 
-        static string storageType = "mssql";
-        //static string storageType = "json";
+        static string mp = Directory.GetCurrentDirectory();
+        
+        static string _clientsRepoPath = $"{mp}\\jsondb\\clients.json";
+        static string _mainAccsRepoPath = $"{mp}\\jsondb\\mainAccs.json";
+        static string _depoAccsRepoPath = $"{mp}\\jsondb\\depoAccs.json";
+        static string _transactionsRepoPath = $"{mp}\\jsondb\\transactions.json";
+        static string _sqldblogsPath = $"{mp}\\log\\sql\\";
+        static string _jsondblogsPath = $"{mp}\\log\\json\\";
+        //static string _sqldblogsPath = @"d:\repos\_BankAppSkillBoxHW\log\sql\";
+        //static string _jsondblogsPath = @"d:\repos\_BankAppSkillBoxHW\log\json\";
 
+        public static string StorageType 
+        { 
+            get { return storageType; } 
+            set {
+                switch (value)
+                {
+                    case "json":
+                        storageType = "json";
+                        break;
+                    case "mssql":
+                        storageType = "mssql";
+                        break;
+                    default:
+                        storageType = "json";
+                        break;
+                }
+                storageType = value; 
+            } 
+        }
         public static string ClientsRepoPath
         {
-            get { return _clientsRepoPath;}
+            get 
+            {
+                if (!Directory.Exists(Path.GetDirectoryName(_clientsRepoPath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(_clientsRepoPath));
+                }
+                if (!File.Exists(_clientsRepoPath))
+                {
+                    File.CreateText(_clientsRepoPath).Close();
+                };
+                return _clientsRepoPath;
+            }
         }
         public static string MainAccsRepoPath
         {
-            get {
-                if (File.Exists(_mainAccsRepoPath))
+            get
+            {
+                if (!Directory.Exists(Path.GetDirectoryName(_mainAccsRepoPath)))
                 {
-                    return _mainAccsRepoPath;
+                    Directory.CreateDirectory(Path.GetDirectoryName(_mainAccsRepoPath));
                 }
-                else
+                if (!File.Exists(_mainAccsRepoPath))
                 {
-                    File.Create(_mainAccsRepoPath).Close();
-                    return _mainAccsRepoPath;
-                }
+                    File.CreateText(_mainAccsRepoPath).Close();
+                };
+                return _mainAccsRepoPath;
             }
         }
         public static string DepoAccsRepoPath
         {
             get
             {
-                if (File.Exists(_depoAccsRepoPath))
+                if (!Directory.Exists(Path.GetDirectoryName(_depoAccsRepoPath)))
                 {
-                    return _depoAccsRepoPath;
+                    Directory.CreateDirectory(Path.GetDirectoryName(_depoAccsRepoPath));
                 }
-                else
+                if (!File.Exists(_depoAccsRepoPath))
                 {
-                    File.Create(_depoAccsRepoPath).Close();
-                    return _depoAccsRepoPath;
-                }
+                    File.CreateText(_depoAccsRepoPath).Close();
+                };
+                return _depoAccsRepoPath;
             }
         }
         public static string TransactionsRepoPath
         {
             get
             {
-                if (File.Exists(_transactionsRepoPath))
+                if (!Directory.Exists(Path.GetDirectoryName(_transactionsRepoPath)))
                 {
-                    return _transactionsRepoPath;
+                    Directory.CreateDirectory(Path.GetDirectoryName(_transactionsRepoPath));
                 }
-                else
+                if (!File.Exists(_transactionsRepoPath))
                 {
-                    File.Create(_transactionsRepoPath).Close();
-                    return _transactionsRepoPath;
-                }
+                    File.CreateText(_transactionsRepoPath).Close();
+                };
+                return _transactionsRepoPath;
             }
         }
-        public static string StorageType { get => storageType; }
-
-
         public static void SetLogger()
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                .WriteTo.File($"{_logsPath}\\AppLog.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File($"{ getLogPath() }\\AppLog.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
+        }
+        static string getLogPath()
+        {
+            if(storageType == "mssql") return _sqldblogsPath;
+            if(storageType == "json") return _jsondblogsPath;
+            return _sqldblogsPath;
         }
         public static void LogInfo(string msg)
         {
