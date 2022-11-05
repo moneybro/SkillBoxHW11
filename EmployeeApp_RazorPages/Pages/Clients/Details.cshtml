@@ -1,0 +1,82 @@
+﻿@page
+@model EmployeeApp_RazorPages.Pages.Clients.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.Patronymic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.Patronymic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.MobPhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.MobPhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.PaspSeria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.PaspSeria)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.PaspNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.PaspNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.LastChangeDate)
+        </dt>
+        
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.LastChangeDate)
+        </dd>
+        @*
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.ChangeType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.ChangeType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.EmployeeType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.EmployeeType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.Status)
+        </dd>
+        *@
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Client?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

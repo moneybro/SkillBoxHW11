@@ -8,18 +8,28 @@ using System.Text.Json;
 using System.Text.Unicode;
 using ClassLibrary.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ClassLibrary.Classes
 {
     public class Client : IEquatable<Client?>, IComparable<Client>
     {
         public long ID { get; set; }
+        [DisplayName("Фамилия")]
         public string LastName { get; set; }
+        [DisplayName("Имя")]
         public string FirstName { get; set; }
+        [DisplayName("Отчество")]
         public string Patronymic { get; set; }
+        [DisplayName("Моб. тлф.")]
         public string? MobPhone { get; set; }
+        [DisplayName("Серия пасп.")]
         public int? PaspSeria { get; set; }
+        [DisplayName("Номер пасп.")]
         public long? PaspNum { get; set; }
+
+        [DisplayName("Посл. изм-е")]
         public DateTime? LastChangeDate { get; set; }
         public string? ChangeType { get; set; }
         public string? EmployeeType { get; set; }

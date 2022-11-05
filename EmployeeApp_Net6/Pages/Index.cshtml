@@ -1,0 +1,21 @@
+﻿@page
+@model EmployeeApp_Net6.Pages.IndexModel
+@{
+}
+<a href="about">about</a>
+<p>hello world</p>
+<div>@DateTime.Now</div>
+@{
+    string message = "foreignObject example with Scalable Vector Graphics (SVG)";
+}
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" rx="10" ry="30" width="200" height="200" stroke="black" 
+        fill="none" />
+    <foreignObject x="20" y="30" width="160" height="160">
+        <p>@message</p>
+    </foreignObject>
+</svg>
+
+<p>@DateTime.Now</p>
+<p>@DateTime.IsLeapYear(2016)</p>
