@@ -21,7 +21,9 @@ namespace ClassLibrary.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; initial catalog=SkillBoxBankSqlDb; integrated security=true;");
+            optionsBuilder.UseSqlServer(@"Server=megaserver; initial catalog=SkillBoxBankSqlDb;User Id=SkillboxBankApp;Password=SkillboxBankApp1234567890!@#; integrated security=false;");
+
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; initial catalog=SkillBoxBankSqlDb; integrated security=true;");
             optionsBuilder.EnableSensitiveDataLogging();
             //optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);  // отключение отслежвания наборов
         }
